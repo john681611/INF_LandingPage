@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Iron-Fists Home</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="../css/grayscale.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Iron</span>-Fists
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                      <a class="page-scroll" href="#news">News &amp; Events</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#forum">Forum</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#servers">Servers</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#cndmsg">Command msg</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#links">Links</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <img alt="" width=50% src="http://sa-sim.com/wp-content/uploads/1/2014/05/arma3_logo-300x187.png">
+                      <img src="img/logo.png" style="width:50%"/>
+                        <h1 class="brand-heading">Iron-Fists</h1>
+                        <p class="intro-text">Play Fair and with Honour</p>
+                        <a href="#news" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="news" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <h2>News &amp; Events</h2>
+              <% for(var i=0; i<news.length; i++) { %>
+                <hr />
+                <div>
+                  <h3><%= news[i].title %></h3>
+                  <% if(news[i].imagelink != "") {%>
+                    <img class="newsimg" src="<%= news[i].imagelink %>"/>
+                  <%}%>
+                  <p><%- news[i].text %></p>
+                  <a class="btn btn-default btn-lg" href="<%= news[i].link%>">
+                    <% if(news[i].event) {%>
+                    Sign up
+                    <% } else { %>
+                    Read More
+                    <%}%>
+                  </a>
+                </div>
+              <% } %>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Download Section -->
+    <section id="forum" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Forum</h2>
+                    <p>Join the chat, apply to join the squad. Its the heart of the squad</p>
+                    <a href="http://newwebsite.iron-fists.eu/index.php" class="btn btn-default btn-lg">Visit our Forums</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Iron-Fists</h2>
+            <p>Iron-Fists is a UK based clan that takes a semi-pro approach to operations.
+             We like a challenge and often play way out numbered and gunned.
+             We use ACE3, 3CB, RHS, CUP Maps and TFAR.
+             We run three members nights a week and
+             two public servers.</p>
+             <br>
+             <br>
+             <h3>Weekly Member Events:</h3>
+             <p>All events start at <b>9pm UK</b> Time we ask you try and be present at <b>8:30</b>.
+             </p>
+             <ul class="list-group">
+            <li class="list-group-item"><b>Tuesday: Free Night</b> - Vote on the forums of what you want to do.</li>
+            <li class="list-group-item"><b>Thursday: Training Night</b> - Learn new skills and practice them. Usually ending in a Zeus mission.</li>
+            <li class="list-group-item"><b>Sunday: Mission Night</b> - Take on a serious mission</li>
+          </ul>
+             <h3>Leadership Structure:</h3>
+             <p>
+            We run a three man command for day to day running:
+            <br>
+            <b>INF_H@wKEYE</b> - Squad CO<br>
+            <b>INF_Rhys</b> - 2IC<br>
+            <b>INF_Mearcat</b> - 3IC<br>
+            All Major Decisions are put to a squad vote. <br>
+
+            All members are listened to rank is only used for tie breakers and mission command structure.
+            </p>
+
+            <h3>Advancement:</h3>
+            <p>
+              Promotions are given for dedication and squad work. Awards are given for completing training courses and actions.
+            </p>
+            <h3>Requirements:</h3>
+            <p>We ask that you are:<br>
+              <ul class="list-group">
+            <li class="list-group-item">17 or older</li>
+            <li class="list-group-item">Can speak and write in English.</li>
+            <li class="list-group-item">Attend member events. </li>
+            <li class="list-group-item">Keep up-to-date with squad activities.</li>
+            <li class="list-group-item">Are not a member of another Arma Clan.</li>
+          </ul>
+          </p>
+          <h3>Questions?</h3>
+             <p>Come say hi on <a href="ts3server://81.19.212.66">Team Speak.</a></p>
+            <p><b>INF_Mike64</b>- Committee Member</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="servers" class="content-section text-center">
+        <div class="server-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                <h2>Servers</h2>
+                <hr />
+              <h3>Resistance<h3>
+              <p><a href="http://www.gametracker.com/server_info/81.19.212.66:2340/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2340/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2340/b_560_95_1.png" border="0" alt="" width="100%" title=""></a></p>
+              <h4>Optoinal</h4>
+              <p><a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23615">Task Force radio</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=18767">CBA3</a></br>
+                BC Phoenix 2 &nbsp;&nbsp;
+                Advanced Button Mod
+              </p>
+              <hr />
+              <h3>Liberation<h3>
+                  <a href="http://www.gametracker.com/server_info/81.19.212.66:2310/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2310/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2310/b_560_95_1.png" border="0" alt="" width="100%" title=""></a>
+                  <h4>Required</h4>
+              <p>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=28557&amp;highlight=ACE3">ACE3</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=18767">CBA3</a>
+              </p>
+              <h4>Optoinal</h4>
+              <p><a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23615">Task Force radio</a></br>
+                BC Phoenix 2 &nbsp;&nbsp;
+                Advanced Button Mod
+              </p>
+              <hr />
+              <h3>Members Only<h3>
+                  <a href="http://www.gametracker.com/server_info/81.19.212.66:2320/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2320/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2320/b_560_95_1.png" border="0" alt="" width="100%" title=""></a>
+                  <h4>Required</h4>
+              <p>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=28557&amp;highlight=ACE3">ACE3</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=18767">CBA3</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23615">Task Force radio</a></br>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=27150&amp;highlight=RHS%2BARMA3">RHS afrf3</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=27149&amp;highlight=RHS%2BARMA3">RHS usf3</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=19917">MBG KillHouses A3</a></br>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=28645">3CB BAF Wepons</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=27201">3CB BAF Units</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=29033">3CB BAF Equipment</a></br>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=27203">3CB BAF Vehicles</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=30044">CUP Terrain Core</a>
+                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=30046">CUP Terrain Maps</a></br>
+                Enhanced Moment &nbsp;&nbsp;
+                ACE3 RHS Compats
+              </p>
+              <h4>Optoinal</h4>
+              <p>
+                BC Phoenix 2 &nbsp;&nbsp;
+                Advanced Button Mod
+              </p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cndmsg" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Messages from Command</h2>
+                <p>Welcome to the home of the Iron Fists clan. This is a brief discription of our history and future goals.
+                    Iron Fists was formed on the 1st of July 1999. Being a member is at the very least a symbol of a quality player.
+                    We are all striving to make INF one of the best squad's around, and things are going very well due to the excellent amount of hard work the squad continuously puts in.
+                    The long-term goals of INF are to constantly excel on the battlefield, build up our strength and resources and show people that we are as serious and solid as our name stands for.
+                    As time passes us by, it is important that we stay recognized as a squad that is organized and dangerous, yet one that puts friendship and fun at it’s heart.</p>
+                <p>INF_&lt;DAVO&gt; - Squad Founder.</p>
+                <hr />
+                <p>INF goes through many changes to ensure and to maintain the highest quality in teamwork, skill, dedication and friendship.
+                    Every member, new and old, helps each other to achieve their best, whether it is on the battlefield or just communicating with other squads.
+                    INF keeps up, at ALL times; the up most respect to fellow players and squads, and we are professional to the very end.</p>
+                <p>INF_H@wKEYE - Squad CO</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="links" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Links</h2>
+                    <p>More places we have presense.</p>
+                    <a href="https://units.arma3.com/unit/iron-fists" class="btn btn-default btn-lg">
+                      <img class="img_small"  src="https://units.arma3.com/assets/img/units/header_icon.png"/><br>
+                      Units
+                    </a>
+                    <a href="ts3server://81.19.212.66" class="btn btn-default btn-lg">
+                      <img class="img_small" src="https://www.teamspeak.com/assets/images/logos/teamspeak_small.png"/><br>
+                      TS3
+                    </a>
+                    <a href="https://www.facebook.com/groups/ironfists.eu/" class="btn btn-default btn-lg">
+                      <img class="img_small" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1-400x400.png"/><br>
+                      Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; John Harvey 2017</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <!-- Theme JavaScript -->
+    <script src="../js/grayscale.js"></script>
+
+</body>
+
+</html>
