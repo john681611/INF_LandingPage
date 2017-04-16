@@ -1,0 +1,84 @@
+{
+"alpha":[
+  {
+    "rank":"Gen",
+    "name":"H@wKEYE",
+    "pos":"1IC/Alpha Lead",
+    "role":"Squad Commander",
+    "joined": 1999
+  },
+  {
+    "rank":"SSgt",
+    "name":" Mearcat",
+    "pos":"3IC/2",
+    "role":"Medic",
+    "joined": 2013
+  },
+  {
+    "rank":"Pvt1C",
+    "name":"Maddog",
+    "pos":"3",
+    "role":"MG",
+    "joined": 2014
+  },
+  {
+    "rank":"Pvt1C",
+    "name":"ToTall",
+    "pos":"5",
+    "role":"AT/MultiRole",
+    "joined": 2015
+  },
+  {
+    "rank":"Pvt1C",
+    "name":"NinjaKid",
+    "pos":"6",
+    "role":"On Leave",
+    "joined": 2014
+  },
+  {
+    "rank":"Pvt1C",
+    "name":"Predator",
+    "pos":"7",
+    "role":"EOD",
+    "joined": 2015
+  }
+
+],
+"bravo":[
+  {
+    "rank":"FSgt ",
+    "name":"Rhys",
+    "pos":"2IC/Bravo Lead",
+    "role":"Squad Leader",
+    "joined": 2011
+  },
+  {
+    "rank":"MSgt",
+    "name":"Mike64",
+    "pos":"Committee Member/2",
+    "role":"Marksman",
+    "joined": 2010
+  },
+  {
+    "rank":"MSgt",
+    "name":"Whitphos81",
+    "pos":"3",
+    "role":"MG/AT",
+    "joined": 2011
+  },
+  {
+    "rank":"Pvt1C ",
+    "name":"Kable",
+    "pos":"5",
+    "role":"MG/Rifleman",
+    "joined": 2015
+  },
+  {
+    "rank":"LCpl",
+    "name":"Bangie",
+    "pos":"6",
+    "role":"Medic",
+    "joined": 2011
+  }
+]
+}

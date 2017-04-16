@@ -234,15 +234,13 @@ background-size: 100%;
 text-shadow: black 4px 4px 4px;
 }
 .server-section {
-  width: 100%;
-  padding: 50px 0;
-  color: white;
   background-image:url(../img/Arma-3-Apex.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 100%;
-  text-shadow: black 4px 4px 4px;
+}
+.links-section {
+  background-image:url(../img/Arma-3-Zeus.jpg);
+}
+.roster-section {
+  background-image:url(../img/Arma-3-Marksmen.jpg);
 }
 #map {
   width: 100%;
@@ -349,4 +347,10 @@ body {
 }
 ul{
   display: inline-block;
+}
+.right{
+      float: right;
+}
+td {
+  text-align: left;
 }

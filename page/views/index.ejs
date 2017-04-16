@@ -65,10 +65,16 @@
                         <a class="page-scroll" href="#servers">Servers</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#cndmsg">Command msg</a>
+                        <a class="page-scroll" href="#rules">Rules</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#links">Links</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#cndmsg">Command msg</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#roster">Roster</a>
                     </li>
                 </ul>
             </div>
@@ -104,6 +110,7 @@
                 <hr />
                 <div>
                   <h3><%= news[i].title %></h3>
+                  <span class="right"><%= news[i].date%></span>
                   <% if(news[i].imagelink != "") {%>
                     <img class="newsimg" src="<%= news[i].imagelink %>"/>
                   <%}%>
@@ -117,6 +124,8 @@
                   </a>
                 </div>
               <% } %>
+            <hr />
+            <a class="btn btn-default btn-lg" href="http://newwebsite.iron-fists.eu/app.php/news?sid=fc79007585872416308594783a8cd05a">View More</a>
             </div>
         </div>
     </section>
@@ -144,9 +153,8 @@
              We use ACE3, 3CB, RHS, CUP Maps and TFAR.
              We run three members nights a week and
              two public servers.</p>
-             <br>
-             <br>
-             <h3>Weekly Member Events:</h3>
+             <hr />
+             <h3>Weekly Member Events</h3>
              <p>All events start at <b>9pm UK</b> Time we ask you try and be present at <b>8:30</b>.
              </p>
              <ul class="list-group">
@@ -154,7 +162,8 @@
             <li class="list-group-item"><b>Thursday: Training Night</b> - Learn new skills and practice them. Usually ending in a Zeus mission.</li>
             <li class="list-group-item"><b>Sunday: Mission Night</b> - Take on a serious mission</li>
           </ul>
-             <h3>Leadership Structure:</h3>
+          <hr />
+             <h3>Leadership Structure</h3>
              <p>
             We run a three man command for day to day running:
             <br>
@@ -165,12 +174,13 @@
 
             All members are listened to rank is only used for tie breakers and mission command structure.
             </p>
-
-            <h3>Advancement:</h3>
+            <hr />
+            <h3>Advancement</h3>
             <p>
               Promotions are given for dedication and squad work. Awards are given for completing training courses and actions.
             </p>
-            <h3>Requirements:</h3>
+            <hr />
+            <h3>Requirements</h3>
             <p>We ask that you are:<br>
               <ul class="list-group">
             <li class="list-group-item">17 or older</li>
@@ -180,6 +190,7 @@
             <li class="list-group-item">Are not a member of another Arma Clan.</li>
           </ul>
           </p>
+          <hr />
           <h3>Questions?</h3>
              <p>Come say hi on <a href="ts3server://81.19.212.66">Team Speak.</a></p>
             <p><b>INF_Mike64</b>- Committee Member</p>
@@ -190,7 +201,7 @@
 
     <!-- Contact Section -->
     <section id="servers" class="content-section text-center">
-        <div class="server-section">
+        <div class="download-section server-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2 background-shadow">
                 <h2>Servers</h2>
@@ -246,6 +257,53 @@
         </div>
     </section>
 
+    <section id="rules" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <h2>Public Server Rules</h2>
+              <p>These are our rules and guidlines for all our public servers, Our servers are a place to have fun &amp; achieve great teamwork and to do that we need responceable players.</p>
+              <ul class="list-group"><b>
+                <li class="list-group-item">NO CHEATING</li>
+                <li class="list-group-item">No GLITCHING or FARMING!</li>
+                <li class="list-group-item">NO TEAM KILLING!</li>
+                <li class="list-group-item">NO UNECCASSERY DESTRUTION OF BUILDINGS, VEHICLES ETC</li>
+                <li class="list-group-item">RESPECT ALL PLAYERS!</li>
+              </b>
+              </ul>
+              <p>If your are breaking, you will be kicked off the server. Repeated offences will result in a ban</p>
+              <h3>For ease of communication please speak english in the presence of INF Members</h3>
+              <p>
+              We hope our servers deliver the experience you are looking for, any suggestions to make our servers more enjoyable for you just leave a post and we will take it seriously.
+              </p>
+              <p class="intro-text">Play Fair and with Honour</p>
+            </div>
+        </div>
+      </section>
+
+<section id="links" class="content-section text-center">
+    <div class="download-section links-section">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2 background-shadow">
+                <h2>Links</h2>
+                <p>More places we have presense.</p>
+                <a href="https://units.arma3.com/unit/iron-fists" class="btn btn-default btn-lg">
+                  <img class="img_small"  src="https://units.arma3.com/assets/img/units/header_icon.png"/><br>
+                  Units
+                </a>
+                <a href="ts3server://81.19.212.66" class="btn btn-default btn-lg">
+                  <img class="img_small" src="https://www.teamspeak.com/assets/images/logos/teamspeak_small.png"/><br>
+                  TS3
+                </a>
+                <a href="https://www.facebook.com/groups/ironfists.eu/" class="btn btn-default btn-lg">
+                  <img class="img_small" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1-400x400.png"/><br>
+                  Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <section id="cndmsg" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -265,29 +323,63 @@
         </div>
     </section>
 
-
-    <section id="links" class="content-section text-center">
-        <div class="download-section">
+    <section id="roster" class="content-section text-center">
+        <div class="roster-section download-section">
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                    <h2>Links</h2>
-                    <p>More places we have presense.</p>
-                    <a href="https://units.arma3.com/unit/iron-fists" class="btn btn-default btn-lg">
-                      <img class="img_small"  src="https://units.arma3.com/assets/img/units/header_icon.png"/><br>
-                      Units
-                    </a>
-                    <a href="ts3server://81.19.212.66" class="btn btn-default btn-lg">
-                      <img class="img_small" src="https://www.teamspeak.com/assets/images/logos/teamspeak_small.png"/><br>
-                      TS3
-                    </a>
-                    <a href="https://www.facebook.com/groups/ironfists.eu/" class="btn btn-default btn-lg">
-                      <img class="img_small" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1-400x400.png"/><br>
-                      Facebook
-                    </a>
+                    <h2>Roster</h2>
+                    <h3>Alpha</h3>
+                    <table class="table table-inverse">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Role</th>
+                        <th>Enlisted</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i<members.alpha.length; i++) { %>
+                      <tr>
+                        <th scope="row"><%= members.alpha[i].rank %></th>
+                        <td><%= members.alpha[i].name %></td>
+                        <td><%= members.alpha[i].pos %></td>
+                        <td><%= members.alpha[i].role %></td>
+                        <td><%= members.alpha[i].joined %></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                  <hr />
+                  <h3>Bravo</h3>
+                  <table class="table table-inverse">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Role</th>
+                      <th>Enlisted</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i=0; i<members.bravo.length; i++) { %>
+                  <tr>
+                    <th scope="row"><%= members.bravo[i].rank %></th>
+                    <td><%= members.bravo[i].name %></td>
+                    <td><%= members.bravo[i].pos %></td>
+                    <td><%= members.bravo[i].role %></td>
+                    <td><%= members.alpha[i].joined %></td>
+                  </tr>
+                  <% } %>
+                  </tbody>
+                </table>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer>

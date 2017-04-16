@@ -7,6 +7,7 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser')
 var newitems = require('./newsItems.json');
+var memberslist = require('./members.json');
 // Setup HTTPS
 // var options = {
 //   key: fs.readFileSync('./keys/private.key'),
@@ -25,6 +26,7 @@ app.use(bodyParser.json())
 router.get('/', function(req, res) {
   res.render('index.ejs',{
     news:newitems,
+    members:memberslist,
   });
 });
 //
