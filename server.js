@@ -7,7 +7,6 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser')
 var newitems = require('./newsItems.json');
-console.log(newitems);
 // Setup HTTPS
 // var options = {
 //   key: fs.readFileSync('./keys/private.key'),

@@ -1,5 +1,6 @@
 # Site Repo for INF
-##Install
+## Install
 `npm install`
-##Run
-`node server.js`
+'npm install nodemon -g'
+## Run (dev and prod)
+`nodemon server.js -e ejs,json`
