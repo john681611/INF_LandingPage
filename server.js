@@ -6,8 +6,6 @@ var https = require('https');
 var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser')
-var newitems = require('./newsItems.json');
-var memberslist = require('./members.json');
 // Setup HTTPS
 // var options = {
 //   key: fs.readFileSync('./keys/private.key'),
@@ -25,50 +23,17 @@ app.use(bodyParser.json())
 //Front End
 router.get('/', function(req, res) {
   res.render('index.ejs',{
-    news:newitems,
-    members:memberslist,
+    news:require('./newsItems.json'),
+    members:require('./members.json'),
   });
 });
-//
-// router.get('/dashboard', function(req, res) {
-//   res.render('dashboard');
-// });
-//
-// router.get('/settings', function(req, res) {
-//   res.render('settings');
-// });
-//
-// //API
-// router.get('/responses/', function(req, res) {
-// 	responses.getAll(res);
-// });
-//
-// router.get('/stores/:storeId/responses', function(req, res) {
-// 	responses.getResponse(req, res)
-// });
-//
-// router.post('/responses/add', function(req, res) {
-//     responses.add(req, res);
-// });
-//
-// router.post('/responses/email', function(req, res) {
-//      email.submit(req, res);
-// });
-//
-// router.post('/stores/:storeId/addStoreDetails', function(req, res) {
-//     staff.addStoreDetails(req, res);
-// });
-//
-// router.get('/stores/:storeId/getStoreDetails', function(req, res) {
-// 	staff.getStoreDetails(req, res);
-// });
 
 app.use('/', router);
 
 // var secureServer = https.createServer(options, app).listen(443,function() {
 //   console.log('Secure Server listening on port ' + 433);
 // });
-var Server = http.createServer(app).listen(9000,function() {
-  console.log('Secure Server listening on port ' + 9000
+var Server = http.createServer(app).listen(80,function() {
+  console.log('Secure Server listening on port ' + 80
 );
 });
