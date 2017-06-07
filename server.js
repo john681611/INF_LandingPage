@@ -33,7 +33,7 @@ app.use('/', router);
 // var secureServer = https.createServer(options, app).listen(443,function() {
 //   console.log('Secure Server listening on port ' + 433);
 // });
-var Server = http.createServer(app).listen(3000,function() {
-  console.log('Secure Server listening on port ' + 3000
+var Server = http.createServer(app).listen(1337,function() {
+  console.log('Secure Server listening on port ' + 1337
 );
 });
