@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Iron-Fists Edit</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="../css/grayscale.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll text-shadow" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Iron</span>-Fists Editing
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse text-shadow">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                      <a class="page-scroll" href="#news">News &amp; Events</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#roster">Roster</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <section id="news" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <h2>News &amp; Events (TOP 2 SHOWN)</h2>
+              <% for(var i=0; i<news.length; i++) { %>
+                <hr />
+                <div>
+                <form method="POST" action="/news" class="form-group">
+                  <input name="id" hidden value="<%= i %>"/>
+                  <input name="title" class="form-control"required value="<%= news[i].title %>" placeholder="Title"/><br>
+                  <input type="date" class="form-control"required name="date"  value="<%= news[i].date %>"><br>
+                  <input type="text" class="form-control"required name="imagelink" value="<%= news[i].imagelink %>" placeholder="Image Link"><br>
+                  <textarea name="text" class="form-control"required rows="8" cols="80" placeholder="Description:" ><%= news[i].text %></textarea><br>
+                  <input type="text" class="form-control"required name="link" value="<%= news[i].link%>" placeholder="Site Link" ><br>
+                  <label for="default" class="btn btn-default">Event <input type="checkbox" id="default" name="event" class="badgebox" <%= news[i].event ? "checked" : "" %> ><span class="badge">&check;</span></label><br>
+                      <button class="btn btn-default btn-lg" type="submit">save</button>
+                  </form>
+                  <form method="POST" action="delete/news" class="form-group">
+                    <input name="id" hidden value="<%= i %>"/>
+                    <button class="btn btn-red btn-lg" type="submit">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+            <hr />
+            <h3>New News Item</h3>
+            <form method="POST" action="/news" class="form-group">
+              <input name="id" hidden value="-1"/>
+              <input name="title" class="form-control" required placeholder="Title"/><br>
+              <input type="date" class="form-control"required name="date" ><br>
+              <input type="text" class="form-control" required name="imagelink"  placeholder="Image Link"><br>
+              <textarea name="text" class="form-control" required rows="8" cols="80" placeholder="Description:" ></textarea><br>
+              <input type="text" class="form-control" required name="link"  placeholder="Site Link" ><br>
+              <label for="default" class="btn btn-default">Event <input type="checkbox" id="default" name=event class="badgebox"><span class="badge">&check;</span></label><br>
+                  <button class="btn btn-default btn-lg" type="submit">Save New</button>
+              </form>
+              <hr/>
+            <a class="btn btn-default btn-lg" href="http://newwebsite.iron-fists.eu/app.php/news?sid=fc79007585872416308594783a8cd05a" target="_blank">View More</a>
+            </div>
+        </div>
+    </section>
+  <section id="roster" class="content-section text-center">
+        <div class="roster-section download-section">
+            <div class="container">
+                <div class="col-lg-12 background-shadow">
+                    <h2>Roster</h2>
+                    <table class="table table-inverse">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Squad (A/B)</th>
+                        <th>Role</th>
+                        <th>Enlisted</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i<members.length; i++) { %>
+                      <tr>
+                        <form method="post" action="/member" class="form-group">
+                        <input hidden name="id" type="number" value="<%= i %>">
+                        <th scope="row"><input type="text" class="form-control" required name="rank" value="<%= members[i].rank %>"/></th>
+                        <td><input type="text" class="form-control" name="name" required value="<%= members[i].name %>"/></td>
+                        <td><input type="text" class="form-control" name="pos" required value="<%= members[i].pos %>"/></td>
+                        <td><input type="text" class="form-control" name="squad" required value="<%= members[i].squad %>"/></td>
+                        <td><input type="text" class="form-control" name="role" required value="<%= members[i].role %>"/></td>
+                        <td><input type="text" class="form-control" name="joined" required value="<%= members[i].joined %>"/></td>
+                        <td><button class="btn btn-default btn-lg" type="submit">Save</button></td>
+                      </form>
+                      <form method="post" action="/delete/member">
+                        <input hidden name="id" type="number" value="<%= i %>">
+                        <td><button class="btn btn-red btn-lg" type="submit">Delete</button></td>
+                    </form>
+                      </tr>
+                      <% } %>
+                      <tr>
+                        <form method="post" class="form-group" action="/member">
+                        <input hidden name="id" value="-1">
+                        <th scope="row"><input type="text" class="form-control" required name="rank" placeholder="Rank"/></th>
+                        <td><input type="text" class="form-control" name="name" required placeholder="Name"/></td>
+                        <td><input type="text" class="form-control" name="pos" required placeholder="Position"/></td>
+                        <td><input type="text" class="form-control" name="squad" required placeholder="squad(A/B)"/></td>
+                        <td><input type="text" class="form-control" name="role" required placeholder="Role"/></td>
+                        <td><input type="text" class="form-control" name="joined" required placeholder="Enlisted"/></td>
+                        <td><button class="btn btn-default btn-lg" type="submit">Save New</button></td>
+                      </form>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr />
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; John Harvey 2017</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <!-- Theme JavaScript -->
+    <script src="../js/grayscale.js"></script>
+
+</body>
+
+</html>

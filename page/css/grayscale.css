@@ -49,6 +49,10 @@ a:focus {
   text-decoration: none;
   color: #1d9b6c;
 }
+
+input, textarea{
+  background-color: black;
+}
 .light {
   font-weight: 400;
 }
@@ -280,6 +284,20 @@ text-shadow: black 4px 4px 4px;
   color: black;
   background-color: #42DCA3;
 }
+
+.btn-red{
+  border: 1px solid red;
+    color: red;
+    background-color: transparent;
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  border: 1px solid red;
+  outline: none;
+  color: black;
+  background-color: red;
+}
 ul.banner-social-buttons {
   margin-top: 0;
 }
@@ -353,4 +371,33 @@ ul{
 }
 td {
   text-align: left;
+}
+
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+	width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+	text-indent: 0;
 }

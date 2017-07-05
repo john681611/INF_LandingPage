@@ -340,15 +340,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0; i<members.alpha.length; i++) { %>
+                        <% for(var i=0; i< members.length; i++) { if(members[i].squad === "A"){ %>
                       <tr>
-                        <th scope="row"><%= members.alpha[i].rank %></th>
-                        <td><%= members.alpha[i].name %></td>
-                        <td><%= members.alpha[i].pos %></td>
-                        <td><%= members.alpha[i].role %></td>
-                        <td><%= members.alpha[i].joined %></td>
+                        <th scope="row"><%= members[i].rank %></th>
+                        <td><%= members[i].name %></td>
+                        <td><%= members[i].pos %></td>
+                        <td><%= members[i].role %></td>
+                        <td><%= members[i].joined %></td>
                       </tr>
-                      <% } %>
+                      <% }} %>
                     </tbody>
                   </table>
                   <hr />
@@ -364,15 +364,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% for(var i=0; i<members.bravo.length; i++) { %>
+                    <% for(var i=0; i< members.length; i++) { if(members[i].squad === "B"){ %>
                   <tr>
-                    <th scope="row"><%= members.bravo[i].rank %></th>
-                    <td><%= members.bravo[i].name %></td>
-                    <td><%= members.bravo[i].pos %></td>
-                    <td><%= members.bravo[i].role %></td>
-                    <td><%= members.alpha[i].joined %></td>
+                    <th scope="row"><%= members[i].rank %></th>
+                    <td><%= members[i].name %></td>
+                    <td><%= members[i].pos %></td>
+                    <td><%= members[i].role %></td>
+                    <td><%= members[i].joined %></td>
                   </tr>
-                  <% } %>
+                  <% }} %>
                   </tbody>
                 </table>
                 </div>
