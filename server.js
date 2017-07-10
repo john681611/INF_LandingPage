@@ -41,55 +41,19 @@ router.get('/edit', function(req,res){
 })
 
 router.post('/news', function(req,res){
-  authenticate(req,res,function(){
-    news[req.body.id] = req.body;
-    fs.writeFile('./newsItems.json', JSON.stringify(news, null, 4), function(error) {
-			if (error) {
-				return res.status(500).json({error: "Something went wrong!"});
-			}
-      res.redirect('/edit');
-		});
- });
+  saveSomething(req,res,news,'./newsItems.json')
 })
 
-router.post('/delete/member', function(req,res){
-  authenticate(req,res,function(){
-      news.splice(parseInt(req.body.id), 1);
-    fs.writeFile('./newsItems.json', JSON.stringify(news, null, 4), function(error) {
-			if (error) {
-				return res.status(500).json({error: "Something went wrong!"});
-			}
-      res.redirect('/edit');
-		});
- });
+router.post('/delete/news', function(req,res){
+  deleteSomething(req,res,news,'./newsItems.json')
 })
 
 router.post('/member', function(req,res){
-  authenticate(req,res,function(){
-    var item = req.body;
-    if(item.id === '-1'){
-      item.id = members.length;
-    }
-    members[item.id] = item;
-    fs.writeFile('./members.json', JSON.stringify(members, null, 4), function(error) {
-			if (error) {
-				return res.status(500).json({error: "Something went wrong!"});
-			}
-      res.redirect('/edit');
-		});
- });
+  saveSomething(req,res,members,'./members.json')
 })
 
 router.post('/delete/member', function(req,res){
-  authenticate(req,res,function(){
-      members.splice(parseInt(req.body.id), 1);
-    fs.writeFile('./members.json', JSON.stringify(members, null, 4), function(error) {
-			if (error) {
-				return res.status(500).json({error: "Something went wrong!"});
-			}
-      res.redirect('/edit');
-		});
- });
+  deleteSomething(req,res,members,'./members.json')
 })
 
 
@@ -112,4 +76,32 @@ function authenticate(req,res,callback){
  } else {
    callback();
  }
+}
+
+function saveSomething(req,res,obj,file){
+  authenticate(req,res,function(){
+    var item = req.body;
+    if(item.id === '-1'){
+      item.id = obj.length;
+    }
+    obj[item.id] = item;
+    fs.writeFile(file, JSON.stringify(obj, null, 4), function(error) {
+      if (error) {
+        return res.status(500).json({error: "Something went wrong!"});
+      }
+      res.redirect('/edit');
+    });
+  });
+}
+
+function deleteSomething(req,res,obj,file){
+  authenticate(req,res,function(){
+    obj.splice(parseInt(req.body.id), 1);
+    fs.writeFile(file, JSON.stringify(obj, null, 4), function(error) {
+      if (error) {
+        return res.status(500).json({error: "Something went wrong!"});
+      }
+      res.redirect('/edit');
+    });
+ });
 }

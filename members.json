@@ -88,14 +88,5 @@
         "squad": "B",
         "role": "MG/Rifleman",
         "joined": 2015
-    },
-    {
-        "id": 10,
-        "rank": "LCpl",
-        "name": "Bangie",
-        "pos": "6",
-        "squad": "B",
-        "role": "Medic",
-        "joined": "2011"
     }
 ]
