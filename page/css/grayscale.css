@@ -246,7 +246,9 @@ text-shadow: black 4px 4px 4px;
 }
 .roster-section {
   background-image:url(../img/Arma-3-Marksmen.jpg);
+  font-size: xx-small;
 }
+
 #map {
   width: 100%;
   height: 200px;
@@ -262,6 +264,9 @@ text-shadow: black 4px 4px 4px;
   #map {
     height: 400px;
     margin-top: 250px;
+  }
+  .roster-section{
+    font-size: 14px;
   }
 }
 .btn {
