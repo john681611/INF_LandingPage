@@ -53,13 +53,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                      <a class="page-scroll" href="#news">News &amp; Events</a>
+                      <a class="page-scroll" href="#news">News</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#forum">Forum</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#join">Join</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#servers">Servers</a>
@@ -75,6 +78,9 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="#roster">Roster</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#donate">Donate</a>
                     </li>
                 </ul>
             </div>
@@ -194,6 +200,19 @@
           <h3>Questions?</h3>
              <p>Come say hi on <a href="ts3server://81.19.212.66" target="_blank">Team Speak.</a></p>
             <p><b>INF_Mike64</b>- Committee Member</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Becoming A Member</h2>
+                <p>Try as we might, a small paragraph isn't going get you hooked.
+                   So we recomend joining on one of our public servers and have a chat with us over Teamspeak.
+                    If you like what you have expirianced then joining is as easy as.</p>
+                  <h4>1. Register on our Forums.<br/><br/>
+                   2. Read and fill in a <b>Members Form</b> (No essay required),  We will get back to you.</h4>
             </div>
         </div>
     </section>
@@ -379,6 +398,23 @@
                   </tbody>
                 </table>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="donate" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Donate</h2>
+                <p>We run on the generous donations of our members and other interested parties, without them none of this would be possible.
+                  Running this clan costs about <b>£55pcm</b> due before the <b>20th</b> of every month. If you can help in any way it will be much appreciated.</p>
+                <a class="btn btn-default btn-lg" href="https://iron-fists.eu/modules.php?name=Donations&op=make" target="_blank">Donate</a>
+                <hr/>
+                <h3>This Months Donators</h3>
+                <p>Thank you for your support to keep us going strong.</p>
+                <br/>
+                <% for(var i=0; i< donators.length; i++) {%>
+                    <h4><%= donators[i].name %></h4><br/>
+                <% } %>
             </div>
         </div>
     </section>

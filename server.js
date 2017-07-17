@@ -9,6 +9,7 @@ var bodyParser = require('body-parser')
 var auth = require('basic-auth');
 var news = require('./newsItems.json');
 var members = require('./members.json');
+var donators = require('./donators.json');
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -29,6 +30,7 @@ router.get('/', function(req, res) {
   res.render('index.ejs',{
     news:news,
     members:members,
+    donators:donators,
   });
 });
 router.get('/edit', function(req,res){
@@ -36,6 +38,7 @@ router.get('/edit', function(req,res){
    res.render('edit.ejs',{
      news:news,
      members:members,
+     donators:donators,
    });
  })
 })
@@ -54,6 +57,14 @@ router.post('/member', function(req,res){
 
 router.post('/delete/member', function(req,res){
   deleteSomething(req,res,members,'./members.json')
+})
+
+router.post('/donator', function(req,res){
+  saveSomething(req,res,donators,'./donators.json')
+})
+
+router.post('/delete/donator', function(req,res){
+  deleteSomething(req,res,donators,'./donators.json')
 })
 
 

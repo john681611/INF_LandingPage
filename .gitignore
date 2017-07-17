@@ -39,4 +39,5 @@ jspm_packages
 .env
 members.json
 newsItems.json
+donators.json
 .idea
