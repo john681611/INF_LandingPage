@@ -417,3 +417,7 @@ td {
     /* Move the check mark back when checked */
 	text-indent: 0;
 }
+
+.smalltxt{
+  font-size: 14px
+}
