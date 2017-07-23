@@ -35,12 +35,12 @@ router.get('/', function(req, res) {
 });
 router.get('/edit', function(req,res){
   authenticate(req,res,function(){
-   res.render('edit.ejs',{
-     news:news,
-     members:members,
-     donators:donators,
-   });
- })
+    res.render('edit.ejs',{
+      news:news,
+      members:members,
+      donators:donators,
+    });
+  })
 })
 
 router.post('/news', function(req,res){
@@ -80,13 +80,13 @@ var Server = http.createServer(app).listen(process.env.PORT || 8080,function() {
 
 function authenticate(req,res,callback){
   var credentials = auth(req)
- if (!credentials || credentials.name !== process.env.USR || credentials.pass !== process.env.PWD) { //TODO: REMOVE THIS INSECURE CRAP
-   res.statusCode = 401
-   res.setHeader('WWW-Authenticate', 'Basic realm="example"')
-   res.end('Access denied')
- } else {
-   callback();
- }
+  if (!credentials || credentials.name !== process.env.USR || credentials.pass !== process.env.PWD) {
+    res.statusCode = 401
+    res.setHeader('WWW-Authenticate', 'Basic realm="example"')
+    res.end('Access denied')
+  } else {
+    callback();
+  }
 }
 
 function saveSomething(req,res,obj,file){
@@ -114,5 +114,12 @@ function deleteSomething(req,res,obj,file){
       }
       res.redirect('/edit');
     });
- });
+  });
+}
+
+module.exports = {
+  authenticate: authenticate,
+  saveSomething: saveSomething,
+  deleteSomething:deleteSomething,
+  authenticate:authenticate
 }
