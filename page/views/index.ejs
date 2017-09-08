@@ -292,7 +292,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
               <h2>Public Server Rules</h2>
-              <p>These are our rules and guidlines for all our public servers, Our servers are a place to have fun &amp; achieve great teamwork and to do that we need responsible` players.</p>
+              <p>These are our rules and guidlines for all our public servers. Our servers are a place to have fun &amp; achieve great teamwork and to do that we need responsible` players.</p>
               <ul class="list-group"><b>
                 <li class="list-group-item">NO CHEATING</li>
                 <li class="list-group-item">NO GLITCHING OR FARMING!</li>
@@ -424,13 +424,20 @@
                   <input type="hidden" name="hosted_button_id" value="CLT9QRCDAM748">
                   <button border="0" class="btn btn-default btn-lg" name="submit" alt="PayPal – The safer, easier way to pay online!">Donate</button>
                 </form>
-                <hr/>
-                <h3>This Months Donators</h3>
-                <p>Thank you for your support to keep us going strong.</p>
-                <br/>
-                <% for(var i=0; i< donators.length; i++) {%>
-                    <h4><%= donators[i].name %></h4><br/>
-                <% } %>
+            </div>
+        </div>
+    </section>
+    <section id="links" class="content-section text-center">
+        <div class="donators-section download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2 background-shadow">
+                  <h2>This Months Donators</h2>
+                  <p>Thank you for your support to keep us going strong.</p>
+                  <br/>
+                  <% for(var i=0; i< donators.length; i++) {%>
+                      <h4><%= donators[i].name %></h4><br/>
+                  <% } %>
+                </div>
             </div>
         </div>
     </section>

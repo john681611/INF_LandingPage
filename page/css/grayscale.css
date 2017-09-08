@@ -261,6 +261,10 @@ text-shadow: black 4px 4px 4px;
   font-size: xx-small;
 }
 
+.donators-section{
+  background-image:url(../img/Arma-3-Laws.jpg);
+}
+
 #map {
   width: 100%;
   height: 200px;
