@@ -1,23 +1,37 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
         <h2>Donate</h2>
-        <hr/>
-        <% for(var i=0; i< donators.length; i++) {%>
-          <form method="post" action="/donator" class="form-group">
-          <input hidden name="id" type="number" value="<%= i %>">
-          <input type="text" class="form-control" name="name" required value="<%= donators[i].name %>"/>
-          <button class="btn btn-default btn-lg" type="submit">Save</button>
-        </form>
-        <form method="post" action="/delete/donator">
-          <input hidden name="id" type="number" value="<%= i %>">
-          <button class="btn btn-red btn-lg" type="submit">Delete</button>
-      </form>
-        <% } %>
-        <hr/>
-      <form method="post" class="form-group" action="/donator">
-        <input hidden name="id" value="-1">
-        <input type="text" class="form-control" name="name" required placeholder="Name"/>
-        <button class="btn btn-default btn-lg" type="submit">Save New</button>
-      </form>
+        <table class="table table-inverse">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i< donators.length; i++) {%>
+                <tr>
+                  <form method="post" action="/donator" class="form-group">
+                    <input hidden name="id" type="number" value="<%= i %>">
+                    <th><input type="text" class="form-control" name="name" required value="<%= donators[i].name %>"/></th>
+                    <th><button class="btn btn-default btn-lg" type="submit">Save</button></th>
+                  </form>
+                  <form method="post" action="/delete/donator">
+                    <input hidden name="id" type="number" value="<%= i %>">
+                    <th><button class="btn btn-red btn-lg" type="submit">Delete</button></th>
+                  </form>
+                </tr>
+              <% } %>
+              <hr/>
+              <tr>
+                <form method="post" class="form-group" action="/donator">
+                  <input hidden name="id" value="-1">
+                  <th><input type="text" class="form-control" name="name" required placeholder="Name"/></th>
+                  <th><button class="btn btn-default btn-lg" type="submit">Save New</button></th>
+                </form>
+              </tr>
+          </tbody>
+        </table>
     </div>
 </div>
