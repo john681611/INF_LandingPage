@@ -10,6 +10,8 @@ var auth = require('basic-auth');
 var news = require('./newsItems.json');
 var members = require('./members.json');
 var donators = require('./donators.json');
+
+const squads = [{id:'A',name:'Alpha'},{id:'B',name:'Bravo'}];
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -28,17 +30,18 @@ app.use(bodyParser.json())
 //Front End
 router.get('/', function(req, res) {
   res.render('index.ejs',{
-    news:news,
-    members:members,
-    donators:donators,
+    news,
+    members,
+    donators,
+    squads
   });
 });
 router.get('/edit', function(req,res){
   authenticate(req,res,function(){
     res.render('edit.ejs',{
-      news:news,
-      members:members,
-      donators:donators,
+      news,
+      members,
+      donators
     });
   })
 })

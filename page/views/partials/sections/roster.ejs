@@ -2,53 +2,32 @@
     <div class="container">
         <div class="col-lg-8 col-lg-offset-2 background-shadow">
             <h2>Roster</h2>
-            <h3>Alpha</h3>
-            <table class="table table-inverse">
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Role</th>
-                <th>Enlisted</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% for(var i=0; i< members.length; i++) { if(members[i].squad === "A"){ %>
-              <tr>
-                <th scope="row"><%= members[i].rank %></th>
-                <td><%= members[i].name %></td>
-                <td><%= members[i].pos %></td>
-                <td><%= members[i].role %></td>
-                <td><%= members[i].joined %></td>
-              </tr>
-              <% }} %>
-            </tbody>
-          </table>
-          <hr />
-          <h3>Bravo</h3>
-          <table class="table table-inverse">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Role</th>
-              <th>Enlisted</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for(var i=0; i< members.length; i++) { if(members[i].squad === "B"){ %>
-          <tr>
-            <th scope="row"><%= members[i].rank %></th>
-            <td><%= members[i].name %></td>
-            <td><%= members[i].pos %></td>
-            <td><%= members[i].role %></td>
-            <td><%= members[i].joined %></td>
-          </tr>
-          <% }} %>
-          </tbody>
-        </table>
+            <% for(var s=0; s< squads.length; s++) { %>
+              <h3><%= squads[s].name%></h3>
+              <table class="table table-inverse">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Role</th>
+                  <th>Enlisted</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% for(var i=0; i< members.length; i++) { if(members[i].squad === squads[s].id){ %>
+                <tr>
+                  <th scope="row"><%= members[i].rank %></th>
+                  <td><%= members[i].name %></td>
+                  <td><%= members[i].pos %></td>
+                  <td><%= members[i].role %></td>
+                  <td><%= members[i].joined %></td>
+                </tr>
+                <% }} %>
+              </tbody>
+            </table>
+            <hr />
+            <% } %>
         </div>
     </div>
 </div>
