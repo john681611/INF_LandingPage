@@ -8,7 +8,7 @@
           <p><a href="<%= server.info.link %>" target="_blank" title="<%= server.info.link %>" class="postlink" rel="nofollow"><img resizemod="off" src="<%= server.info.src %>" border="0" alt="" width="100%" title=""></a></p>
           
           <% if(server.file){ %>
-            <a class="btn btn-default btn-lg" href="<%= server.info.file %>" download>Download Preset</a>
+            <a class="btn btn-default btn-lg" href="/modlist/<%= server.id %>" download="INF_<%= server.name %>_preset.html">Download Preset</a>
             <p class="smalltxt">Drag and drop file into Launcher</p>
           <% }%>
 

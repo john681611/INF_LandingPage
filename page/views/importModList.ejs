@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <html>
   <!--Created by Arma 3 Launcher: https://arma3.com-->
   <head>
     <meta name="arma:Type" content="preset" />
-    <meta name="arma:PresetName" content="INF_Resistance_steam" />
+    <meta name="arma:PresetName" content="INF_<%= name %>" />
     <meta name="generator" content="Arma 3 Launcher - https://arma3.com" />
     <title>Arma 3 Mods</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
@@ -75,39 +75,23 @@ a:hover {
 </style>
   </head>
   <body>
-    <h1>Arma 3 Mods - Preset <strong>INF_Resistance_steam</strong></h1>
+    <h1>Arma 3 Mods - Preset <strong>INF_<%= name %></strong></h1>
     <p class="before-list">
       <em>Drag this file or link to it to Arma 3 Launcher or open it Mods / Preset / Import.</em>
     </p>
     <div class="mod-list">
       <table>
+        <% mods.required.forEach(mod => { %>
         <tr data-type="ModContainer">
-          <td data-type="DisplayName">CBA_A3</td>
+          <td data-type="DisplayName"><%= mod.name %></td>
           <td>
             <span class="from-steam">Steam</span>
           </td>
           <td>
-            <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=450814997" data-type="Link">http://steamcommunity.com/sharedfiles/filedetails/?id=450814997</a>
+            <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=<%= mod.steamID %>" data-type="Link">http://steamcommunity.com/sharedfiles/filedetails/?id=<%= mod.steamID %></a>
           </td>
         </tr>
-        <tr data-type="ModContainer">
-          <td data-type="DisplayName">task_force_radio</td>
-          <td>
-            <span class="from-steam">Steam</span>
-          </td>
-          <td>
-            <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=620019431" data-type="Link">http://steamcommunity.com/sharedfiles/filedetails/?id=620019431</a>
-          </td>
-        </tr>
-        <tr data-type="ModContainer">
-          <td data-type="DisplayName">Enhanced Movement</td>
-          <td>
-            <span class="from-steam">Steam</span>
-          </td>
-          <td>
-            <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=333310405" data-type="Link">http://steamcommunity.com/sharedfiles/filedetails/?id=333310405</a>
-          </td>
-        </tr>
+        <% }) %>
       </table>
     </div>
     <div class="footer">

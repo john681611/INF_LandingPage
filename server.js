@@ -23,10 +23,20 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+
 //Front End
 router.get('/', function(req, res) {
   res.render('index.ejs',data);
 });
+
+router.get('/modlist/:id', function(req, res) {
+  if( 0 <= req.params.id &&  req.params.id <= data.servers.length ) {
+  res.render('importModList.ejs',data.servers[req.params.id]);
+  } else {
+    res.status(404).send('No mod List found')
+  }
+});
+
 router.get('/edit', function(req,res){
   authenticate(req,res,function(){
     res.render('edit.ejs',data);
@@ -106,6 +116,15 @@ function deleteSomething(req,res,obj,file){
     });
   });
 }
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+
+app.use(function (req, res, next) {
+  res.status(404).send("This isnt the page your looking for!");
+});
 
 module.exports = {
   authenticate: authenticate,

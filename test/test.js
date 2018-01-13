@@ -44,6 +44,64 @@ describe('Edit', function () {
   })
 })
 
+describe('Front Page', function () {
+  it('should Load Page', function (done) {
+    request(url)
+    .get('/modlist/0')
+    .send()
+    .end(function (err, res) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 200);
+      if (res.text.indexOf("RESISTANCE") > -1) {
+        assert.ok(true)
+      }else{
+        assert.ok(false)
+      }
+      done();
+    });
+  })
+
+  it('Deal with invalid ID', function (done) {
+    request(url)
+    .get('/modlist/-1')
+    .send()
+    .end(function (err, res) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 404);
+      if (res.text.indexOf("No mod List found") > -1) {
+        assert.ok(true)
+      }else{
+        assert.ok(false)
+      }
+      done();
+    });
+  })
+})
+
+describe('InvalidPage', function () {
+  it('safely deal with invalid page', function (done) {
+    request(url)
+    .get('/fgdhjdfujhg')
+    .send()
+    .end(function (err, res) {
+      if (err) {
+        throw err;
+      }
+      assert.equal(res.statusCode, 404);
+      if (res.text.indexOf("This isnt the page your looking for!") > -1) {
+        assert.ok(true)
+      }else{
+        assert.ok(false)
+      }
+      done();
+    });
+  })
+});
+
 describe('Authorization', function () {
   var res = {
     redirect:function(str){},
