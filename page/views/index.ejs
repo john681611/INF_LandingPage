@@ -2,470 +2,59 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Iron-Fists Home</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-    <!-- Theme CSS -->
-    <link href="../css/grayscale.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <%- include('partials/head', {name: 'Home'}); %>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll text-shadow" href="#page-top">
-                    <i class="fa fa-play-circle"></i> <span class="light">Iron</span>-Fists
-                </a>
-            </div>
+    <%- include('partials/nav'); %>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse text-shadow">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                      <a class="page-scroll" href="#news">News</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#forum">Forum</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#join">Join</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#servers">Servers</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#rules">Rules</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#links">Links</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#cndmsg">Command msg</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#roster">Roster</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#donate">Donate</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                      <img alt="" width=50% src="http://sa-sim.com/wp-content/uploads/1/2014/05/arma3_logo-300x187.png">
-                      <img src="img/logo.png" style="width:50%"/>
-                        <h1 class="brand-heading">Iron-Fists</h1>
-                        <p class="intro-text">Play Fair and with Honour</p>
-                        <a href="#news" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <%- include('partials/header'); %>
 
     <section id="news" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <h2>News &amp; Events</h2>
-              <% for(var i=(news.length-1); i>=(news.length-3) && i>=0; i--) { %>
-                <hr />
-                <div>
-                  <h3><%= news[i].title %></h3>
-                  <span class="right"><%= news[i].date%></span>
-                  <% if(news[i].imagelink != "") {%>
-                    <img class="newsimg" src="<%= news[i].imagelink %>"/>
-                  <%}%>
-                  <p><%- news[i].text %></p>
-                  <a class="btn btn-default btn-lg" href="<%= news[i].link%>" target="_blank">
-                    <% if(news[i].event) {%>
-                    Sign up
-                    <% } else { %>
-                    Read More
-                    <%}%>
-                  </a>
-                </div>
-              <% } %>
-            <hr />
-            <a class="btn btn-default btn-lg" href="http://forums.iron-fists.eu/app.php/news?sid=fc79007585872416308594783a8cd05a" target="_blank">View More</a>
-            </div>
-        </div>
+        <%- include('partials/sections/news', {news: news}); %>
     </section>
 
 
     <!-- Download Section -->
     <section id="forum" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                    <h2>Forum</h2>
-                    <p>Join the chat, apply to join the squad. Its the heart of the squad</p>
-                    <a href="http://forums.iron-fists.eu/index.php" class="btn btn-default btn-lg" target="_blank">Visit our Forums</a>
-                </div>
-            </div>
-        </div>
+        <%- include('partials/sections/forum'); %>
     </section>
 
     <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Iron-Fists</h2>
-            <p>Iron-Fists is a UK based clan that takes a semi-professional approach to operations.
-               We like a challenge, often playing way out-numbered and out-gunned. We use ACE3, 3CB, RHS, CUP Maps and TFAR.
-                We run three members nights a week and two public servers.</p>
-             <hr />
-             <h3>Weekly Member Events</h3>
-             <p>All events start at <b>9pm UK</b> Time we ask you try and be present at <b>8:30</b>.
-             </p>
-             <ul class="list-group">
-            <li class="list-group-item"><b>Tuesday: Free Night</b> - Vote on the forums for what you want to do.</li>
-            <li class="list-group-item"><b>Thursday: Training Night</b> - Learn new skills and practice them. Usually ending in a Zeus mission.</li>
-            <li class="list-group-item"><b>Sunday: Mission Night</b> - Take on a serious mission</li>
-          </ul>
-          <hr />
-             <h3>Leadership Structure</h3>
-             <p>
-            We run a three man command for day to day running:
-            <br>
-            <b>INF_H@wKEYE</b> - Squad CO<br>
-            <b>INF_Rhys</b> - 2IC<br>
-            <b>INF_Mearcat</b> - 3IC<br>
-            All Major Decisions are put to a squad vote. <br>
-
-            All members are listened to rank is only used for tie breakers and mission command structure.
-            </p>
-            <hr />
-            <h3>Advancement</h3>
-            <p>
-              Promotions are given for dedication and squad work. Awards are given for completing training courses and actions.
-            </p>
-            <hr />
-            <h3>Requirements</h3>
-            <p>We ask that you are:<br>
-              <ul class="list-group">
-            <li class="list-group-item">17 or older</li>
-            <li class="list-group-item">Able to speak and write in English.</li>
-            <li class="list-group-item">Capable of attend member events. </li>
-            <li class="list-group-item">Prepared to Keep up-to-date with squad activities.</li>
-            <li class="list-group-item">Not a member of another Arma Clan.</li>
-          </ul>
-          </p>
-          <hr />
-          <h3>Questions?</h3>
-             <p>Come say hi on <a href="ts3server://81.19.212.66" target="_blank">Team Speak.</a></p>
-            <p><b>INF_Mike64</b>- Committee Member</p>
-            </div>
-        </div>
+        <%- include('partials/sections/about'); %>
     </section>
 
     <section id="join" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Becoming A Member</h2>
-                <p>Try as we might, a small paragraph isn't going get you hooked.
-                   So we recommend joining one of our public servers and have a chat with us over Teamspeak.
-                    If you like what you have experienced then joining is as easy as.</p>
-                  <h4>1. Register on our Forums.<br/><br/>
-                   2. Read and fill in a <b>Members Form</b> (No essay required),  We will get back to you.</h4>
-            </div>
-        </div>
+        <%- include('partials/sections/join'); %>
     </section>
 
 
     <!-- Contact Section -->
     <section id="servers" class="content-section text-center">
-        <div class="download-section server-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                <h2>Servers</h2>
-                <hr />
-              <h3>Resistance<h3>
-              <p><a href="http://www.gametracker.com/server_info/81.19.212.66:2340/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2340/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2340/b_560_95_1.png" border="0" alt="" width="100%" title=""></a></p>
-              <a class="btn btn-default btn-lg" href="preset\Arma 3 Mod Preset INF_Resistance_steam.html" download>Download Preset</a>
-              <p class="smalltxt">Drag and drop file into Launcher</p>
-              <h4>Optional</h4>
-              <p><a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=620019431" target="_blank">Task Force radio</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=333310405" target="_blank">Enhanced Moment</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=450814997" target="_blank">CBA3</a></br>
-                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23899" target="_blank">BC Phoenix 2</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=330927362" target="_blank">Advanced Button Mod</a>
-              </p>
-              <hr />
-              <h3>Liberation<h3>
-                  <p><a href="http://www.gametracker.com/server_info/81.19.212.66:2310/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2310/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2310/b_560_95_1.png" border="0" alt="" width="100%" title=""></a></p>
-                  <a class="btn btn-default btn-lg" href="preset\Arma 3 Mod Preset INF_Liberation_steam.html" download>Download Preset</a>
-                  <p class="smalltxt">Drag and drop file into Launcher</p>
-                  <h4>Required</h4>
-              <p>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=463939057" target="_blank">ACE3</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=450814997" target="_blank">CBA3</a>
-              </p>
-              <h4>Optional</h4>
-              <p><a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=620019431" target="_blank">Task Force radio</a></br>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=333310405" target="_blank">Enhanced Moment</a>
-                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23899" target="_blank">BC Phoenix 2</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=330927362" target="_blank">Advanced Button Mod</a>
-              </p>
-              <hr />
-              <h3>Members Only<h3>
-                  <p><a href="http://www.gametracker.com/server_info/81.19.212.66:2320/" target="_blank" title="http://www.gametracker.com/server_info/81.19.212.66:2320/" class="postlink" rel="nofollow"><img resizemod="off" src="http://cache.www.gametracker.com/server_info/81.19.212.66:2320/b_560_95_1.png" border="0" alt="" width="100%" title=""></a></p>
-                  <a class="btn btn-default btn-lg" href="preset\Arma 3 Mod Preset INF_Bootcamp_steam.html" download>Download Preset</a>
-                  <p class="smalltxt">Drag and drop file into Launcher</p>
-                  <h4>Required</h4>
-              <p>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=463939057" target="_blank">ACE3</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=773131200" target="_blank">ACE3 Compat RHS AFRF</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=773125288" target="_blank">ACE3 Compat RHS USAF</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=884966711" target="_blank">ACE3 Compat RHS GREF</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=450814997" target="_blank">CBA3</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=620019431" target="_blank">Task Force radio</a></br>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=843425103" target="_blank">RHS AFRF</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=843577117" target="_blank">RHS USAF</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=843593391" target="_blank">RHS GREF</a>
-                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=19917" target="_blank">MBG KillHouses A3</a></br>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=893339590" target="_blank">3CB BAF Wepons</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=893346105" target="_blank">3CB BAF Units</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=893328083" target="_blank">3CB BAF Equipment</a></br>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=893349825" target="_blank">3CB BAF Vehicles</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=583496184" target="_blank">CUP Terrain Core</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=583544987" target="_blank">CUP Terrain Maps</a></br>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=333310405" target="_blank">Enhanced Moment</a>
-              </p>
-              <h4>Optional</h4>
-              <p>
-                <a class="btn btn-default btn-lg" href="http://www.armaholic.com/page.php?id=23899" target="_blank">BC Phoenix 2</a>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=330927362" target="_blank">Advanced Button Mod</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=723217262" target="_blank">Ares Mod - Achilles Expansion</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=642912021" target="_blank">ZEC</a>
-                <a class="btn btn-default btn-lg" href="http://steamcommunity.com/sharedfiles/filedetails/?id=750186990" target="_blank">ZECCUP</a>
-              </p>
-            </div>
-            </div>
-        </div>
+        <%- include('partials/sections/servers'); %>
     </section>
 
     <section id="rules" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <h2>Public Server Rules</h2>
-              <p>These are our rules and guidlines for all our public servers. Our servers are a place to have fun &amp; achieve great teamwork and to do that we need responsible` players.</p>
-              <ul class="list-group"><b>
-                <li class="list-group-item">NO CHEATING</li>
-                <li class="list-group-item">NO GLITCHING OR FARMING!</li>
-                <li class="list-group-item">NO TEAM KILLING!</li>
-                <li class="list-group-item">NO UNNECESSARY DESTRUCTION OF BUILDINGS, VEHICLES ETC</li>
-                <li class="list-group-item">RESPECT ALL PLAYERS!</li>
-              </b>
-              </ul>
-              <p>If your found breaking the above, you will be kicked off the server. Repeated offences will result in a ban</p>
-              <h3>For ease of communication please speak english in the presence of INF Members</h3>
-              <p>
-              We hope our servers deliver the experience you are looking for, any suggestions to make our servers more enjoyable for you just leave a post and we will take it seriously.
-              </p>
-              <p class="intro-text">Play Fair and with Honour</p>
-            </div>
-        </div>
-      </section>
+        <%- include('partials/sections/rules'); %>
+    </section>
 
-<section id="links" class="content-section text-center">
-    <div class="download-section links-section">
-        <div class="container">
-            <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                <h2>Links</h2>
-                <p>More places we have a presence.</p>
-                <a href="https://units.arma3.com/unit/iron-fists" target="_blank" class="btn btn-default btn-lg">
-                  <img class="img_small"  src="https://units.arma3.com/assets/img/units/header_icon.png"/><br>
-                  Units
-                </a>
-                <a href="ts3server://81.19.212.66" target="_blank" class="btn btn-default btn-lg">
-                  <img class="img_small" src="https://www.teamspeak.com/assets/images/logos/teamspeak_small.png"/><br>
-                  TS3
-                </a>
-                <a href="https://www.facebook.com/groups/ironfists.eu/" target="_blank" class="btn btn-default btn-lg">
-                  <img class="img_small" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1-400x400.png"/><br>
-                  Facebook
-                </a>
-                <hr/>
-                <h3>Teamspeak Activity</h3>
-                <div id="ts3viewer_1014112" style=""> </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <section id="links" class="content-section text-center">
+        <%- include('partials/sections/links'); %>
+    </section>
 
 
     <section id="cndmsg" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Messages from Command</h2>
-                <p>Welcome to the home of the Iron Fists clan. This is a brief description of our history and future goals.
-                    Iron Fists was formed on the 1st of July 1999. Being a member is at the very least a symbol of a quality player.
-                    We are all striving to make INF one of the best squad's around and things are going very well due to the excellent amount of hard work the squad continuously puts in.
-                    The long-term goals of INF are to constantly excel on the battlefield, build up our strength and resources and show people that we are as serious and solid as our name stands for.
-                    As time passes us by, it is important that we stay recognized as a squad that is organized and dangerous, yet one that puts friendship and fun at it’s heart.</p>
-                <p>INF_&lt;DAVO&gt; - Squad Founder.</p>
-                <hr />
-                <p>INF goes through many changes to ensure and to maintain the highest quality in teamwork, skill, dedication and friendship.
-                    Every member, new and old, helps each other to achieve their best, whether it is on the battlefield or just communicating with other squads.
-                    INF keeps at ALL times; the up most respect to fellow players and squads, and we are professional to the very end.</p>
-                <p>INF_H@wKEYE - Squad CO</p>
-            </div>
-        </div>
+        <%- include('partials/sections/commandmsg'); %>
     </section>
 
     <section id="roster" class="content-section text-center">
-        <div class="roster-section download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                    <h2>Roster</h2>
-                    <h3>Alpha</h3>
-                    <table class="table table-inverse">
-                    <thead>
-                      <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Role</th>
-                        <th>Enlisted</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <% for(var i=0; i< members.length; i++) { if(members[i].squad === "A"){ %>
-                      <tr>
-                        <th scope="row"><%= members[i].rank %></th>
-                        <td><%= members[i].name %></td>
-                        <td><%= members[i].pos %></td>
-                        <td><%= members[i].role %></td>
-                        <td><%= members[i].joined %></td>
-                      </tr>
-                      <% }} %>
-                    </tbody>
-                  </table>
-                  <hr />
-                  <h3>Bravo</h3>
-                  <table class="table table-inverse">
-                  <thead>
-                    <tr>
-                      <th>Rank</th>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Role</th>
-                      <th>Enlisted</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% for(var i=0; i< members.length; i++) { if(members[i].squad === "B"){ %>
-                  <tr>
-                    <th scope="row"><%= members[i].rank %></th>
-                    <td><%= members[i].name %></td>
-                    <td><%= members[i].pos %></td>
-                    <td><%= members[i].role %></td>
-                    <td><%= members[i].joined %></td>
-                  </tr>
-                  <% }} %>
-                  </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
+        <%- include('partials/sections/roster', {members: members}); %>
     </section>
-    <section id="donate" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Donate</h2>
-                <p>We run on the generous donations of our members and other interested parties, without them none of this would be possible.
-                  Running this clan costs about <b>£55pcm</b> due before the <b>20th</b> of every month. If you can help in any way it will be much appreciated.</p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                  <input type="hidden" name="cmd" value="_s-xclick">
-                  <input type="hidden" name="hosted_button_id" value="CLT9QRCDAM748">
-                  <button border="0" class="btn btn-default btn-lg" name="submit" alt="PayPal – The safer, easier way to pay online!">Donate</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <section id="links" class="content-section text-center">
-        <div class="donators-section download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2 background-shadow">
-                  <h2>This Months Donators</h2>
-                  <p>Thank you for your support to keep us going strong.</p>
-                  <br/>
-                  <% for(var i=0; i< donators.length; i++) {%>
-                      <h4><%= donators[i].name %></h4><br/>
-                  <% } %>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; John Harvey 2017</p>
-        </div>
-    </footer>
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-
-    <!-- Theme JavaScript -->
-    <script src="../js/grayscale.js"></script>
-
-    <script src="https://static.tsviewer.com/short_expire/js/ts3viewer_loader.js"></script>
-    <script>
-    var ts3v_url_1 = "https://www.tsviewer.com/ts3viewer.php?ID=1014112&text=757575&text_size=13&text_family=6&text_s_color=&text_s_weight=normal&text_s_style=normal&text_s_variant=normal&text_s_decoration=none&text_i_color=ffffff&text_i_weight=bold&text_i_style=normal&text_i_variant=normal&text_i_decoration=none&text_c_color=ffffff&text_c_weight=normal&text_c_style=normal&text_c_variant=normal&text_c_decoration=none&text_u_color=ffffff&text_u_weight=normal&text_u_style=normal&text_u_variant=normal&text_u_decoration=none&text_s_color_h=&text_s_weight_h=bold&text_s_style_h=normal&text_s_variant_h=normal&text_s_decoration_h=none&text_i_color_h=ffffff&text_i_weight_h=bold&text_i_style_h=normal&text_i_variant_h=normal&text_i_decoration_h=none&text_c_color_h=&text_c_weight_h=normal&text_c_style_h=normal&text_c_variant_h=normal&text_c_decoration_h=none&text_u_color_h=&text_u_weight_h=bold&text_u_style_h=normal&text_u_variant_h=normal&text_u_decoration_h=none&hideEmptyChannels&iconset=default_colored_2014";
-    ts3v_display.init(ts3v_url_1, 1014112, 100);
-    </script>
+    <%- include('partials/sections/donators', {donators: donators}); %>
+    
+    <%- include('partials/footer'); %>
 </body>
 
 </html>

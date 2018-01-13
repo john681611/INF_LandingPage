@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <h2>News &amp; Events (TOP 3 SHOWN)</h2>
+      <% for(var i=(news.length-1); i>=0; i--) { %>
+        <hr />
+        <div>
+        <form method="POST" action="/news" class="form-group">
+          <input name="id" hidden value="<%= i %>"/>
+          <input name="title" class="form-control"required value="<%= news[i].title %>" placeholder="Title"/><br>
+          <input type="date" class="form-control"required name="date"  value="<%= news[i].date %>"><br>
+          <img class="newsimg" id="img<%= i %>" src="<%= news[i].imagelink %>"/>
+          <input type="text" class="form-control"required name="imagelink" value="<%= news[i].imagelink %>" placeholder="Image Link" oninput="UpdateUserImage(this.value,<%= i %>)"><br>
+          <textarea name="text" class="form-control"required rows="8" cols="80" placeholder="Description:" ><%= news[i].text %></textarea><br>
+          <input type="text" class="form-control"required name="link" value="<%= news[i].link%>" placeholder="Site Link" ><br>
+          <label for="default" class="btn btn-default">Event <input type="checkbox" id="default" name="event" class="badgebox" <%= news[i].event ? "checked" : "" %> ><span class="badge">&check;</span></label><br>
+              <button class="btn btn-default btn-lg" type="submit">save</button>
+          </form>
+          <form method="POST" action="delete/news" class="form-group">
+            <input name="id" hidden value="<%= i %>"/>
+            <button class="btn btn-red btn-lg" type="submit">Delete</button>
+          </form>
+        </div>
+        <% if(i == (news.length-3)){ %>
+        <hr />
+        <h4>Items under this point will not be shown </h4>
+        <hr />
+      <% }} %>
+    <h3>New News Item</h3>
+    <form method="POST" action="/news" class="form-group">
+      <input name="id" hidden value="-1"/>
+      <input name="title" class="form-control" required placeholder="Title"/><br>
+      <input type="date" class="form-control"required name="date" ><br>
+      <img class="newsimg" id="img-1" src=""/>
+      <input type="text" class="form-control" required name="imagelink"  placeholder="Image Link"  oninput="UpdateUserImage(this.value,-1)"><br>
+      <textarea name="text" class="form-control" required rows="8" cols="80" placeholder="Description:" ></textarea><br>
+      <input type="text" class="form-control" required name="link"  placeholder="Site Link" ><br>
+      <label for="default" class="btn btn-default">Event <input type="checkbox" id="default" name=event class="badgebox"><span class="badge">&check;</span></label><br>
+          <button class="btn btn-default btn-lg" type="submit">Save New</button>
+      </form>
+      <hr/>
+    </div>
+</div>
