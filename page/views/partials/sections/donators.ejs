@@ -19,9 +19,9 @@
               <h2>This Months Donators</h2>
               <p>Thank you for your support to keep us going strong.</p>
               <br/>
-              <% for(var i=0; i< donators.length; i++) {%>
-                  <h4><%= donators[i].name %></h4><br/>
-              <% } %>
+              <% donators.forEach(donator =>{%>
+                  <h4><%= donator.name %></h4><br/>
+              <% }) %>
             </div>
         </div>
     </div>

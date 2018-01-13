@@ -16,24 +16,24 @@
               </tr>
             </thead>
             <tbody>
-                <% for(var i=0; i<members.length; i++) { %>
+                <% members.forEach(member => { %>
               <tr>
                 <form method="post" action="/member" class="form-group">
-                <input hidden name="id" type="number" value="<%= i %>">
-                <th scope="row"><input type="text" class="form-control" required name="rank" value="<%= members[i].rank %>"/></th>
-                <td><input type="text" class="form-control" name="name" required value="<%= members[i].name %>"/></td>
-                <td><input type="text" class="form-control" name="pos" required value="<%= members[i].pos %>"/></td>
-                <td><input type="text" class="form-control" name="squad" required value="<%= members[i].squad %>"/></td>
-                <td><input type="text" class="form-control" name="role" required value="<%= members[i].role %>"/></td>
-                <td><input type="text" class="form-control" name="joined" required value="<%= members[i].joined %>"/></td>
+                <input hidden name="id" type="number" value="<%= member.id %>">
+                <th scope="row"><input type="text" class="form-control" required name="rank" value="<%= member.rank %>"/></th>
+                <td><input type="text" class="form-control" name="name" required value="<%= member.name %>"/></td>
+                <td><input type="text" class="form-control" name="pos" required value="<%= member.pos %>"/></td>
+                <td><input type="text" class="form-control" name="squad" required value="<%= member.squad %>"/></td>
+                <td><input type="text" class="form-control" name="role" required value="<%= member.role %>"/></td>
+                <td><input type="text" class="form-control" name="joined" required value="<%= member.joined %>"/></td>
                 <td><button class="btn btn-default btn-lg" type="submit">Save</button></td>
               </form>
               <form method="post" action="/delete/member">
-                <input hidden name="id" type="number" value="<%= i %>">
+                <input hidden name="id" type="number" value="<%= member.id %>">
                 <td><button class="btn btn-red btn-lg" type="submit">Delete</button></td>
             </form>
               </tr>
-              <% } %>
+              <% }) %>
               <tr>
                 <form method="post" class="form-group" action="/member">
                 <input hidden name="id" value="-1">
