@@ -1,0 +1,168 @@
+[
+    {
+        "id":"0",
+        "name": "RESISTANCE",
+        "info": {
+            "link":"http://www.gametracker.com/server_info/81.19.212.66:2340/",
+            "src":"http://cache.www.gametracker.com/server_info/81.19.212.66:2340/b_560_95_1.png"
+        },
+        "file": "preset/Arma 3 Mod Preset INF_Resistance_steam.html",
+        "mods": {
+            "required": [
+            ],
+            "optional": [
+                {
+                    "name":"Task Force radio",
+                    "steamID":"620019431"
+                },
+                {
+                    "name":"Enhanced Moment",
+                    "steamID":"333310405"
+                },
+                {
+                    "name":"CBA3",
+                    "steamID":"450814997"
+                },
+                {
+                    "name":"Advanced Button Mod",
+                    "steamID":"330927362"
+                }
+            ]
+        }
+
+    },
+
+    {
+        "id":"1",
+        "name": "Liberation",
+        "info": {
+            "link":"http://www.gametracker.com/server_info/81.19.212.66:2310/",
+            "src":"http://cache.www.gametracker.com/server_info/81.19.212.66:2310/b_560_95_1.png"
+        },
+        "file": "preset/Arma 3 Mod Preset INF_Liberation_steam.html",
+        "mods": {
+            "required": [
+                {
+                    "name":"CBA3",
+                    "steamID":"450814997"
+                },
+                {
+                    "name":"ACE3",
+                    "steamID":"463939057"
+                }
+            ],
+            "optional": [
+                {
+                    "name":"Task Force radio",
+                    "steamID":"620019431"
+                },
+                {
+                    "name":"Enhanced Moment",
+                    "steamID":"333310405"
+                },
+               
+                {
+                    "name":"Advanced Button Mod",
+                    "steamID":"330927362"
+                }
+            ]
+        }
+    },
+
+    {
+        "id":"2",
+        "name": "Members Only",
+        "info": {
+            "link":"http://www.gametracker.com/server_info/81.19.212.66:2320/",
+            "src":"http://cache.www.gametracker.com/server_info/81.19.212.66:2320/b_560_95_1.png"
+        },
+        "file": "preset/Arma 3 Mod Preset INF_Bootcamp_steam.html",
+        "mods": {
+            "required": [
+                {
+                    "name":"CBA3",
+                    "steamID":"450814997"
+                },
+                {
+                    "name":"ACE3",
+                    "steamID":"463939057"
+                },
+                {
+                    "name":"ACE3 Compat RHS AFRF",
+                    "steamID":"773131200"
+                },
+                {
+                    "name":"ACE3 Compat RHS USAF",
+                    "steamID":"773125288"
+                },
+                {
+                    "name":"ACE3 Compat RHS GREF",
+                    "steamID":"884966711"
+                },
+                {
+                    "name":"Task Force radio",
+                    "steamID":"620019431"
+                },
+                {
+                    "name":"RHS AFRF",
+                    "steamID":"843425103"
+                },
+                {
+                    "name":"RHS USAF",
+                    "steamID":"843577117"
+                },
+                {
+                    "name":"RHS GREF",
+                    "steamID":"843593391"
+                },
+                {
+                    "name":"3CB BAF Wepons",
+                    "steamID":"893339590"
+                },
+                {
+                    "name":"3CB BAF Units",
+                    "steamID":"893346105"
+                },
+                {
+                    "name":"3CB BAF Equipment",
+                    "steamID":"893328083"
+                },
+                {
+                    "name":"3CB BAF Vehicles",
+                    "steamID":"893349825"
+                },
+                {
+                    "name":"CUP Terrain Core",
+                    "steamID":"583496184"
+                },
+                {
+                    "name":"CUP Terrain Maps",
+                    "steamID":"583544987"
+                },
+                {
+                    "name":"Enhanced Moment",
+                    "steamID":"333310405"
+                }
+            ],
+            "optional": [
+                {
+                    "name":"Advanced Button Mod",
+                    "steamID":"330927362"
+                },
+                {
+                    "name":"Ares Mod - Achilles Expansion",
+                    "steamID":"723217262"
+                },
+                {
+                    "name":"ZEC",
+                    "steamID":"642912021"
+                },
+                {
+                    "name":"ZECCUP",
+                    "steamID":"750186990"
+                }
+            ]
+        }
+
+    }
+]

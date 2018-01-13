@@ -1,0 +1,22 @@
+[
+    {
+        "id":"0",
+        "name": "bob",
+        "link": "bla",
+        "mods": {
+            "required": [
+                {
+                "name":"name",
+                "link":"bla"
+                }
+            ],
+            "optional": [
+                {
+                    "name":"name",
+                    "link":"bla"
+                }
+            ]
+        }
+
+    }
+]

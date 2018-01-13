@@ -105,7 +105,7 @@ describe('Authorization', function () {
 
 
 describe('File Mod Funcs', function () {
-  var testObj = require('../testOBJ.json');
+  var testObj = require('../data/testOBJ.json');
   var res = {
     redirect:function(str){}
   }
@@ -122,11 +122,11 @@ describe('File Mod Funcs', function () {
       }
     });
     //when
-    server.saveSomething(req,res,testObj,'./testOBJ.json')
+    server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 1,"object not changed")
     assert(testObj[0].name == 'bob',"name not saved")
-    assert.deepEqual(require('../testOBJ.json'), testObj, "object not saved")
+    assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
   it('should save something to file', function () {
@@ -141,11 +141,11 @@ describe('File Mod Funcs', function () {
       }
     });
     //when
-    server.saveSomething(req,res,testObj,'./testOBJ.json')
+    server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 1,"object not changed")
     assert(testObj[0].name == 'bob2',"name not changed")
-    assert.deepEqual(require('../testOBJ.json'), testObj, "object not saved")
+    assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
   it('should save something to file', function () {
@@ -160,9 +160,9 @@ describe('File Mod Funcs', function () {
       }
     });
     //when
-    server.deleteSomething(req,res,testObj,'./testOBJ.json')
+    server.deleteSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 0,"object not deleted")
-    assert.deepEqual(require('../testOBJ.json'), testObj, "object not saved")
+    assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 })

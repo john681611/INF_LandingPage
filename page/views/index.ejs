@@ -12,7 +12,7 @@
     <%- include('partials/header'); %>
 
     <section id="news" class="container content-section text-center">
-        <%- include('partials/sections/news', {news: news}); %>
+        <%- include('partials/sections/news', news); %>
     </section>
 
 
@@ -32,7 +32,7 @@
 
     <!-- Contact Section -->
     <section id="servers" class="content-section text-center">
-        <%- include('partials/sections/servers'); %>
+        <%- include('partials/sections/servers', servers); %>
     </section>
 
     <section id="rules" class="container content-section text-center">
@@ -52,7 +52,7 @@
         <%- include('partials/sections/roster', {members: members, squads:squads}); %>
     </section>
 
-    <%- include('partials/sections/donators', {donators: donators}); %>
+    <%- include('partials/sections/donators', donators); %>
     
     <%- include('partials/footer'); %>
 </body>

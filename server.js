@@ -7,11 +7,7 @@ var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser')
 var auth = require('basic-auth');
-var news = require('./newsItems.json');
-var members = require('./members.json');
-var donators = require('./donators.json');
-
-const squads = [{id:'A',name:'Alpha'},{id:'B',name:'Bravo'}];
+var data = require('./data/data')
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -29,45 +25,36 @@ app.use(bodyParser.json())
 
 //Front End
 router.get('/', function(req, res) {
-  res.render('index.ejs',{
-    news,
-    members,
-    donators,
-    squads
-  });
+  res.render('index.ejs',data);
 });
 router.get('/edit', function(req,res){
   authenticate(req,res,function(){
-    res.render('edit.ejs',{
-      news,
-      members,
-      donators
-    });
+    res.render('edit.ejs',data);
   })
 })
 
 router.post('/news', function(req,res){
-  saveSomething(req,res,news,'./newsItems.json')
+  saveSomething(req,res,data.news,'./newsItems.json')
 })
 
 router.post('/delete/news', function(req,res){
-  deleteSomething(req,res,news,'./newsItems.json')
+  deleteSomething(req,res,data.news,'./newsItems.json')
 })
 
 router.post('/member', function(req,res){
-  saveSomething(req,res,members,'./members.json')
+  saveSomething(req,res,data.members,'./members.json')
 })
 
 router.post('/delete/member', function(req,res){
-  deleteSomething(req,res,members,'./members.json')
+  deleteSomething(req,res,data.members,'./members.json')
 })
 
 router.post('/donator', function(req,res){
-  saveSomething(req,res,donators,'./donators.json')
+  saveSomething(req,res,data.donators,'./donators.json')
 })
 
 router.post('/delete/donator', function(req,res){
-  deleteSomething(req,res,donators,'./donators.json')
+  deleteSomething(req,res,data.donators,'./donators.json')
 })
 
 
