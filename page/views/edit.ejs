@@ -30,6 +30,9 @@
                       <a class="page-scroll" href="#news">News &amp; Events</a>
                     </li>
                     <li>
+                            <a class="page-scroll" href="#servers">Servers</a>
+                        </li>
+                    <li>
                         <a class="page-scroll" href="#roster">Roster</a>
                     </li>
                     <li>
@@ -42,15 +45,19 @@
         <!-- /.container -->
     </nav>
     <section id="news" class="container content-section text-center">
-        <%- include('partials/sections/editing/news', {news: news}); %>   
+        <%- include('partials/sections/editing/news', news); %>   
+    </section>
+
+    <section id="servers" class="content-section text-center">
+        <%- include('partials/sections/editing/server', servers); %>
     </section>
 
     <section id="roster" class="content-section text-center">
-        <%- include('partials/sections/editing/roster', {members: members}); %>
+        <%- include('partials/sections/editing/roster',  members); %>
     </section>
 
     <section id="donate" class="container content-section text-center">
-        <%- include('partials/sections/editing/donators', {donators: donators}); %>
+        <%- include('partials/sections/editing/donators', donators); %>
     </section>
 
 

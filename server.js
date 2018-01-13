@@ -1,13 +1,14 @@
-var express = require('express');
-var app = express();
-var router  = express.Router();
-var ejs = require('ejs');
-var https = require('https');
-var http = require('http');
-var fs = require('fs');
-var bodyParser = require('body-parser')
-var auth = require('basic-auth');
-var data = require('./data/data')
+const express = require('express');
+const app = express();
+const router  = express.Router();
+const ejs = require('ejs');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+const bodyParser = require('body-parser')
+const auth = require('basic-auth');
+const data = require('./data/data');
+const path = require('path');
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -43,28 +44,46 @@ router.get('/edit', function(req,res){
   })
 })
 
+router.get('/serverFile', function(req,res){
+  authenticate(req,res,function(){
+    res.sendFile(path.join(__dirname,'data','servers.json'));
+  })
+})
+
+router.post('/serverFile', function(req,res){
+  authenticate(req,res,function(){
+    data.servers = JSON.parse(req.body.json);
+    fs.writeFile('./data/server.json', req.body.json, function(error) {
+      if (error) {
+        return res.status(500).json({error: "Something went wrong!"});
+      }
+      res.redirect('/edit');
+    });
+  })
+})
+
 router.post('/news', function(req,res){
-  saveSomething(req,res,data.news,'./newsItems.json')
+  saveSomething(req,res,data.news,'./data/newsItems.json')
 })
 
 router.post('/delete/news', function(req,res){
-  deleteSomething(req,res,data.news,'./newsItems.json')
+  deleteSomething(req,res,data.news,'./data/newsItems.json')
 })
 
 router.post('/member', function(req,res){
-  saveSomething(req,res,data.members,'./members.json')
+  saveSomething(req,res,data.members,'./data/members.json')
 })
 
 router.post('/delete/member', function(req,res){
-  deleteSomething(req,res,data.members,'./members.json')
+  deleteSomething(req,res,data.members,'./data/members.json')
 })
 
 router.post('/donator', function(req,res){
-  saveSomething(req,res,data.donators,'./donators.json')
+  saveSomething(req,res,data.donators,'./data/donators.json')
 })
 
 router.post('/delete/donator', function(req,res){
-  deleteSomething(req,res,data.donators,'./donators.json')
+  deleteSomething(req,res,data.donators,'./data/donators.json')
 })
 
 
