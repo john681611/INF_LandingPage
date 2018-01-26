@@ -113,7 +113,7 @@ input, textarea{
     padding: 20px 0;
     border-bottom: none;
     letter-spacing: 1px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.6);
     -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -125,13 +125,13 @@ input, textarea{
   }
 
   .nav>li>a{
-    padding: 10px 7px;
+    padding: 15px 7px;
   }
 }
 
 @media (min-width: 1200px) {
   .nav>li>a{
-    padding: 10px 15px;
+    padding: 15px;
   }
 }
 .intro {
@@ -141,7 +141,7 @@ input, textarea{
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/Arma-3.jpg) no-repeat bottom center scroll;
+  background: url(../img/Arma-3-mobile.jpg) no-repeat 35% bottom scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -161,8 +161,10 @@ input, textarea{
 }
 @media (min-width: 768px) {
   .intro {
+    background-image: url(../img/Arma-3-tablet.jpg);
+    background-position: 37% 0;
     height: 100%;
-    padding: 0;
+    padding: 92px 0 0;
   }
   .intro .intro-body .brand-heading {
     font-size: 100px;
@@ -170,6 +172,17 @@ input, textarea{
   .intro .intro-body .intro-text {
     font-size: 26px;
     text-shadow: black 4px 4px 4px;
+  }
+}
+@media (min-width: 1024px) {
+  .intro {
+    background-position: 60% 0;
+  }
+}
+@media (min-width: 1280px) {
+  .intro {
+    background-image: url(../img/Arma-3-desktop.jpg);
+    background-position: center 0;
   }
 }
 .btn-circle {
@@ -243,26 +256,76 @@ input, textarea{
   width: 100%;
   padding: 50px 0;
   color: white;
-background-image: url(../img/forum.png);
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-position: center;
-background-size: 100%;
-text-shadow: black 4px 4px 4px;
+  text-shadow: black 4px 4px 4px;
 }
-.server-section {
-  background-image:url(../img/Arma-3-Apex.jpg);
+.download-section.loaded {
+  background-image: url(../img/forum-mobile.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
 }
-.links-section {
-  background-image:url(../img/Arma-3-Zeus.jpg);
-}
-.roster-section {
-  background-image:url(../img/Arma-3-Marksmen.jpg);
-  font-size: xx-small;
+@media (min-width: 768px) {
+  .download-section.loaded {
+    background-image: url(../img/forum-desktop-tablet.jpg);
+  }  
 }
 
-.donators-section{
-  background-image:url(../img/Arma-3-Laws.jpg);
+.server-section.loaded {
+  background-image: url(../img/Arma-3-Apex-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .server-section.loaded {
+    background-image: url(../img/Arma-3-Apex-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .server-section.loaded {
+    background-image: url(../img/Arma-3-Apex-desktop.jpg);
+  }
+}
+
+.links-section.loaded {
+  background-image:url(../img/Arma-3-Zeus-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .links-section.loaded {
+    background-image: url(../img/Arma-3-Zeus-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .links-section.loaded {
+    background-image: url(../img/Arma-3-Zeus-desktop.jpg);
+  }
+}
+
+.roster-section.loaded {
+  background-image:url(../img/Arma-3-Marksmen-mobile.jpg);
+  font-size: xx-small;
+}
+@media (min-width: 768px) {
+  .roster-section.loaded {
+    background-image: url(../img/Arma-3-Marksmen-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .roster-section.loaded {
+    background-image: url(../img/Arma-3-Marksmen-desktop.jpg);
+  }
+}
+
+.donators-section.loaded {
+  background-image:url(../img/Arma-3-Laws-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .donators-section.loaded {
+    background-image: url(../img/Arma-3-Laws-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .donators-section.loaded {
+    background-image: url(../img/Arma-3-Laws-desktop.jpg);
+  }
 }
 
 #map {
@@ -298,6 +361,7 @@ text-shadow: black 4px 4px 4px;
   border: 1px solid #42DCA3;
   color: #42DCA3;
   background-color: transparent;
+  margin-bottom: 10px;
 }
 .btn-default:hover,
 .btn-default:focus {
