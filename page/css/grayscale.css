@@ -54,6 +54,9 @@ a:focus {
 input, textarea{
   background-color: black;
 }
+hr {
+  border-color: #777;
+}
 .light {
   font-weight: 400;
 }
@@ -478,6 +481,7 @@ body {
 }
  .list-group-item{
    background-color: inherit;
+   border-color: #777;
  }
  .img_small{
    width: 200px;
