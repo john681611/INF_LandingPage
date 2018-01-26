@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const auth = require('basic-auth');
 const data = require('./data/data');
 const path = require('path');
+var minifyHTML = require('express-minify-html');
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -24,10 +25,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use(minifyHTML({
+  override:      false,
+  exception_url: false,
+  htmlMinifier: {
+      removeComments:            true,
+      collapseWhitespace:        true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes:     true,
+      removeEmptyAttributes:     true,
+      minifyJS:                  true
+  }
+}));
+
 
 //Front End
 router.get('/', function(req, res) {
-  res.render('index.ejs',data);
+  res.renderMin('index.ejs',data);
 });
 
 router.get('/modlist/:id', function(req, res) {
@@ -40,7 +54,7 @@ router.get('/modlist/:id', function(req, res) {
 
 router.get('/edit', function(req,res){
   authenticate(req,res,function(){
-    res.render('edit.ejs',data);
+    res.renderMin('edit.ejs',data);
   })
 })
 
