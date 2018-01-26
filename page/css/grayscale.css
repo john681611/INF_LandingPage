@@ -201,6 +201,7 @@ hr {
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
+  margin-bottom: 16px;
 }
 .btn-circle:hover,
 .btn-circle:focus {
