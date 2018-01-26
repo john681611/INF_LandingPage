@@ -27,6 +27,7 @@ h6 {
   font-weight: 700;
   letter-spacing: 1px;
   color: #FFF;
+  line-height: 1.8em;
 }
 p {
   margin: 0 0 25px;
@@ -484,11 +485,29 @@ body {
   height: auto;
   margin-bottom: 32px;
 }
- .list-group-item{
-   background-color: inherit;
-   border-color: #777;
+.list-group {
+  font-size: 20px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  border-width: 1px 0;
+}
+.list-group-item {
+  background-color: inherit;
+  border-color: #777;
+  font-size: 20px;
+  padding: 16px;
  }
- .img_small{
+.list-group-item b {
+   text-transform: uppercase;
+ }
+@media (min-width: 768px) {
+  .list-group {
+    width: auto;
+    margin-left: 0;
+    border-width: 1px;
+  }
+}
+.img_small{
    width: 200px;
    height: 200px;
  }
