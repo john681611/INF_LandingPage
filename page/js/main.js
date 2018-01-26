@@ -1,5 +1,5 @@
 // Lazy loading for background images
-var ll = document.querySelectorAll('div[class*=section]');
+var ll = [].slice.call(document.querySelectorAll('div[class*=section]'));
 var lh = [];
 var wh = window.innerHeight;
 
@@ -14,6 +14,11 @@ function lazy() {
     lh.forEach(function(elOffset, i) {
         if(elOffset <= wscroll + (wh + 1000)){
             ll[i].classList.add('loaded');
+            lh.splice(i, 1);
+            ll.splice(i, 1);
+            if (lh.length === 0) {
+                window.removeEventListener('scroll');
+            }
         };
     });
 };
