@@ -171,7 +171,7 @@ input, textarea{
   }
   .intro .intro-body .intro-text {
     font-size: 26px;
-    text-shadow: black 4px 4px 4px;
+    text-shadow: black 1px 1px 1px;
   }
 }
 @media (min-width: 1024px) {
@@ -362,13 +362,22 @@ input, textarea{
   color: #42DCA3;
   background-color: transparent;
   margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: black 1px 1px 1px;
 }
 .btn-default:hover,
 .btn-default:focus {
-  border: 1px solid #42DCA3;
+  border-color: #2D906B;
   outline: none;
-  color: black;
-  background-color: #42DCA3;
+  color: white;
+  background-color: #2D906B;
+}
+@media (min-width: 768px) {
+  .btn-default {
+    width: auto;
+  }
 }
 
 .btn-red{
@@ -440,7 +449,7 @@ body {
    height: 200px;
  }
 .text-shadow{
-  text-shadow: black 4px 4px 4px;
+  text-shadow: black 1px 1px 1px;
 }
 .background-shadow{
   background-color: rgba(0, 0, 0, 0.5);
