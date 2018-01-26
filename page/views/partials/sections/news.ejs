@@ -4,8 +4,10 @@
       <% for(var i=(news.length-1); i>=(news.length-3) && i>=0; i--) { %>
         <hr />
         <div>
-          <h3><%= news[i].title %></h3>
-          <span class="right"><%= news[i].date%></span>
+          <h3>
+            <%= news[i].title %>
+            <div class="date"><%= news[i].date%></div>
+          </h3>
           <% if(news[i].imagelink != "") {%>
             <img class="newsimg" src="<%= news[i].imagelink %>"/>
           <%}%>

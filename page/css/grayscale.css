@@ -21,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 35px;
+  margin: 0 0 32px;
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -361,7 +361,7 @@ input, textarea{
   border: 1px solid #42DCA3;
   color: #42DCA3;
   background-color: transparent;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -434,13 +434,20 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
- .newsimg{
-   border-style: solid;
-   border-color: #ffffff #ffffff;
-   border-width: 2px;
-   max-width: 100%;
-   height: auto;
- }
+.date {
+  font-size: 12px;
+  margin-top: 16px;
+  font-weight: 300;
+  color: #999;
+}
+.newsimg{
+  border-style: solid;
+  border-color: #ffffff #ffffff;
+  border-width: 2px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 32px;
+}
  .list-group-item{
    background-color: inherit;
  }
