@@ -1,0 +1,34 @@
+[
+    {
+        "id":"0",
+        "name": "RESISTANCE",
+        "info": {
+            "link":"http://www.gametracker.com/server_info/81.19.212.66:2340/",
+            "src":"http://cache.www.gametracker.com/server_info/81.19.212.66:2340/b_560_95_1.png"
+        },
+        "file": "preset/Arma 3 Mod Preset INF_Resistance_steam.html",
+        "mods": {
+            "required": [
+            ],
+            "optional": [
+                {
+                    "name":"Task Force radio",
+                    "steamID":"620019431"
+                },
+                {
+                    "name":"Enhanced Moment",
+                    "steamID":"333310405"
+                },
+                {
+                    "name":"CBA3",
+                    "steamID":"450814997"
+                },
+                {
+                    "name":"Advanced Button Mod",
+                    "steamID":"330927362"
+                }
+            ]
+        }
+
+    }
+]
