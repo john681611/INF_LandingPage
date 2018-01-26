@@ -15,7 +15,7 @@ require('dotenv').config()
 //   key: fs.readFileSync('./keys/private.key'),
 //   cert: fs.readFileSync('./keys/certificate.pem')
 // };
-app.use(express.static('page'));
+app.use(express.static('page', { maxAge: 3.6e+6 })); //60min
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
 // parse application/x-www-form-urlencoded
