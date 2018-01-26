@@ -9,7 +9,8 @@ const bodyParser = require('body-parser')
 const auth = require('basic-auth');
 const data = require('./data/data');
 const path = require('path');
-var minifyHTML = require('express-minify-html');
+const minifyHTML = require('express-minify-html');
+const compression = require('compression')
 require('dotenv').config()
 // Setup HTTPS
 // var options = {
@@ -38,6 +39,7 @@ app.use(minifyHTML({
   }
 }));
 
+app.use(compression({level: 9}));
 
 //Front End
 router.get('/', function(req, res) {
