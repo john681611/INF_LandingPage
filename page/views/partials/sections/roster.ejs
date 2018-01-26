@@ -7,21 +7,21 @@
               <table class="table table-inverse">
               <thead>
                 <tr>
-                  <th>Rank</th>
                   <th>Name</th>
-                  <th>Position</th>
+                  <th class="no-mobile">Rank</th>
+                  <th class="no-mobile">Position</th>
                   <th>Role</th>
-                  <th>Enlisted</th>
+                  <th class="no-mobile">Enlisted</th>
                 </tr>
               </thead>
               <tbody>
                   <% members.filter(member => member.squad === squad.id).forEach(member =>  {%>
                 <tr>
-                  <th scope="row"><%= member.rank %></th>
                   <td><%= member.name %></td>
-                  <td><%= member.pos %></td>
+                  <td class="no-mobile" scope="row"><%= member.rank %></th>
+                  <td class="no-mobile"><%= member.pos %></td>
                   <td><%= member.role %></td>
-                  <td><%= member.joined %></td>
+                  <td class="no-mobile"><%= member.joined %></td>
                 </tr>
                 <% }) %>
               </tbody>

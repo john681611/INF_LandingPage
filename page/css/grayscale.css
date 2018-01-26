@@ -301,7 +301,6 @@ input, textarea{
 
 .roster-section.loaded {
   background-image:url(../img/Arma-3-Marksmen-mobile.jpg);
-  font-size: xx-small;
 }
 @media (min-width: 768px) {
   .roster-section.loaded {
@@ -312,6 +311,35 @@ input, textarea{
   .roster-section.loaded {
     background-image: url(../img/Arma-3-Marksmen-desktop.jpg);
   }
+}
+.no-mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .no-mobile {
+    display: table-cell;
+  }
+}
+.roster-section table,
+.roster-section .table>thead>tr>th,
+.roster-section .table>tbody>tr>td {
+  border: 1px solid #333;
+  text-align: center;
+}
+.roster-section .table>thead>tr>th {
+  background: #222;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+.roster-section .table>tbody>tr>td {
+  color: #D4D4D4;
+}
+.roster-section .table>tbody>tr>td:first-child {
+  text-transform: uppercase;
+  color: #FFF;
+  background: #111;
 }
 
 .donators-section.loaded {
