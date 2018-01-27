@@ -105,7 +105,7 @@ describe('InvalidPage', function () {
 describe('Authorization', function () {
   var res = {
     redirect:str =>{},
-    setHeader:str =>{},
+    set:str =>{},
     end:str =>{
       throw new Error();
     },
@@ -167,7 +167,7 @@ describe('File Mod Funcs', function () {
   var testObj = require('../data/testOBJ.json');
   var res = {
     redirect:str =>{},
-    setHeader:str =>{},
+    set:str =>{},
     end:str =>{
       throw new Error();
     },
