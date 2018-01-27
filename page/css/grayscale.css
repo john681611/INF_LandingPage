@@ -400,6 +400,29 @@ hr {
   background: #111;
 }
 
+.cmd-message {
+  padding: 0 0 0 50px;
+  position: relative;
+  text-align: justify;
+  margin-top: 50px;
+}
+.cmd-message:first-of-type {
+  margin-top: 0;
+}
+.cmd-message:before{
+  content: "“";
+  font-size: 80px;
+  position: absolute;
+  left: 0;
+  top: -41px;
+}
+.cmd-message-cmd {
+  text-align: right;
+}
+.cmd-message-cmd b {
+  font-style: oblique;
+}
+
 .donators-section.loaded {
   background-image:url(../img/Arma-3-Laws-mobile.jpg);
 }
