@@ -116,7 +116,7 @@ var Server = http.createServer(app).listen(process.env.PORT || 8080,function() {
 function authenticate(req,res,callback){
   var credentials = auth(req)
   if (!credentials || credentials.name !== process.env.USR || credentials.pass !== process.env.pass) {
-    res.status(401).setHeader('WWW-Authenticate', 'Basic realm="example"').end('Access denied')
+    res.status(401).set('WWW-Authenticate', 'Basic realm="example"').end('Access denied')
   } else {
     callback();
   }
