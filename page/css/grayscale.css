@@ -7,8 +7,8 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #D2D2D2;
   background-color: black;
 }
 html {
@@ -26,6 +26,8 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
+  color: #FFF;
+  line-height: 1.8em;
 }
 p {
   margin: 0 0 25px;
@@ -50,13 +52,16 @@ a:focus {
   text-decoration: none;
   color: #1d9b6c;
 }
-
+b {
+  color: #FFF;
+}
 input, textarea{
   background-color: black;
 }
 hr {
   border-color: #777;
 }
+
 .light {
   font-weight: 400;
 }
@@ -256,6 +261,55 @@ hr {
 .content-section {
   padding-top: 100px;
 }
+
+.entry-steps {
+  list-style: none;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+}
+.entry-step {
+  padding: 15px;
+  border: 1px solid #333;
+  border-width: 1px 0 0;
+}
+.entry-step .extra {
+  color: #D2D2D2;
+}
+.entry-step:last-child {
+  border-width: 1px 0;
+}
+.entry-step-number {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  margin: 0 auto 16px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  font-size: 50px;
+}
+@media (min-width: 768px) {
+  .entry-step {
+    border-width: 0;
+    margin-bottom: 15px;
+  }
+  .entry-step:last-child {
+    border-width: 1px 0 0;
+  }
+  .entry-step:nth-child(2) {
+    border-width: 0 0 0 1px;
+  }
+}
+@media (min-width: 1200px) {
+  .entry-step:nth-child(2) {
+    border-width: 0 1px;
+  }
+  .entry-step:last-child {
+    border-width: 0;
+  }
+}
+
 .download-section {
   width: 100%;
   padding: 50px 0;
@@ -344,6 +398,29 @@ hr {
   text-transform: uppercase;
   color: #FFF;
   background: #111;
+}
+
+.cmd-message {
+  padding: 0 0 0 50px;
+  position: relative;
+  text-align: justify;
+  margin-top: 50px;
+}
+.cmd-message:first-of-type {
+  margin-top: 0;
+}
+.cmd-message:before{
+  content: "“";
+  font-size: 80px;
+  position: absolute;
+  left: 0;
+  top: -41px;
+}
+.cmd-message-cmd {
+  text-align: right;
+}
+.cmd-message-cmd b {
+  font-style: oblique;
 }
 
 .donators-section.loaded {
@@ -480,11 +557,29 @@ body {
   height: auto;
   margin-bottom: 32px;
 }
- .list-group-item{
-   background-color: inherit;
-   border-color: #777;
+.list-group {
+  font-size: 20px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  border-width: 1px 0;
+}
+.list-group-item {
+  background-color: inherit;
+  border-color: #777;
+  font-size: 20px;
+  padding: 16px;
  }
- .img_small{
+.list-group-item b {
+   text-transform: uppercase;
+ }
+@media (min-width: 768px) {
+  .list-group {
+    width: auto;
+    margin-left: 0;
+    border-width: 1px;
+  }
+}
+.img_small{
    width: 200px;
    height: 200px;
  }
