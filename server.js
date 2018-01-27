@@ -116,9 +116,7 @@ var Server = http.createServer(app).listen(process.env.PORT || 8080,function() {
 function authenticate(req,res,callback){
   var credentials = auth(req)
   if (!credentials || credentials.name !== process.env.USR || credentials.pass !== process.env.pass) {
-    res.statusCode = 401
-    res.setHeader('WWW-Authenticate', 'Basic realm="example"')
-    res.end('Access denied')
+    res.status(401).setHeader('WWW-Authenticate', 'Basic realm="example"').end('Access denied')
   } else {
     callback();
   }
@@ -129,10 +127,19 @@ function saveSomething(req,res,obj,file){
     var item = req.body;
     if(item.id === '-1'){
       item.id = obj.length;
+      obj.push(item);
+    } else {
+      let idx = findIdx(obj,item.id)
+      if(idx > -1){
+        obj[idx] = item;
+      } else {
+        console.error("ID not found ", item.id)
+        return  res.status(404).json({error: "ID not found"});
+      }
     }
-    obj[item.id] = item;
     fs.writeFile(file, JSON.stringify(obj, null, 4), function(error) {
       if (error) {
+        console.error(error)
         return res.status(500).json({error: "Something went wrong!"});
       }
       res.redirect('/edit');
@@ -142,14 +149,25 @@ function saveSomething(req,res,obj,file){
 
 function deleteSomething(req,res,obj,file){
   authenticate(req,res,function(){
-    obj.splice(parseInt(req.body.id), 1);
+    let idx = findIdx(obj,req.body.id)
+    if(idx > -1){
+    obj.splice(idx, 1);
+    } else {
+      console.error("ID not found ",req.body.id)
+      return res.status(404).json({error: "ID not found"});
+    }
     fs.writeFile(file, JSON.stringify(obj, null, 4), function(error) {
       if (error) {
+        console.error(error)
         return res.status(500).json({error: "Something went wrong!"});
       }
-      res.redirect('/edit');
+     return res.redirect('/edit');
     });
   });
+}
+
+function findIdx (obj, id) {
+  return obj.findIndex(el => el.id == id);
 }
 
 app.use(function (err, req, res, next) {
@@ -165,5 +183,6 @@ module.exports = {
   authenticate: authenticate,
   saveSomething: saveSomething,
   deleteSomething:deleteSomething,
-  authenticate:authenticate
+  authenticate:authenticate,
+  findIdx: findIdx
 }

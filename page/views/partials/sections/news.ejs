@@ -1,26 +1,26 @@
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
       <h2>News &amp; Events</h2>
-      <% for(var i=(news.length-1); i>=(news.length-3) && i>=0; i--) { %>
-        <hr />
+      <% news.forEach((item,index) => {if(index < 3) { %>
         <div>
+          <hr />
           <h3>
-            <%= news[i].title %>
-            <div class="date"><%= news[i].date%></div>
+            <%= item.title %>
+            <div class="date"><%= item.date%></div>
           </h3>
-          <% if(news[i].imagelink != "") {%>
-            <img class="newsimg" src="<%= news[i].imagelink %>"/>
+          <% if(item.imagelink != "") {%>
+            <img class="newsimg" src="<%= item.imagelink %>"/>
           <%}%>
-          <p><%- news[i].text %></p>
-          <a class="btn btn-default btn-lg" href="<%= news[i].link%>" target="_blank">
-            <% if(news[i].event) {%>
+          <p><%- item.text %></p>
+          <a class="btn btn-default btn-lg" href="<%= item.link%>" target="_blank">
+            <% if(item.event) {%>
             Sign up
             <% } else { %>
             Read More
             <%}%>
           </a>
         </div>
-      <% } %>
+      <% }}) %>
     <hr />
     <a class="btn btn-default btn-lg" href="http://forums.iron-fists.eu/index.php" target="_blank">View More</a>
     </div>

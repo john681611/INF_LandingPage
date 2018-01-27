@@ -104,11 +104,12 @@ describe('InvalidPage', function () {
 
 describe('Authorization', function () {
   var res = {
-    redirect:function(str){},
-    setHeader:function(str){},
-    end:function(str){
+    redirect:str =>{},
+    setHeader:str =>{},
+    end:str =>{
       throw new Error();
-    }
+    },
+    status:str =>{}
   }
   it('should log in with correct Auth', function () {
     //given
@@ -165,10 +166,16 @@ describe('Authorization', function () {
 describe('File Mod Funcs', function () {
   var testObj = require('../data/testOBJ.json');
   var res = {
-    redirect:function(str){}
+    redirect:str =>{},
+    setHeader:str =>{},
+    end:str =>{
+      throw new Error();
+    },
+    status:str =>{return res},
+    json: str =>{}
   }
   auth = "Basic " + new Buffer('usr' + ":" + 'pwd').toString("base64");
-  it('should save something new to file', function () {
+  it('should save bob to file', function () {
     //given
     var req  = httpMocks.createRequest({
       body:{
@@ -183,11 +190,28 @@ describe('File Mod Funcs', function () {
     server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 1,"object not changed")
-    assert(testObj[0].name == 'bob',"name not saved")
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
-  it('should save something to file', function () {
+  it('should save bob3 to file', function () {
+    //given
+    var req  = httpMocks.createRequest({
+      body:{
+        id:'-1',
+        name:'bob3'
+      },
+      headers : {
+        "Authorization" : auth
+      }
+    });
+    //when
+    server.saveSomething(req,res,testObj,'./data/testOBJ.json')
+    //then
+    assert(testObj.length == 2,"object not changed")
+    assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
+  })
+
+  it('should change bob to bob2', function () {
     //given
     var req  = httpMocks.createRequest({
       body:{
@@ -201,17 +225,33 @@ describe('File Mod Funcs', function () {
     //when
     server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
-    assert(testObj.length == 1,"object not changed")
+    assert(testObj.length == 2,"object not changed")
     assert(testObj[0].name == 'bob2',"name not changed")
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
-  it('should save something to file', function () {
+  it('should delete something from file file', function () {
     //given
     var req  = httpMocks.createRequest({
       body:{
-        id:'0',
-        name:'bob2'
+        id:'0'
+      },
+      headers : {
+        "Authorization" : auth
+      }
+    });
+    //when
+    server.deleteSomething(req,res,testObj,'./data/testOBJ.json')
+    //then
+    assert(testObj.length == 1,"object not deleted")
+    assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
+  })
+
+  it('should delete something from file file', function () {
+    //given
+    var req  = httpMocks.createRequest({
+      body:{
+        id:'1'
       },
       headers : {
         "Authorization" : auth
@@ -223,4 +263,16 @@ describe('File Mod Funcs', function () {
     assert(testObj.length == 0,"object not deleted")
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
+})
+
+describe('findIdx', function () {
+  var req  = [{id:1},{id:0}]
+  it('should find by ID not index', function () {
+    //when
+    assert(server.findIdx(req,"1") === 0)
+  });
+  it('should return -1 when not found', function () {
+    //when
+    assert(server.findIdx(req,"2") === -1)
+  });
 })
