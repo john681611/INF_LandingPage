@@ -190,10 +190,11 @@ describe('File Mod Funcs', function () {
     server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 1,"object not changed")
+    assert(testObj[0].name, 'bob')
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
-  it('should save bob3 to file', function () {
+  it('should save bob3 to file and be top of list', function () {
     //given
     var req  = httpMocks.createRequest({
       body:{
@@ -205,9 +206,10 @@ describe('File Mod Funcs', function () {
       }
     });
     //when
-    server.saveSomething(req,res,testObj,'./data/testOBJ.json')
+    server.saveSomething(req,res,testObj,'./data/testOBJ.json',true)
     //then
     assert(testObj.length == 2,"object not changed")
+    assert(testObj[0].name == 'bob3', 'bob3 not first ' + testObj[0].name + ' was.')
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 
@@ -226,7 +228,7 @@ describe('File Mod Funcs', function () {
     server.saveSomething(req,res,testObj,'./data/testOBJ.json')
     //then
     assert(testObj.length == 2,"object not changed")
-    assert(testObj[0].name == 'bob2',"name not changed")
+    assert(testObj[1].name == 'bob2',"name not changed")
     assert.deepEqual(require('../data/testOBJ.json'), testObj, "object not saved")
   })
 

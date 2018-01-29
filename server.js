@@ -79,7 +79,7 @@ router.post('/serverFile', function(req,res){
 })
 
 router.post('/news', function(req,res){
-  saveSomething(req,res,data.news,'./data/newsItems.json')
+  saveSomething(req,res,data.news,'./data/newsItems.json', true)
 })
 
 router.post('/delete/news', function(req,res){
@@ -122,12 +122,16 @@ function authenticate(req,res,callback){
   }
 }
 
-function saveSomething(req,res,obj,file){
+function saveSomething(req,res,obj,file, unshift){
   authenticate(req,res,function(){
     var item = req.body;
     if(item.id === '-1'){
       item.id = obj.length;
-      obj.push(item);
+      if(unshift){
+        obj.unshift(item);
+      } else {
+        obj.push(item);
+      }
     } else {
       let idx = findIdx(obj,item.id)
       if(idx > -1){
