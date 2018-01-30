@@ -1,1 +1,82 @@
 @import "normalize";
+@import "variables";
+@import "mixins";
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: $base-font-size;
+    color: $base-font-color;
+    background-color: $base-background-color;
+}
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+    @include rem(margin, 0 0 $element-spacing);
+    text-transform: uppercase;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: $accent-font-color;
+    line-height: $header-line-height;
+}
+
+h1 {
+    @include rem(font-size, 108px);
+}
+
+h2 {
+    @include rem(font-size, 90px);
+}
+
+h3 {
+    @include rem(font-size, 72px);
+}
+
+h4 {
+    @include rem(font-size, 54px);
+}
+
+h5 {
+    @include rem(font-size, 36px);
+}
+
+h6 {
+    @include rem(font-size, 18px);
+}
+
+// Text
+p {
+    @include rem(margin, 0 0 $element-spacing);
+    line-height: $paragraph-line-height;
+}
+
+b {
+    color: $accent-font-color;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: $link-hover-color;
+}
+
+button,
+.link--button {
+    border: 1px solid $button-color;
+    color: $button-color;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover,
+button:focus,
+.link--button:hover,
+.link--button:focus {
+    color: $accent-font-color;
+}
