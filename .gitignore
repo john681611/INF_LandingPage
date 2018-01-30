@@ -42,3 +42,5 @@ newsItems.json
 donators.json
 servers.json
 .idea
+.cache/
+assets
