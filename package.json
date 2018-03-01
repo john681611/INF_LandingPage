@@ -17,17 +17,21 @@
     "reload": "^2.2.2"
   },
   "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-mns-core": "^1.0.0",
+    "eslint-watch": "^3.1.2",
     "mocha": "^4.1.0",
     "node-mocks-http": "^1.6.6",
     "nodemon": "^1.14.11",
-    "supertest": "^3.0.0",
-    "eslint": "^4.5.0",
-    "eslint-config-mns-core": "^1.0.0",
-    "eslint-watch": "^3.1.2"
+    "sinon": "^4.4.2",
+    "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
+    "sinon-chai": "^2.9.0",
+    "supertest": "^3.0.0"
   },
   "scripts": {
-    "start": "node server",
-    "test": "mocha",
-    "lint:js": "esw -c .eslintrc --color server.js test data/data.js"
+    "start": "node server/server",
+    "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js test/test.js",
+    "lint:js": "esw -c .eslintrc --color server test utils data"
   }
 }
