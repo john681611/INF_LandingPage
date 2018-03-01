@@ -22,27 +22,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    @include rem(font-size, 108px);
+    font-size: 6rem;
 }
 
 h2 {
-    @include rem(font-size, 90px);
+    font-size: 5rem;
 }
 
 h3 {
-    @include rem(font-size, 72px);
+    font-size: 4rem;
 }
 
 h4 {
-    @include rem(font-size, 54px);
+    font-size: 3rem;
 }
 
 h5 {
-    @include rem(font-size, 36px);
+    font-size: 2rem;
 }
 
 h6 {
-    @include rem(font-size, 18px);
+    font-size: 1rem;
 }
 
 // Text
@@ -79,4 +79,29 @@ button:focus,
 .link--button:hover,
 .link--button:focus {
     color: $accent-font-color;
+}
+
+// Tables
+table {
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    width: 100%;
+
+    th, td {
+        border: 1px solid $divider-color;
+        @include rem(padding, 8px);
+    }
+
+    thead th,
+    tbody td:first-child {
+        background: $table-header-color;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 0.89rem;
+    }
+
+    tbody td:first-child {
+        font-weight: 400;
+    }
 }
