@@ -3,6 +3,7 @@ const router = new express.Router();
 const data = require('../data/data');
 const auth = require('../utils/auth');
 const path = require('path');
+const notification = require('../utils/notification');
 const fs = require('fs');
 
 router.get('/', function (req, res) {
@@ -67,6 +68,19 @@ router.post('/donator', function (req, res) {
 
 router.post('/delete/donator', function (req, res) {
     data.deleteItem(req, res, data.getData().donators, './data/donators.json');
+});
+
+
+router.post('/pwa', function(req,res){
+    const sub = JSON.parse(req.body.sub);
+    let subs =  data.getPushSubscriptions();
+    subs.push(sub);
+    data.addSub(req, res, subs);
+});
+
+router.get('/ping', function(req,res) {
+    notification.notify('pong');
+    res.redirect('/');
 });
 
 module.exports = {
