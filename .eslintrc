@@ -1,0 +1,22 @@
+{
+    "extends": "eslint-config-mns-core/ecma-config",
+    "rules": {
+        "eqeqeq": ["error", "smart"]
+    },
+    "env": {
+        "commonjs": true,
+        "mocha": true
+    },
+    "globals": {
+        "expect": true,
+        "sinon": true,
+        "browser": true,
+        "Zone": true,
+        "$": true
+    },
+    "parserOptions" : {
+        "ecmaFeatures" : {
+            "experimentalObjectRestSpread" : true
+        }
+    }
+}
