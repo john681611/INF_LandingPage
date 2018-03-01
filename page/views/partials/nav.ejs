@@ -1,55 +1,51 @@
  <!-- Navigation -->
- <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand page-scroll text-shadow" href="#page-top">
-                <i class="fa fa-play-circle"></i> <span class="light">Iron</span>-Fists
-            </a>
-        </div>
+ <nav class="nav">
+     <div class="nav__container">
+        <a class="nav__container__logo" href="#page-top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFF">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+            </svg>
+            Iron<b>-Fists</b>
+        </a>
+        <label class="nav__container__menu-toggle" for="nav-menu">
+            Menu
+            <svg width="24" height="24" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"  fill="#FFF">
+                <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z"/>
+            </svg>
+        </label>
+     </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse text-shadow">
-            <ul class="nav navbar-nav">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                  <a class="page-scroll" href="#news">News</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#forum">Forum</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#about">About</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#join">Join</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#servers">Servers</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#rules">Rules</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#links">Links</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#cndmsg">Command msg</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#roster">Roster</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#donate">Donate</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
+    <input type="checkbox" class="a11y" id="nav-menu">
+    <ul class="nav__elements">
+        <li>
+            <a class="page-scroll" href="#news">News</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#forum">Forum</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#about">About</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#join">Join</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#servers">Servers</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#rules">Rules</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#links">Links</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#cndmsg">Command msg</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#roster">Roster</a>
+        </li>
+        <li>
+            <a class="page-scroll" href="#donate">Donate</a>
+        </li>
+    </ul>
 </nav>
