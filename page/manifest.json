@@ -2,6 +2,8 @@
     "short_name": "INF",
     "name": "Iron Fists",
     "display":"fullscreen",
+    "theme_color": "#000000",
+    "background_color":"#000000",
     "icons": [
       {
         "src": "../img/logo-desktop.png",
@@ -17,6 +19,11 @@
         "src": "../img/logo-desktop.png",
         "type": "image/png",
         "sizes": "192x192"
+      },
+      {
+        "src": "../img/logo-desktop.png",
+        "type": "image/png",
+        "sizes": "512x512"
       }
     ],
     "start_url": "/"
