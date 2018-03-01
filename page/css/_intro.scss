@@ -1,0 +1,15 @@
+.intro {
+    text-align: center;
+    background: url(../img/Arma-3-mobile.jpg) no-repeat 35% top scroll;
+    padding-bottom: 0;
+
+    @media (min-width: $tablet-breakpoint) {
+        background-image: url(../img/Arma-3-tablet.jpg);
+        background-position: 37% 0;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+        background-image: url(../img/Arma-3-desktop.jpg);
+        background-position: center 0;
+    }
+}
