@@ -1,0 +1,638 @@
+/*!
+ * Start Bootstrap - Grayscale v3.3.7+1 (http://startbootstrap.com/template-overviews/grayscale)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ john git test
+ */
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #D2D2D2;
+  background-color: black;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 32px;
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #FFF;
+  line-height: 1.8em;
+}
+p {
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  p {
+    margin: 0 0 35px;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+}
+a {
+  color: #42DCA3;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #1d9b6c;
+}
+b {
+  color: #FFF;
+}
+input, textarea{
+  background-color: black;
+}
+hr {
+  border-color: #777;
+}
+
+.light {
+  font-weight: 400;
+}
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: black;
+}
+.navbar-custom .navbar-toggle {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+.navbar-custom .navbar-toggle:focus,
+.navbar-custom .navbar-toggle:active {
+  outline: none;
+}
+.navbar-custom .navbar-brand {
+  font-weight: 700;
+}
+.navbar-custom .navbar-brand:focus {
+  outline: none;
+}
+.navbar-custom a {
+  color: white;
+}
+.navbar-custom .nav li a {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.navbar-custom .nav li a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  background-color: transparent;
+}
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:active {
+  outline: none;
+  background-color: transparent;
+}
+.navbar-custom .nav li.active {
+  outline: none;
+}
+.navbar-custom .nav li.active a {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.navbar-custom .nav li.active a:hover {
+  color: white;
+}
+
+
+@media (min-width: 768px) {
+  .navbar-custom {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+  }
+  .navbar-custom.top-nav-collapse {
+    padding: 0;
+    background: black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .nav>li>a{
+    padding: 15px 7px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav>li>a{
+    padding: 15px;
+  }
+}
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+  background: url(../img/Arma-3-mobile.jpg) no-repeat 35% bottom scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.intro .intro-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+.intro .intro-body .brand-heading {
+  font-size: 40px;
+  text-shadow: black 4px 4px 4px;
+}
+.intro .intro-body .intro-text {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .intro {
+    background-image: url(../img/Arma-3-tablet.jpg);
+    background-position: 37% 0;
+    height: 100%;
+    padding: 92px 0 0;
+  }
+  .intro .intro-body .brand-heading {
+    font-size: 100px;
+  }
+  .intro .intro-body .intro-text {
+    font-size: 26px;
+    text-shadow: black 1px 1px 1px;
+  }
+}
+@media (min-width: 1024px) {
+  .intro {
+    background-position: 60% 0;
+  }
+}
+@media (min-width: 1280px) {
+  .intro {
+    background-image: url(../img/Arma-3-desktop.jpg);
+    background-position: center 0;
+  }
+}
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid white;
+  border-radius: 100% !important;
+  font-size: 40px;
+  color: white;
+  background: transparent;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+  margin-bottom: 16px;
+}
+.btn-circle:hover,
+.btn-circle:focus {
+  outline: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-circle i.animated {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+}
+.btn-circle:hover i.animated {
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.content-section {
+  padding-top: 100px;
+}
+
+.entry-steps {
+  list-style: none;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+}
+.entry-step {
+  padding: 15px;
+  border: 1px solid #333;
+  border-width: 1px 0 0;
+}
+.entry-step .extra {
+  color: #D2D2D2;
+}
+.entry-step:last-child {
+  border-width: 1px 0;
+}
+.entry-step-number {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  margin: 0 auto 16px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  font-size: 50px;
+}
+@media (min-width: 768px) {
+  .entry-step {
+    border-width: 0;
+    margin-bottom: 15px;
+  }
+  .entry-step:last-child {
+    border-width: 1px 0 0;
+  }
+  .entry-step:nth-child(2) {
+    border-width: 0 0 0 1px;
+  }
+}
+@media (min-width: 1200px) {
+  .entry-step:nth-child(2) {
+    border-width: 0 1px;
+  }
+  .entry-step:last-child {
+    border-width: 0;
+  }
+}
+
+.download-section {
+  width: 100%;
+  padding: 50px 0;
+  color: white;
+  text-shadow: black 4px 4px 4px;
+}
+.download-section.loaded {
+  background-image: url(../img/forum-mobile.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
+}
+@media (min-width: 768px) {
+  .download-section.loaded {
+    background-image: url(../img/forum-desktop-tablet.jpg);
+  }  
+}
+
+.server-section.loaded {
+  background-image: url(../img/Arma-3-Apex-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .server-section.loaded {
+    background-image: url(../img/Arma-3-Apex-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .server-section.loaded {
+    background-image: url(../img/Arma-3-Apex-desktop.jpg);
+  }
+}
+
+.links-section.loaded {
+  background-image:url(../img/Arma-3-Zeus-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .links-section.loaded {
+    background-image: url(../img/Arma-3-Zeus-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .links-section.loaded {
+    background-image: url(../img/Arma-3-Zeus-desktop.jpg);
+  }
+}
+
+.roster-section.loaded {
+  background-image:url(../img/Arma-3-Marksmen-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .roster-section.loaded {
+    background-image: url(../img/Arma-3-Marksmen-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .roster-section.loaded {
+    background-image: url(../img/Arma-3-Marksmen-desktop.jpg);
+  }
+}
+.no-mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .no-mobile {
+    display: table-cell;
+  }
+}
+.roster-section table,
+.roster-section .table>thead>tr>th,
+.roster-section .table>tbody>tr>td {
+  border: 1px solid #333;
+  text-align: center;
+}
+.roster-section .table>thead>tr>th {
+  background: #222;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+.roster-section .table>tbody>tr>td {
+  color: #D4D4D4;
+}
+.roster-section .table>tbody>tr>td:first-child {
+  text-transform: uppercase;
+  color: #FFF;
+  background: #111;
+}
+
+.cmd-message {
+  padding: 0 0 0 50px;
+  position: relative;
+  text-align: justify;
+  margin-top: 50px;
+}
+.cmd-message:first-of-type {
+  margin-top: 0;
+}
+.cmd-message:before{
+  content: "“";
+  font-size: 80px;
+  position: absolute;
+  left: 0;
+  top: -41px;
+}
+.cmd-message-cmd {
+  text-align: right;
+}
+.cmd-message-cmd b {
+  font-style: oblique;
+}
+
+.donators-section.loaded {
+  background-image:url(../img/Arma-3-Laws-mobile.jpg);
+}
+@media (min-width: 768px) {
+  .donators-section.loaded {
+    background-image: url(../img/Arma-3-Laws-tablet.jpg);
+  }
+}
+@media (min-width: 1280px) {
+  .donators-section.loaded {
+    background-image: url(../img/Arma-3-Laws-desktop.jpg);
+  }
+}
+
+#map {
+  width: 100%;
+  height: 200px;
+  margin-top: 100px;
+}
+@media (min-width: 767px) {
+  .content-section {
+    padding-top: 250px;
+  }
+  .download-section {
+    padding: 100px 0;
+  }
+  #map {
+    height: 400px;
+    margin-top: 250px;
+  }
+  .roster-section{
+    font-size: 14px;
+  }
+}
+.btn {
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0;
+}
+.btn-default {
+  border: 1px solid #42DCA3;
+  color: #42DCA3;
+  background-color: transparent;
+  margin-bottom: 16px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: black 1px 1px 1px;
+}
+.btn-default:hover,
+.btn-default:focus {
+  border-color: #2D906B;
+  outline: none;
+  color: white;
+  background-color: #2D906B;
+}
+@media (min-width: 768px) {
+  .btn-default {
+    width: auto;
+  }
+}
+
+.btn-red{
+  border: 1px solid red;
+    color: red;
+    background-color: transparent;
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  border: 1px solid red;
+  outline: none;
+  color: black;
+  background-color: red;
+}
+ul.banner-social-buttons {
+  margin-top: 0;
+}
+@media (max-width: 1199px) {
+  ul.banner-social-buttons {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 767px) {
+  ul.banner-social-buttons li {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  ul.banner-social-buttons li:last-child {
+    margin-bottom: 0;
+  }
+}
+footer {
+  padding: 50px 0;
+}
+footer p {
+  margin: 0;
+}
+::-moz-selection {
+  text-shadow: none;
+  background: #42DCA3;
+}
+::selection {
+  text-shadow: none;
+  background: #42DCA3;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+body {
+  webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+}
+.date {
+  font-size: 12px;
+  margin-top: 16px;
+  font-weight: 300;
+  color: #999;
+}
+.newsimg{
+  border-style: solid;
+  border-color: #ffffff #ffffff;
+  border-width: 2px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 32px;
+}
+.list-group {
+  font-size: 20px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  border-width: 1px 0;
+}
+.list-group-item {
+  background-color: inherit;
+  border-color: #777;
+  font-size: 20px;
+  padding: 16px;
+ }
+.list-group-item b {
+   text-transform: uppercase;
+ }
+@media (min-width: 768px) {
+  .list-group {
+    width: auto;
+    margin-left: 0;
+    border-width: 1px;
+  }
+}
+.img_small{
+   width: 200px;
+   height: 200px;
+ }
+.text-shadow{
+  text-shadow: black 1px 1px 1px;
+}
+.background-shadow{
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+ul{
+  display: inline-block;
+}
+.right{
+      float: right;
+}
+td {
+  text-align: left;
+}
+
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+	width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+	text-indent: 0;
+}
+
+.smalltxt{
+  font-size: 14px
+}
+.notification{
+  display: none;
+}

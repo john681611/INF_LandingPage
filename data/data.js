@@ -51,6 +51,14 @@ const getFile = (file) => {
     return JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
 };
 
+const addSub = (req, res, obj) => {
+    fs.writeFile('./data/pushSubscriptions.json', JSON.stringify(obj, null, 4), function (error) {
+        if (error) {
+            res.status(500);
+            return res.json({ error: 'Something went wrong!' });
+        }
+    });
+};
 
 
 
@@ -61,13 +69,21 @@ const getData = () => {
         servers: getFile('./data/servers.json'),
         members: getFile('./data/members.json'),
         donators: getFile('./data/donators.json'),
-        squads: getFile('./data/squads.json')
+        squads: getFile('./data/squads.json'),
+        key: process.env.vapidPu
     };
+};
+
+const getPushSubscriptions = () => {
+    delete require.cache['./pushSubscriptions.json'];
+    return require('./pushSubscriptions.json');
 };
 
 module.exports = {
     addItem,
+    addSub,
     deleteItem,
     findIndex,
-    getData
+    getData,
+    getPushSubscriptions
 };
