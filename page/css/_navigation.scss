@@ -1,0 +1,120 @@
+@import "variables";
+
+.nav {
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 1px;
+    position: fixed;
+    width: 100%;
+
+    @media (min-width: $tablet-breakpoint) {
+        background-color: rgba($color: $menu-background, $alpha: 0.7);
+        border-bottom: 1px solid $menu-border;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+        padding: 0 10%;
+        width: 80%;
+    }
+
+    &__container,
+    &__elements {
+        background-color: $menu-background;
+
+        @media (min-width: $tablet-breakpoint) {
+            background-color: transparent;
+        }
+    }
+
+    svg {
+        float: left;
+        margin: -3px $half-base-spacing 0 0;
+    }
+
+    &__container {
+        padding: $base-spacing;
+        border-bottom: 1px solid $menu-border;
+
+        @media (min-width: $tablet-breakpoint) {
+            padding: $base-spacing $element-spacing;
+            border: 0;
+            display: inline-block;
+        }
+
+        &__logo {
+            color: $accent-font-color;
+        }
+
+        &__menu-toggle {
+            float: right;
+
+            @media (min-width: $tablet-breakpoint) {
+                display: none;
+            }
+        }
+    }
+
+    input {
+        text-align: -9999px;
+
+        @media (min-width: $tablet-breakpoint) {
+            display: none;
+        }
+    }
+
+    &__elements {
+        list-style: none;
+        overflow: hidden;
+        padding: 0 $base-spacing;
+        margin: 0;
+        max-height: 0;
+        transition: max-height 0.4s ease-in;
+
+        @media (min-width: $tablet-breakpoint) {
+            max-height: 1000px;
+            padding: $base-spacing $element-spacing;
+            float: right;
+        }
+
+        input:checked + & {
+            border-bottom: 1px solid $menu-border;
+            padding: 0 $base-spacing;
+            max-height: 1000px;
+        }
+
+        li {
+            @media (min-width: $tablet-breakpoint) {
+                display: inline-block;
+                margin-right: $base-spacing;
+            }
+        }
+
+        li:first-child {
+            padding-top: $base-spacing;
+            
+            @media (min-width: $tablet-breakpoint) {
+                padding: 0;
+            }
+        }
+
+        li:last-child {
+            padding-bottom: $base-spacing;
+
+            @media (min-width: $tablet-breakpoint) {
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: $base-spacing;
+            color: $accent-font-color;
+            font-size: 14px;
+
+            @media (min-width: $tablet-breakpoint) {
+                margin: 0;
+            }
+        }
+    }
+}
