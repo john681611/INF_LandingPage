@@ -14,12 +14,18 @@ $divider-color: #333;
 $table-header-color: #222;
 $table-accent-color: #333;
 
+$menu-background: #000;
+$menu-border: #333;
+
+$section-background: #000;
 
 // Sizes and spacing
 $base-font-size: 18px;
 
-$element-spacing: 36px;
-$section-spacing: 72px;
+$half-base-spacing: 0.5rem;
+$base-spacing: 1rem;
+$element-spacing: 2rem;
+$section-spacing: 4rem;
 
 $header-line-height: 1.6em;
 $paragraph-line-height: 1.5em;
