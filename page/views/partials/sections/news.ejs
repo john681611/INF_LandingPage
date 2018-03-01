@@ -9,7 +9,7 @@
             <div class="date"><%= item.date%></div>
           </h3>
           <% if(item.imagelink != "") {%>
-            <img class="newsimg" src="<%= item.imagelink %>"/>
+            <img class="newsimg lazyload" data-src="<%= item.imagelink %>"/>
           <%}%>
           <p><%- item.text %></p>
           <a class="btn btn-default btn-lg" href="<%= item.link%>" target="_blank">
