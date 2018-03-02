@@ -47,7 +47,7 @@ function deleteItem(req, res, obj, file) {
 }
 
 function findIdx(obj, id) {
-    return obj.findIndex(el => el.id == id);
+    return obj.findIndex(el => el.id.toString() === id.toString());
 }
 
 
