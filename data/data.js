@@ -23,7 +23,8 @@ function saveSomething(req, res, obj, file, unshift) {
         }
         fs.writeFile(file, JSON.stringify(obj, null, 4), function (error) {
             if (error) {
-                return res.status(500).json({ error: 'Something went wrong!' });
+                res.status(500);
+                return res.json({ error: 'Something went wrong!' });
             }
             res.redirect('/edit');
         });
@@ -36,11 +37,13 @@ function deleteSomething(req, res, obj, file) {
         if (idx > -1) {
             obj.splice(idx, 1);
         } else {
-            return res.status(404).json({ error: 'ID not found' });
+            res.status(404);
+            return res.json({ error: 'ID not found' });
         }
         fs.writeFile(file, JSON.stringify(obj, null, 4), function (error) {
             if (error) {
-                return res.status(500).json({ error: 'Something went wrong!' });
+                res.status(500);
+                return res.json({ error: 'Something went wrong!' });
             }
             return res.redirect('/edit');
         });
