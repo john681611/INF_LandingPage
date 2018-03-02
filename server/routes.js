@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 router.get('/', function (req, res) {
-    res.renderMin('index.ejs', data);
+    res.renderMin('index.ejs', data.getData());
 });
 
 router.get('/modlist/:id', function (req, res) {
@@ -19,7 +19,7 @@ router.get('/modlist/:id', function (req, res) {
 
 router.get('/edit', function (req, res) {
     auth.authenticate(req, res, function () {
-        res.renderMin('edit.ejs', data);
+        res.renderMin('edit.ejs', data.getData());
     });
 });
 
@@ -42,27 +42,27 @@ router.post('/serverFile', function (req, res) {
 });
 
 router.post('/news', function (req, res) {
-    data.saveSomething(req, res, data.news, './data/newsItems.json', true);
+    data.addItem(req, res, data.getData().news, './data/newsItems.json', true);
 });
 
 router.post('/delete/news', function (req, res) {
-    data.deleteSomething(req, res, data.news, './data/newsItems.json');
+    data.deleteItem(req, res, data.getData().news, './data/newsItems.json');
 });
 
 router.post('/member', function (req, res) {
-    data.saveSomething(req, res, data.members, './data/members.json');
+    data.addItem(req, res, data.getData().members, './data/members.json');
 });
 
 router.post('/delete/member', function (req, res) {
-    data.deleteSomething(req, res, data.members, './data/members.json');
+    data.deleteItem(req, res, data.getData().members, './data/members.json');
 });
 
 router.post('/donator', function (req, res) {
-    data.saveSomething(req, res, data.donators, './data/donators.json');
+    data.addItem(req, res, data.getData().donators, './data/donators.json');
 });
 
 router.post('/delete/donator', function (req, res) {
-    data.deleteSomething(req, res, data.donators, './data/donators.json');
+    data.deleteItem(req, res, data.getData().donators, './data/donators.json');
 });
 
 module.exports = {
