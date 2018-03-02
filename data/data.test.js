@@ -1,119 +1,199 @@
 const data = require('./data');
 const httpMocks = require('node-mocks-http');
+const fs = require('fs');
 
-describe('File Mod Funcs', function () {
+describe.only('File Mod Funcs', function () {
     const authHeader = 'Basic ' + new Buffer('usr' + ':' + 'pwd').toString('base64');
-    var testObj = require('../data/testOBJ.json');
-    var res = {
-        redirect:() =>this,
-        set:() =>this,
-        end:() =>{
-            throw new Error();
-        },
-        status:() =>this,
-        json: () =>res
+    const file = './data/testOBJ.json';
+    let fsWriteStub, redirectStub;
+    let res = {
+        redirect: () => this,
+        set: () => this,
+        end: () => { },
+        status: () => this,
+        json: () => res
     };
-
-    it('should save bob to file', function () {
-    //given
-        var req  = httpMocks.createRequest({
-            body:{
-                id:'-1',
-                name:'bob'
-            },
-            headers : {
-                'Authorization' : authHeader
-            }
-        });
-        //when
-        data.saveSomething(req,res,testObj,'./data/testOBJ.json');
-        //then
-        expect(testObj.length === 1,'object not changed');
-        expect(testObj[0].name, 'bob');
-        expect(require('../data/testOBJ.json')).deepEqual(testObj, 'object not saved');
+    beforeEach(() => {
+        fsWriteStub = sinon.stub(fs, 'writeFile').yields(null);
+        redirectStub = sinon.stub(res, 'redirect');
     });
 
-    it('should save bob3 to file and be top of list', function () {
-    //given
-        var req  = httpMocks.createRequest({
-            body:{
-                id:'-1',
-                name:'bob3'
-            },
-            headers : {
-                'Authorization' : authHeader
-            }
-        });
-        //when
-        data.saveSomething(req,res,testObj,'./data/testOBJ.json',true);
-        //then
-        expect(testObj.length === 2,'object not changed');
-        expect(testObj[0].name === 'bob3', 'bob3 not first ' + testObj[0].name + ' was.');
-        expect(require('../data/testOBJ.json')).deepEqual( testObj, 'object not saved');
+    afterEach(() => {
+        fsWriteStub.restore();
+        redirectStub.restore();
     });
 
-    it('should change bob to bob2', function () {
-    //given
-        var req  = httpMocks.createRequest({
-            body:{
-                id:'0',
-                name:'bob2'
-            },
-            headers : {
-                'Authorization' : authHeader
-            }
-        });
-        //when
-        data.saveSomething(req,res,testObj,'./data/testOBJ.json');
-        //then
-        expect(testObj.length === 2,'object not changed');
-        expect(testObj[1].name === 'bob2','name not changed');
-        expect(require('../data/testOBJ.json')).deepEqual(testObj, 'object not saved');
-    });
+    describe.only('Save', function () {
 
-    it('should delete something from file file', function () {
-    //given
-        var req  = httpMocks.createRequest({
-            body:{
-                id:'0'
-            },
-            headers : {
-                'Authorization' : authHeader
-            }
+        it('should save bob to file', function () {
+            //given
+            const expected = JSON.stringify([{
+                id: 0,
+                name: 'bob'
+            }], null, 4);
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '-1',
+                    name: 'bob'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+            //when
+            data.saveSomething(req, res, [], file);
+            //then
+            expect(fsWriteStub.getCall(0).args[0]).to.equal(file);
+            expect(fsWriteStub.getCall(0).args[1]).to.deep.equal(expected);
+            expect(redirectStub).to.have.been.calledOnce;
         });
-        //when
-        data.deleteSomething(req,res,testObj,'./data/testOBJ.json');
-        //then
-        expect(testObj.length === 1,'object not deleted');
-        expect(require('../data/testOBJ.json')).deepEqual(testObj, 'object not saved');
-    });
 
-    it('should delete something from file file', function () {
-    //given
-        var req  = httpMocks.createRequest({
-            body:{
-                id:'1'
+        it('should save bob3 to file and be top of list', function () {
+            const expected = JSON.stringify([{
+                id: 0,
+                name: 'bob'
             },
-            headers : {
-                'Authorization' : authHeader
-            }
+            {
+                id: 1,
+                name: 'bob3'
+            }], null, 4);
+
+            const testOBJ = [{
+                id: 0,
+                name: 'bob'
+            }];
+
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '-1',
+                    name: 'bob3'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+
+            data.saveSomething(req, res, testOBJ, file, true);
+
+            expect(fsWriteStub.getCall(0).args[1]).to.deep.equal(expected);
         });
-        //when
-        data.deleteSomething(req,res,testObj,'./data/testOBJ.json');
-        //then
-        expect(testObj.length === 0,'object not deleted');
-        expect(require('../data/testOBJ.json')).deepEqual(testObj, 'object not saved');
+
+        it('should change bob to bob2', function () {
+            const expected = JSON.stringify([{
+                id: 0,
+                name: 'bob2'
+            },
+            {
+                id: 1,
+                name: 'bob3'
+            }], null, 4);
+
+            const testOBJ = [{
+                id: 0,
+                name: 'bob'
+            }];
+
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '0',
+                    name: 'bob2'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+            //when
+            data.saveSomething(req, res, testOBJ, file);
+            //then
+            expect(fsWriteStub.getCall(0).args[1]).to.deep.equal(expected);
+        });
+    });
+    describe.only('Delete', function () {
+        let jsonStub;
+        beforeEach(()=>{
+            jsonStub = sinon.stub(res, 'json');
+        });
+
+        afterEach(()=>{
+            jsonStub.restore();
+        });
+
+        it('should delete something from file', function () {
+            const expected = JSON.stringify([], null, 4);
+
+            const testOBJ = [{
+                id: 0,
+                name: 'bob'
+            }];
+
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '0'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+            //when
+            data.deleteSomething(req, res, testOBJ, file);
+            //then
+            expect(fsWriteStub.getCall(0).args[0]).to.equal(file);
+            expect(fsWriteStub.getCall(0).args[1]).to.deep.equal(expected);
+            expect(redirectStub).to.have.been.calledOnce;
+        });
+
+        it('should handle index error', function () {
+
+            const testOBJ = [{
+                id: 1,
+                name: 'bob'
+            }];
+
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '0'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+            //when
+            data.deleteSomething(req, res, testOBJ, file);
+            //then
+            expect(jsonStub).to.have.been.calledWith({error:'ID not found'});
+        });
+
+        it('should handle fileWrite error', function () {
+            fsWriteStub.yields('fuck');
+            const testOBJ = [{
+                id: 1,
+                name: 'bob'
+            }];
+
+            const req = httpMocks.createRequest({
+                body: {
+                    id: '1'
+                },
+                headers: {
+                    'Authorization': authHeader
+                }
+            });
+            //when
+            data.deleteSomething(req, res, testOBJ, file);
+            //then
+            expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
+        });
     });
 });
 
 describe('findIdx', function () {
-    var req  = [{id:1},{id:0}];
+    var req = [{ id: 1 }, { id: 0 }];
     it('should find by ID not index', function () {
-    //when
-        expect(data.findIdx(req,'1') === 0);
+        //when
+        expect(data.findIdx(req, '1') === 0);
     });
     it('should return -1 when not found', function () {
-    //when
-        expect(data.findIdx(req,'2') === -1);
+        //when
+        expect(data.findIdx(req, '2') === -1);
     });
 });
