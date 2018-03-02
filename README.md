@@ -1,4 +1,7 @@
 # Site Repo for INF
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a654122b6b884156a0891a3014fca954)](https://app.codacy.com/app/john681611/INF_LandingPage?utm_source=github.com&utm_medium=referral&utm_content=john681611/INF_LandingPage&utm_campaign=badger)
+
 ## Requirements
 - Node
 - npm
