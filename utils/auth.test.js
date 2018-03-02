@@ -1,18 +1,11 @@
 const httpMocks = require('node-mocks-http');
 const auth = require('./auth');
+const res = require('../test/res.mock');
 
 describe('Authorization', function () {
     process.env.USR = 'usr';
     process.env.pass = 'pwd';
     let endSpy;
-    let res = {
-        redirect:() =>this,
-        set:() =>this,
-        end:() =>{
-        },
-        status:() =>this,
-        json: () =>res
-    };
 
     beforeEach(()=>{
         endSpy = sinon.spy(res,'end');
