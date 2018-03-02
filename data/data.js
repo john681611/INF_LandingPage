@@ -51,15 +51,24 @@ function findIdx(obj, id) {
 }
 
 
-
+function getData() {
+    delete require.cache['./newsItems.json'];
+    delete require.cache['./servers.json'];
+    delete require.cache['./members.json'];
+    delete require.cache['./donators.json'];
+    const news = require('./newsItems.json').sort((a,b)=>Date.parse(b.date) - Date.parse(a.date));
+    return {
+        news,
+        servers: require('./servers.json'),
+        members: require('./members.json'),
+        donators: require('./donators.json'),
+        squads: require('./squads.json')
+    };
+}
 
 module.exports = {
     addItem,
     deleteItem,
-    findIdx: findIdx,
-    news: require('./newsItems.json'),
-    servers: require('./servers.json'),
-    members: require('./members.json'),
-    donators: require('./donators.json'),
-    squads: [{id:'A',name:'Alpha'},{id:'B',name:'Bravo'}]
+    findIdx,
+    getData
 };
