@@ -30,7 +30,7 @@
           <input type="text" class="form-control"required name="imagelink" value="<%= item.imagelink %>" placeholder="Image Link" oninput="UpdateUserImage(this.value,<%= item.id %>)"><br>
           <textarea name="text" class="form-control"required rows="8" cols="80" placeholder="Description:" ><%= item.text %></textarea><br>
           <input type="text" class="form-control"required name="link" value="<%= item.link%>" placeholder="Site Link" ><br>
-          <label for="default" class="btn btn-default">Event <input type="checkbox" id="default" name="event" class="badgebox" <%= item.event ? "checked" : "" %> ><span class="badge">&check;</span></label><br>
+          <label for="id-<%= item.id %>" class="btn btn-default">Event <input type="checkbox" id="id-<%= item.id %>" name="event" class="badgebox" <%= item.event ? "checked" : "" %> ><span class="badge">&check;</span></label><br>
           <button class="btn btn-default btn-lg" type="submit">save</button>
           </form>
           <form method="POST" action="delete/news" class="form-group">
