@@ -1,18 +1,12 @@
 const data = require('./data');
 const httpMocks = require('node-mocks-http');
 const fs = require('fs');
+const res = require('../test/res.mock');
 
 describe('File Mod Funcs', function () {
     const authHeader = 'Basic ' + new Buffer('usr' + ':' + 'pwd').toString('base64');
     const file = './data/testOBJ.json';
     let fsWriteStub, redirectStub, jsonStub;
-    let res = {
-        redirect: () => this,
-        set: () => this,
-        end: () => { },
-        status: () => this,
-        json: () => res
-    };
     beforeEach(() => {
         fsWriteStub = sinon.stub(fs, 'writeFile').yields(null);
         redirectStub = sinon.stub(res, 'redirect');
