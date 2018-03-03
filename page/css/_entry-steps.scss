@@ -1,0 +1,63 @@
+.entry-steps {
+    list-style: none;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    color: $accent-font-color;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.entry-step {
+    padding: $base-spacing;
+    border: 1px solid $divider-color;
+    border-width: 1px 0 0;
+
+    @media (min-width: $tablet-breakpoint) {
+        width: calc(50% - #{$base-spacing} * 2 - 1px);
+        border-width: 0;
+        margin-bottom: $base-spacing;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+        width: calc(33% - #{$base-spacing} * 2 - 1px);
+    }
+
+    .extra {
+        color: $base-font-color;
+    }
+
+    &:last-child {
+        border-width: 1px 0;
+
+        @media (min-width: $tablet-breakpoint) {
+            border-width: 1px 0 0;
+            width: 100%;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            border-width: 0;
+            width: calc(33% - #{$base-spacing} * 2 - 1px);
+        }
+    }
+
+    &:nth-child(2) {
+        @media (min-width: $tablet-breakpoint) {
+            border-width: 0 0 0 1px;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            border-width: 0 1px;
+        }
+    }
+
+    &__number {
+        width: 5rem;
+        height: 5rem;
+        line-height: 5rem;
+        margin: 0 auto $base-spacing;
+        border: 1px solid $entry-steps-border;
+        border-radius: 50%;
+        font-size: 3rem;
+    }
+}
