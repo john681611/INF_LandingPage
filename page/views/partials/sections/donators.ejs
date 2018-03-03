@@ -1,28 +1,8 @@
-<section id="donate" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
-            <h2>Donate</h2>
-            <p>We run on the generous donations of our members and other interested parties, without them none of this would be possible.
-              Running this clan costs about <b>£55pcm</b> due before the <b>20th</b> of every month. If you can help in any way it will be much appreciated.</p>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="CLT9QRCDAM748">
-              <button border="0" class="btn btn-default btn-lg" name="submit" alt="PayPal – The safer, easier way to pay online!">Donate</button>
-            </form>
-        </div>
-    </div>
-</section>
-<section  class="content-section text-center">
-    <div class="donators-section download-section">
-        <div class="container">
-            <div class="col-lg-8 col-lg-offset-2 background-shadow">
-              <h2>This Months Donators</h2>
-              <p>Thank you for your support to keep us going strong.</p>
-              <br/>
-              <% donators.forEach(donator =>{%>
-                  <h4><%= donator.name %></h4><br/>
-              <% }) %>
-            </div>
-        </div>
-    </div>
-</section>
+<h2>This Months Donators</h2>
+<p>Thank you for your support to keep us going strong.</p>
+<br/>
+<% donators.forEach(donator =>{%>
+    <h4>
+        <%= donator.name %>
+    </h4>
+    <% }) %>

@@ -8,51 +8,73 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <%- include('partials/nav'); %>
-
     <%- include('partials/header'); %>
 
-    <section id="news" class="container content-section text-center">
-        <%- include('partials/sections/news', news); %>
+    <section id="news" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/news', news); %>
+        </div>
     </section>
 
-
-    <!-- Download Section -->
-    <section id="forum" class="content-section text-center">
-        <%- include('partials/sections/forum'); %>
+    <section id="forum" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/forum'); %>
+        </div>
     </section>
 
-    <section id="about" class="container content-section text-center">
-        <%- include('partials/sections/about'); %>
+    <section id="about" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/about'); %>
+        </div>
     </section>
 
-    <section id="join" class="container content-section text-center">
-        <%- include('partials/sections/join'); %>
+    <section id="join" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/join'); %>
+        </div>
     </section>
 
-
-    <!-- Contact Section -->
-    <section id="servers" class="content-section text-center">
-        <%- include('partials/sections/servers', servers); %>
+    <section id="servers" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/servers', servers); %>
+        </div>
     </section>
 
-    <section id="rules" class="container content-section text-center">
-        <%- include('partials/sections/rules'); %>
+    <section id="rules" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/rules'); %>
+        </div>
     </section>
 
-    <section id="links" class="content-section text-center">
-        <%- include('partials/sections/links'); %>
+    <section id="links" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/links'); %>
+        </div>
     </section>
 
-
-    <section id="cndmsg" class="container content-section text-center">
-        <%- include('partials/sections/commandmsg'); %>
+    <section id="cmdmsg" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/commandmsg'); %>
+        </div>
     </section>
 
-    <section id="roster" class="content-section text-center">
-        <%- include('partials/sections/roster', {members: members, squads:squads}); %>
+    <section id="roster" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/roster', {members: members, squads:squads}); %>
+        </div>
     </section>
 
-    <%- include('partials/sections/donators', donators); %>
+    <section id="donate" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/donate'); %>
+        </div>
+    </section>
+
+    <section id="donators" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/donators', donators); %>
+        </div>
+    </section>
     
     <%- include('partials/footer'); %>
 </body>
