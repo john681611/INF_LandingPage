@@ -1,33 +1,37 @@
-<div class="roster-section download-section">
-    <div class="container">
-        <div class="col-lg-10 col-lg-offset-1 background-shadow">
-            <h2>Roster</h2>
-            <% squads.forEach(squad => { %>
-              <h3><%= squad.name%></h3>
-              <table class="table table-inverse">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th class="no-mobile">Rank</th>
-                  <th class="no-mobile">Position</th>
-                  <th>Role</th>
-                  <th class="no-mobile">Enlisted</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <% members.filter(member => member.squad === squad.id).forEach(member =>  {%>
-                <tr>
-                  <td><%= member.name %></td>
-                  <td class="no-mobile" scope="row"><%= member.rank %></th>
-                  <td class="no-mobile"><%= member.pos %></td>
-                  <td><%= member.role %></td>
-                  <td class="no-mobile"><%= member.joined %></td>
-                </tr>
-                <% }) %>
-              </tbody>
-            </table>
-            <hr />
-            <% }) %>
-        </div>
-    </div>
-</div>
+<h2>Roster</h2>
+<% squads.forEach(squad => { %>
+  <h3><%= squad.name%></h3>
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="no-mobile">Rank</th>
+        <th class="no-mobile">Position</th>
+        <th>Role</th>
+        <th class="no-mobile">Enlisted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% members.filter(member => member.squad === squad.id).forEach(member =>  {%>
+        <tr>
+          <td>
+            <%= member.name %>
+          </td>
+          <td class="no-mobile" scope="row">
+            <%= member.rank %>
+              </th>
+              <td class="no-mobile">
+                <%= member.pos %>
+              </td>
+              <td>
+                <%= member.role %>
+              </td>
+              <td class="no-mobile">
+                <%= member.joined %>
+              </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+  <hr />
+<% }) %>

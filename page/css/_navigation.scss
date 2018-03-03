@@ -10,11 +10,23 @@
     @media (min-width: $tablet-breakpoint) {
         background-color: rgba($color: $menu-background, $alpha: 0.7);
         border-bottom: 1px solid $menu-border;
+        padding: $element-spacing $base-spacing;
+        transition: all ease-in 0.5s;
+
+        &.collapse {
+            background-color: $menu-background;
+            padding: $base-spacing;
+            transition: all ease-in 0.5s;
+        }
     }
 
     @media (min-width: $desktop-breakpoint) {
-        padding: 0 10%;
-        width: 80%;
+        padding: $element-spacing 12.5%;
+        width: 85%;
+
+        &.collapse {
+            padding: $base-spacing 12.5%;
+        }
     }
 
     &__container,
@@ -36,7 +48,7 @@
         border-bottom: 1px solid $menu-border;
 
         @media (min-width: $tablet-breakpoint) {
-            padding: $base-spacing $element-spacing;
+            padding: 0;
             border: 0;
             display: inline-block;
         }
@@ -72,8 +84,13 @@
 
         @media (min-width: $tablet-breakpoint) {
             max-height: 1000px;
-            padding: $base-spacing $element-spacing;
+            padding: 0 $base-spacing 0 0;
             float: right;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            padding-right: 10%;
+            margin-top: -1.5px;
         }
 
         input:checked + & {
@@ -114,6 +131,21 @@
 
             @media (min-width: $tablet-breakpoint) {
                 margin: 0;
+            }
+
+            @media (min-width: $desktop-breakpoint) {
+                &:after {
+                    content: "";
+                    display: block;
+                    border-bottom: solid 3px $link-hover-color;
+                    margin-top: 4px;
+                    transform: scaleX(0);  
+                    transition: transform 0.25s ease-in-out;
+                }
+
+                &:hover:after {
+                    transform: scaleX(1);
+                }
             }
         }
     }

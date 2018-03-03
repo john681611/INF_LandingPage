@@ -1,5 +1,5 @@
 // Lazy loading for background images
-var ll = [].slice.call(document.querySelectorAll('div[class*=section]'));
+var ll = [].slice.call(document.querySelectorAll('.section'));
 var lh = [];
 var wh = window.innerHeight;
 

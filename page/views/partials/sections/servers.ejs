@@ -1,27 +1,29 @@
-<div class="download-section server-section">
-    <div class="container">
-        <div class="col-lg-10 col-lg-offset-1 background-shadow">
-        <h2>Servers</h2>
-        <hr />
-        <% servers.forEach(server => { %>
-        <h3><%= server.name %></h3>
-          <p><a href="<%= server.info.link %>" target="_blank" title="<%= server.info.link %>" class="postlink" rel="nofollow"><img alt="" resizemod="off" class="lazyload" data-src="<%= server.info.src %>" border="0" alt="" width="100%" title=""></a></p>
-          
-          <% if(server.file){ %>
-            <a class="btn btn-default btn-lg" href="/modlist/<%= server.id %>" download="INF_<%= server.name %>_preset.html">Download Preset</a>
-            <p class="smalltxt">Drag and drop file into Launcher</p>
-          <% }%>
-
-          <% Object.keys(server.mods).forEach(key => { %>
-          <% if(server.mods[key].length > 0){ %>
-            <h4><%= key %></h4>
-            <p>
-              <% server.mods[key].forEach(mod => { %>
-                <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=<%= mod.steamID %>" target="_blank"><%= mod.name %></a>
-              <% }) %> 
-            </p>
+<h2>Servers</h2>
+<% servers.forEach(server => { %>
+  <h3>
+    <%= server.name %>
+  </h3>
+  <p>
+    <a href="<%= server.info.link %>" target="_blank" title="<%= server.info.link %>" class="postlink" rel="nofollow">
+      <img alt="" resizemod="off" class="lazyload" data-src="<%= server.info.src %>" border="0" alt="" width="100%" title="">
+    </a>
+  </p>
+  <% if(server.file){ %>
+    <a class="btn btn-default btn-lg" href="/modlist/<%= server.id %>" download="INF_<%= server.name %>_preset.html">Download Preset</a>
+    <p class="smalltxt">Drag and drop file into Launcher</p>
+    <% }%>
+      <% Object.keys(server.mods).forEach(key => { %>
+        <% if(server.mods[key].length > 0){ %>
+          <h4>
+            <%= key %>
+          </h4>
+          <p>
+            <% server.mods[key].forEach(mod => { %>
+              <a class="btn btn-default btn-lg" href="https://steamcommunity.com/sharedfiles/filedetails/?id=<%= mod.steamID %>" target="_blank">
+                <%= mod.name %>
+              </a>
+              <% }) %>
+          </p>
           <% }}) %>
-          <hr /> 
-        <% }) %>
-    </div>
-</div>
+
+            <% }) %>

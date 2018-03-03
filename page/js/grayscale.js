@@ -1,20 +1,17 @@
-/*!
- * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
-    if ($(".navbar").offset().top > 50) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    let navigation = document.querySelector('.nav');
+    var scrollPosition = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
+
+    if (scrollPosition > 50) {
+        navigation.classList.add('collapse');
     } else {
-        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        navigation.classList.remove('collapse');
     }
 }
 
-$(window).scroll(collapseNavbar);
-$(document).ready(collapseNavbar);
+window.addEventListener('scroll', collapseNavbar);
+window.addEventListener('ready', collapseNavbar);
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
