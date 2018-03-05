@@ -6,6 +6,7 @@
     letter-spacing: 1px;
     position: fixed;
     width: 100%;
+    z-index: 1000;
 
     @media (min-width: $tablet-breakpoint) {
         background-color: rgba($color: $menu-background, $alpha: 0.7);
@@ -130,7 +131,7 @@
             font-size: 14px;
 
             @media (min-width: $tablet-breakpoint) {
-                margin: 0;
+                margin: 0; 
             }
 
             @media (min-width: $desktop-breakpoint) {

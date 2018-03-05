@@ -1,6 +1,5 @@
 <h2>News &amp; Events</h2>
 <% news.forEach((item,index) => {if(index < 3) { %>
-  <div>
     <h3>
       <%= item.title %>
         <div class="date">
@@ -20,6 +19,6 @@
               Read More
               <%}%>
         </a>
-  </div>
+        <hr>
   <% }}) %>
 <a class="btn btn-default btn-lg" href="http://forums.iron-fists.eu/index.php" target="_blank">View More</a>

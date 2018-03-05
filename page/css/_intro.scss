@@ -25,6 +25,8 @@
         border-color: #FFF;
         border-radius: 50%;
         height: 40px;
+        width: auto;
+        min-width: auto;
 
         &:hover{
             background-color: transparent;
