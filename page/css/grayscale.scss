@@ -1,4 +1,11 @@
 @import "common";
+
 @import "navigation";
+
 @import "intro";
-@import "sections";
+
+@import "sections/common";
+@import "sections/backgrounds";
+@import "sections/news";
+@import "sections/requirements";
+@import "sections/entry-steps";

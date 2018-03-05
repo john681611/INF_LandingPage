@@ -1,0 +1,58 @@
+// Sections' backgrounds
+.loaded {
+    &#forum {
+        background-image: url(../../img/forum-mobile.jpg);
+
+        @media (min-width: $tablet-breakpoint) {
+            background-image: url(../../img/forum-desktop-tablet.jpg);
+        }
+    }
+
+    &#servers {
+        background-image: url(../../img/Arma-3-Apex-mobile.jpg);
+
+        @media (min-width: $tablet-breakpoint) {
+            background-image: url(../../img/Arma-3-Apex-tablet.jpg);
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            background-image: url(../../img/Arma-3-Apex-desktop.jpg);
+        }
+    }
+
+    &#links {
+        background-image:url(../../img/Arma-3-Zeus-mobile.jpg);
+
+        @media (min-width: $tablet-breakpoint) {
+            background-image: url(../../img/Arma-3-Zeus-tablet.jpg);
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            background-image: url(../../img/Arma-3-Zeus-desktop.jpg);
+        }
+    }
+
+    &#roster {
+        background-image:url(../../img/Arma-3-Marksmen-mobile.jpg);
+
+        @media (min-width: $tablet-breakpoint) {
+            background-image: url(../../img/Arma-3-Marksmen-tablet.jpg);
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            background-image: url(../../img/Arma-3-Marksmen-desktop.jpg);
+        }
+    }
+
+    &#donators {
+        background-image:url(../../img/Arma-3-Laws-mobile.jpg);
+
+        @media (min-width: $tablet-breakpoint) {
+            background-image: url(../../img/Arma-3-Laws-tablet.jpg);
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            background-image: url(../../img/Arma-3-Laws-desktop.jpg);
+        }
+    }
+}

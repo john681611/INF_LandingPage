@@ -1,0 +1,17 @@
+#news {
+    .date {
+        font-size: 12px;
+        margin-top: $base-spacing;
+        font-weight: 300;
+        color: $date-color;
+    }
+
+    img {
+        margin-bottom: $element-spacing;
+        width: 100%;
+
+        @media (min-width: $tablet-breakpoint) {
+            width: 50%;
+        }
+    }
+}

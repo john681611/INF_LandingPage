@@ -1,0 +1,31 @@
+.requirements {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        padding: $base-spacing;
+        text-align: center;
+        border-bottom: 1px solid $divider-color;
+
+        @media (min-width: $tablet-breakpoint) {
+            width: calc(33% - #{$base-spacing} * 2 - 1px);
+            border-right: 1px solid $divider-color;
+            border-bottom: 0;
+        }
+
+        @media (min-width: $desktop-breakpoint) {
+            width: calc(25% - #{$base-spacing} * 2 - 1px);
+        }
+    }
+
+    &__icon {
+        margin-bottom: $base-spacing;
+        text-align: center;
+
+        svg {
+            margin: 0 auto;
+        }
+    }
+}
