@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/modlist/:id', function (req, res) {
-    if (0 <= req.params.id && req.params.id <= data.servers.length) {
+    if (req.params.id >= 0  && req.params.id <= data.servers.length) {
         res.render('importModList.ejs', data.servers[req.params.id]);
     } else {
         res.status(404).send('No mod List found');

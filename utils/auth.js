@@ -1,6 +1,6 @@
 const auth = require('basic-auth');
 
-function authenticate(req, res, callback) {
+const authenticate = (req, res, callback) => {
     var credentials = auth(req);
     if (!credentials || credentials.name !== process.env.USR || credentials.pass !== process.env.pass) {
         res.status(401);
@@ -9,7 +9,7 @@ function authenticate(req, res, callback) {
     } else {
         callback();
     }
-}
+};
 
 module.exports = {
     authenticate
