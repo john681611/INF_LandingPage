@@ -26,19 +26,35 @@ h1 {
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2rem;
+
+    @media (min-width: $tablet-breakpoint) {
+        font-size: 3rem;
+    }
 }
 
 h3 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+
+    @media (min-width: $tablet-breakpoint) {
+        font-size: 2.5rem;
+    }
 }
 
 h4 {
-    font-size: 2rem;
+    font-size: 1.3rem;
+
+    @media (min-width: $tablet-breakpoint) {
+        font-size: 2rem;
+    }
 }
 
 h5 {
-    font-size: 1.5rem;
+    font-size: 1rem;
+
+    @media (min-width: $tablet-breakpoint) {
+        font-size: 1.5rem;
+    }
 }
 
 h6 {
@@ -73,8 +89,14 @@ button,
     border: 1px solid $button-color;
     color: $button-color;
     text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
     padding: $base-spacing;
+    width: calc(100% - #{$base-spacing} * 2);
+    transition: all 0.2s ease-in-out;
+
+    @media (min-width: $tablet-breakpoint) {
+        min-width: 10rem;
+        width: auto;
+    }
 
     &:hover,
     &:focus {
@@ -108,10 +130,24 @@ table {
     }
 }
 
+// Horizontal line
+hr {
+    border: 0;
+    height: 1px;
+    background-color: $divider-color;
+    margin: $element-spacing 0;
+}
+
 // Utility
 .a11y {
     position: absolute !important;
     height: 1px; width: 1px; 
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
+}
+
+.no-mobile {
+    @media (max-width: $tablet-breakpoint) {
+        display: none;
+    }
 }
