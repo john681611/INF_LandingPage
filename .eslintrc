@@ -1,7 +1,8 @@
 {
     "extends": "eslint-config-mns-core/ecma-config",
     "rules": {
-        "eqeqeq": ["error", "smart"]
+        "eqeqeq": ["error", "smart"],
+        "func-style":["error", "declaration", { "allowArrowFunctions": true }]
     },
     "env": {
         "commonjs": true,

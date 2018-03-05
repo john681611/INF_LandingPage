@@ -15,7 +15,7 @@ describe('Authorization', function () {
         endSpy.restore();
     });
     it('should log in with correct Auth', function () {
-        let spy =  sinon.spy();
+        const spy =  sinon.spy();
         const req  = httpMocks.createRequest({
             headers : {
                 'Authorization' : 'Basic ' + new Buffer('usr' + ':' + 'pwd').toString('base64')

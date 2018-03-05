@@ -37,11 +37,7 @@ app.use(function (req, res) {
     res.status(404).send('This isnt the page your looking for!');
 });
 
-http.createServer(app).listen(process.env.PORT || 8080, function () {
-    process.stdout.write('Secure Server listening on port ' + 8080
+http.createServer(app).listen(process.env.PORT || 8080, () => {
+    process.stdout.write('Secure Server listening on port ' + (process.env.PORT || 8080)
     );
 });
-
-
-
-
