@@ -213,20 +213,20 @@ describe('File Mod Funcs', function () {
     });
 });
 
-describe('findIdx', function () {
+describe('findIndex', function () {
     var req = [{ id: 2 },{ id: '1' }, { id: '0' }];
     it('should find by ID not index', function () {
         //when
-        expect(data.findIdx(req, '1') === 1);
+        expect(data.findIndex(req, '1') === 1);
     });
 
     it('should return -1 when not found', function () {
         //when
-        expect(data.findIdx(req, '3') === -1);
+        expect(data.findIndex(req, '3') === -1);
     });
 
     it('should deal with num and string', function () {
         //when
-        expect(data.findIdx(req, '2') === 0);
+        expect(data.findIndex(req, '2') === 0);
     });
 });
