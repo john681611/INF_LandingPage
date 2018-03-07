@@ -5,13 +5,13 @@ const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
 };
 
-const writeToFile = (file, obj, res) => {
+const writeToFileAndRedirect = (file, obj, res) => {
     fs.writeFile(file, JSON.stringify(obj, null, 4), function (error) {
         if (error) {
             res.status(500);
-            return res.json({ error: 'Something went wrong!' });
+            res.json({ error: 'Something went wrong!' });
         }
-        return res.redirect('/edit');
+        res.redirect('/edit');
     });
 };
 
@@ -29,7 +29,7 @@ const addItem = (req, res, obj, file) => {
                 return res.status(404).json({ error: 'ID not found' });
             }
         }
-        return writeToFile(file, obj, res);
+        return writeToFileAndRedirect(file, obj, res);
     });
 };
 
@@ -42,7 +42,7 @@ const deleteItem = (req, res, obj, file) => {
             res.status(404);
             return res.json({ error: 'ID not found' });
         }
-        return writeToFile(file, obj, res);
+        return writeToFileAndRedirect(file, obj, res);
     });
 };
 
