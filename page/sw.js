@@ -1,30 +1,11 @@
-/*
-*
-*  Push Notifications codelab
-*  Copyright 2015 Google Inc. All rights reserved.
-*
-*  Licensed under the Apache License, Version 2.0 (the 'License');
-*  you may not use this file except in compliance with the License.
-*  You may obtain a copy of the License at
-*
-*      https://www.apache.org/licenses/LICENSE-2.0
-*
-*  Unless required by applicable law or agreed to in writing, software
-*  distributed under the License is distributed on an 'AS IS' BASIS,
-*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-*  See the License for the specific language governing permissions and
-*  limitations under the License
-*
-*/
 
 /* eslint-env browser, serviceworker, es6 */
 
 
 
-/* eslint-disable max-len */
 const cacheList = [
     '/',
-    '/css/grayscale.css',
+    '/assets/grayscale.css',
     '/js/grayscale.js',
     '/js/lazysizes.min.js',
     '/js/main.js',
@@ -45,18 +26,19 @@ const cacheList = [
     '/img/Arma-3-Zeus-mobile.jpg',
     '/img/Arma-3-Zeus-tablet.jpg',
     '/img/arma3logo.png',
-    '/img/facebook.png',
     '/img/favicon.ico',
     '/img/forum-desktop-tablet.jpg',
     '/img/forum-mobile.jpg',
     '/img/logo-desktop.png',
-    '/img/ts.png',
-    '/img/units.png',
     '/manifest.json'
+].map(url => new Request(url, {credentials: 'same-origin'}));
+
+const updateList =[
+    '/'
 ];
 
-const cacheName = 'INF_v0';
-/* eslint-enable max-len */
+const cacheName = 'INF_v1';
+
 
 const urlB64ToUint8Array = base64String => {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -71,15 +53,13 @@ const urlB64ToUint8Array = base64String => {
         outputArray[i] = rawData.charCodeAt(i);
     }
     return outputArray;
-}
+};
 
 self.addEventListener('install',event => {
     event.waitUntil(
         caches.open(cacheName).then(cache =>{
             return cache.addAll(cacheList);
-        }).then(() => {
-            return self.skipWaiting();
-        })
+        }).catch(error => console.error(error))
     );
 });
 
@@ -101,9 +81,12 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.open(cacheName).then(cache => {
             return cache.match(event.request).then(response => {
-                return new URL(event.request.url).pathname !=='/' && response? response : fetch(event.request).then(response => {
-                    console.log('updated: ',event.request.url);
-                    cache.put(event.request, response.clone());
+                const path = new URL(event.request.url).pathname;
+                return !updateList.includes(path) && response? response : fetch(event.request).then(response => {
+                    if(updateList.includes(path)) {
+                        console.log('updated: ',event.request.url);
+                        cache.put(event.request, response.clone());
+                    }
                     return response;
                 }).catch((e) => {
                     console.log(e);

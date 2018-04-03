@@ -72,10 +72,11 @@ router.post('/delete/donator', function (req, res) {
 
 
 router.post('/pwa', function(req,res){
-    const sub = JSON.parse(req.body.sub);
-    let subs =  data.getPushSubscriptions();
-    subs.push(sub);
-    data.addSub(req, res, subs);
+    if(req.body !== {}) {
+        let subs = data.getPushSubscriptions();
+        subs.push(req.body);
+        data.addSub(req, res, subs);
+    }
 });
 
 router.get('/ping', function(req,res) {

@@ -12,8 +12,7 @@
         "expect": true,
         "sinon": true,
         "browser": true,
-        "Zone": true,
-        "$": true
+        "Zone": true
     },
     "parserOptions" : {
         "ecmaFeatures" : {
