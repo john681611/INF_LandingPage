@@ -30,13 +30,15 @@
 
     &:first-child {
         border-width: 0 0 1px;
+
+        @media (min-width: $tablet-breakpoint) {
+            border-width: 0;
+        }
     }
 
     &:last-child {
-        border-width: 1px 0;
 
         @media (min-width: $tablet-breakpoint) {
-            border-width: 1px 0 0;
             width: 100%;
         }
 

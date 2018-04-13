@@ -18,12 +18,26 @@
 
     &__inner {
         background-color: $section-background;
-        width: 100%;
+        max-width: 100%;
         text-align: center;
         padding: $base-spacing;
 
         @media (min-width: $tablet-breakpoint) {
             background-color: rgba($color: $section-background, $alpha: 0.8);
         }
+    }
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    line-height: $paragraph-line-height;
+    border-top: 1px solid $divider-color;
+    margin-bottom: $element-spacing;
+    text-transform: uppercase;
+
+    li {
+        padding: $base-spacing 0;
+        border-bottom: 1px solid $divider-color;
     }
 }
