@@ -13,6 +13,7 @@
         border-bottom: 1px solid $menu-border;
         padding: $element-spacing $base-spacing;
         transition: all ease-in 0.5s;
+        width: calc(100% - #{$base-spacing} * 2);
 
         &.collapse {
             background-color: $menu-background;
