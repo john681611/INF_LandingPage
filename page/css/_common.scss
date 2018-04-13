@@ -92,16 +92,28 @@ button,
     padding: $base-spacing;
     width: calc(100% - #{$base-spacing} * 2);
     transition: all 0.2s ease-in-out;
+    margin-bottom: $base-spacing;
+    background: transparent;
 
     @media (min-width: $tablet-breakpoint) {
         min-width: 10rem;
         width: auto;
+        margin-right: $base-spacing;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+
+        @media (min-width: $tablet-breakpoint) {
+            margin-right: 0;
+        }
     }
 
     &:hover,
     &:focus {
         background-color: $button-color;
         color: $accent-font-color;
+        transition: all 0.2s ease-in-out;
     }     
 }
 

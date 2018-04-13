@@ -1,0 +1,29 @@
+.social {
+    display: flex;
+    flex-wrap: wrap; 
+
+    &__link {
+        width: 100%;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid $divider-color;
+        margin-bottom: $base-spacing;
+        padding: $base-spacing 0;
+
+        @media (min-width: $tablet-breakpoint) {
+            width: 33%;
+            border-bottom: 0;
+            border-right: 1px solid $divider-color;
+        }
+
+        &:last-child {
+            border: 0;
+        }
+
+        svg {
+            height: 120px;
+            display: block;
+            margin: 0 auto $base-spacing;
+        }
+    }
+}
