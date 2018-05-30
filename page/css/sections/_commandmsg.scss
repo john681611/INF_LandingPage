@@ -1,0 +1,43 @@
+.cmd-message {
+    margin-top: $element-spacing;
+
+    @media (min-width: $tablet-breakpoint) {
+        text-align: justify;
+        padding: 0 50px;
+        position: relative;
+
+        &:before {
+            content: "“";
+            color: $accent-font-color;
+            font-size: 80px;
+            position: absolute;
+            left: 0;
+            top: 24px;
+        }
+    
+        &:after {
+            content: "”";
+            color: $accent-font-color;
+            font-size: 80px;
+            position: absolute;
+            right: 0;
+            bottom: -24px;
+        }
+    }
+      
+    &:last-of-type {
+        margin-top: 0;
+    }
+
+    &__cmd {
+        text-align: right;
+
+        @media (min-width: $tablet-breakpoint) {
+            padding: 0 50px;
+        }
+    }
+    
+    &__cmd b {
+        font-style: oblique;
+    }
+}
