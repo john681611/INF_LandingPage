@@ -1,9 +1,74 @@
+$top-padding: 3.2rem;
+
 .intro {
+    height: 100vh;
     text-align: center;
     background: url(../img/Arma-3-mobile.jpg) no-repeat 35% top scroll;
     background-size: cover;
-    padding: 5.15rem 0 $element-spacing;
+    padding: 3.2rem 0 $element-spacing;
     text-shadow: black 4px 4px 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    div {
+        width: 100%;
+    }
+
+    // Galaxy
+    @media (min-height: 640px) {
+        min-height: calc(640px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // iPhone 5
+    @media (min-height: 667px) {
+        min-height: calc(667px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Desktop 720
+    @media (min-height: 720px) {
+        min-height: calc(720px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Pixel 2
+    @media (min-height: 731px) {
+        min-height: calc(731px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // iPhone 6, 7
+    @media (min-height: 736px) {
+        min-height: calc(736px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Tablet portrait
+    @media (min-height: 768px) {
+        min-height: calc(768px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // iPhone 6, 7+ 
+    @media (min-height: 812px) {
+        min-height: calc(812px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Desktop laptops
+    @media (min-height: 900px) {
+        min-height: calc(900px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Nexus 7
+    @media (min-height: 960px) {
+        min-height: calc(960px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Tablet landscape
+    @media (min-height: 1024px) {
+        min-height: calc(1024px - #{$element-spacing} - #{$top-padding});
+    }
+
+    // Desktop 1080
+    @media (min-height: 1080px) {
+        min-height: calc(1080px - #{$element-spacing} - #{$top-padding});
+    }
 
     @media (min-width: $tablet-breakpoint) {
         background-image: url(../img/Arma-3-tablet.jpg);
@@ -18,11 +83,20 @@
     img {
         width: 60%;
         display: block;
-        margin: 0 auto $base-spacing;
+        margin: 0 auto;
 
         @media (min-width: $tablet-breakpoint) {
             width: 30%;
         }
+
+        @media (min-width: $desktop-breakpoint) {
+            width: 20%;
+        }
+        
+    }
+
+    h1 {
+        margin-bottom: 0;
     }
 
     .btn {
@@ -55,5 +129,6 @@
 
     &__text {
         color: $accent-font-color;
+        margin-bottom: $base-spacing;
     }
 }
