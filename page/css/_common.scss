@@ -15,14 +15,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
     @include rem(margin, 0 0 $element-spacing);
     text-transform: uppercase;
-    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 700;
     color: $accent-font-color;
     line-height: $header-line-height;
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: $tablet-breakpoint) {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+    }
 }
 
 h2 {
