@@ -37,8 +37,8 @@
     }
 
     &:last-child {
-
         @media (min-width: $tablet-breakpoint) {
+            border-width: 1px 0 0;
             width: 100%;
         }
 
