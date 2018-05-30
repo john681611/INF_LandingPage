@@ -16,9 +16,13 @@
     }
 
     img {
-        width: 30%;
+        width: 60%;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto $base-spacing;
+
+        @media (min-width: $tablet-breakpoint) {
+            width: 30%;
+        }
     }
 
     .btn {
