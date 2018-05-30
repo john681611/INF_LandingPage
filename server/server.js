@@ -9,6 +9,7 @@ require('dotenv').config();
 app.use(express.static('page', { maxAge: 3.154e+10 })); // 1year
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
+app.use('/assets', express.static('assets'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
