@@ -1,0 +1,17 @@
+.donators {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $accent-font-color;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+
+    li {
+        margin-bottom: $base-spacing;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
