@@ -11,6 +11,7 @@
     "last 4 versions"
   ],
   "dependencies": {
+    "autoprefixer": "^8.1.0",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
@@ -19,28 +20,27 @@
     "express": "^4.16.2",
     "express-minify-html": "^0.12.0",
     "glob": "^7.1.2",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.5.1",
     "reload": "^2.2.2",
     "uninstall": "0.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^8.1.0",
     "eslint": "^4.5.0",
     "eslint-config-mns-core": "^1.0.0",
     "eslint-watch": "^3.1.2",
     "mocha": "^4.1.0",
     "node-mocks-http": "^1.6.6",
-    "node-sass": "^4.7.2",
     "nodemon": "^1.14.11",
     "sinon": "^4.4.2",
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
-    "parcel-bundler": "^1.5.1",
     "sinon-chai": "^2.9.0",
     "supertest": "^3.0.0"
   },
   "scripts": {
     "start": "node server",
-    "dev": "npm run lint:js && npm run test && npm run bundle",
+    "dev": "npm run lint:js && npm run test && npm run bundle && npm run start",
     "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
     "lint:js": "esw -c .eslintrc --color server test utils data",
