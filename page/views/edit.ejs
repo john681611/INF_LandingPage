@@ -7,57 +7,30 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll text-shadow" href="#page-top">
-                    <i class="fa fa-play-circle"></i> <span class="light">Iron</span>-Fists Editing
-                </a>
-            </div>
+    <%- include('partials/editNav'); %>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse text-shadow">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                      <a class="page-scroll" href="#news">News &amp; Events</a>
-                    </li>
-                    <li>
-                            <a class="page-scroll" href="#servers">Servers</a>
-                        </li>
-                    <li>
-                        <a class="page-scroll" href="#roster">Roster</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#donate">Donate</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <section id="news" class="container content-section text-center">
-        <%- include('partials/sections/editing/news', news); %>   
+    <section id="news" class="section">
+        <div class="section__inner">
+            <%- include('partials/sections/editing/news', news); %> 
+        </div>  
     </section>
 
-    <section id="servers" class="content-section text-center">
+    <section id="servers" class="section">
+         <div class="section__inner">
         <%- include('partials/sections/editing/server', servers); %>
+        </div>
     </section>
 
-    <section id="roster" class="content-section text-center">
+    <section id="roster" class="section">
+         <div class="section__inner">
         <%- include('partials/sections/editing/roster',  members); %>
+        </div>
     </section>
 
-    <section id="donate" class="container content-section text-center">
+    <section id="donate" class="container section">
+         <div class="section__inner">
         <%- include('partials/sections/editing/donators', donators); %>
+        </div>
     </section>
 
 
