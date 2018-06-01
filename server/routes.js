@@ -32,7 +32,7 @@ router.get('/serverFile', function (req, res) {
 router.post('/serverFile', function (req, res) {
     auth. authenticate(req, res, function () {
         data.servers = JSON.parse(req.body.json);
-        fs.writeFile('./data/server.json', req.body.json, function (error) {
+        fs.writeFile('./data/servers.json', req.body.json, function (error) {
             if (error) {
                 return res.status(500).json({ error: 'Something went wrong!' });
             }
