@@ -230,3 +230,34 @@ describe('findIndex', function () {
         expect(data.findIndex(req, '2') === 0);
     });
 });
+
+
+describe('getData', function () {
+    let fsStub;
+    beforeEach(() => {
+        fsStub = sinon.stub(fs,'readFileSync').returns('[{"date":"2018-01-28"}]');
+    });
+
+    afterEach(() => {
+        fsStub.restore();
+    });
+
+    it('should get data files via FS', function () {
+        //when
+        data.getData();
+        expect(fsStub).to.have.been.callCount(5);
+    });
+
+    it('should return a set of objects', function () {
+        //when
+        expect(data.getData()).to.be.a('object');
+    });
+
+    it('should update when files change', function () {
+        const inital = data.getData();
+        fsStub.returns('[{"date":"2019-01-28"}]');
+        const after = data.getData();
+        expect(after).not.to.deep.equal(inital);
+        expect(after.servers).not.to.deep.equal(inital.servers);
+    });
+});

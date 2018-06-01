@@ -1,5 +1,6 @@
 const fs = require('fs');
 const auth = require('../utils/auth');
+const path = require('path');
 
 const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
@@ -46,21 +47,21 @@ const deleteItem = (req, res, obj, file) => {
     });
 };
 
+const getFile = (file) => {
+    return JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
+};
+
 
 
 
 
 const getData = () => {
-    delete require.cache['./newsItems.json'];
-    delete require.cache['./servers.json'];
-    delete require.cache['./members.json'];
-    delete require.cache['./donators.json'];
     return {
-        news: require('./newsItems.json').sort((a, b) => Date.parse(b.date) - Date.parse(a.date)),
-        servers: require('./servers.json'),
-        members: require('./members.json'),
-        donators: require('./donators.json'),
-        squads: require('./squads.json')
+        news: getFile('./data/newsItems.json').sort((a, b) => Date.parse(b.date) - Date.parse(a.date)),
+        servers: getFile('./data/servers.json'),
+        members: getFile('./data/members.json'),
+        donators: getFile('./data/donators.json'),
+        squads: getFile('./data/squads.json')
     };
 };
 
