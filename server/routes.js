@@ -9,6 +9,10 @@ router.get('/', function (req, res) {
     res.renderMin('index.ejs', data.getData());
 });
 
+router.get('/forum', function (req, res) {
+    res.renderMin('forum.ejs', data.getData());
+});
+
 router.get('/modlist/:id', function (req, res) {
     if (req.params.id >= 0  && req.params.id <= data.servers.length) {
         res.render('importModList.ejs', data.servers[req.params.id]);
