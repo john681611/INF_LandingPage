@@ -57,3 +57,16 @@ Array.prototype.slice.call(els).forEach(function(el) {
         document.getElementById('nav-menu').checked = false;
     });
 });
+
+//smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        });
+    });
+});
