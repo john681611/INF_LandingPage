@@ -7,7 +7,7 @@ function updateOffsets() {
     ll.forEach(function(elem) {
         lh.push(elem.offsetTop);
     });
-};
+}
 
 function lazy() {
     wscroll = document.documentElement.scrollTop;
@@ -19,17 +19,41 @@ function lazy() {
             if (lh.length === 0) {
                 window.removeEventListener('scroll');
             }
-        };
+        }
     });
-};
+}
 
 updateOffsets();
 lazy();
 
-window.addEventListener('scroll',function() {
+window.addEventListener('scroll', function() {
     lazy();
 });
 
-function UpdateUserImage(value,id){
-    document.getElementById('img'+id).setAttribute("src",value);
+function UpdateUserImage(value, id){
+    document.getElementById('img'+id).setAttribute('src', value);
 }
+
+
+function collapseNavbar() {
+    const navigation = document.querySelector('.nav');
+    var scrollPosition = window.scrollY || window.scrollTop || document.getElementsByTagName('html')[0].scrollTop;
+
+    if (scrollPosition > 50) {
+        navigation.classList.add('collapse');
+    } else {
+        navigation.classList.remove('collapse');
+    }
+}
+
+window.addEventListener('scroll', collapseNavbar);
+window.addEventListener('ready', collapseNavbar);
+
+
+// Closes the Responsive Menu on Menu Item Click
+const els = document.getElementsByClassName('page-scroll');
+Array.prototype.slice.call(els).forEach(function(el) {
+    el.addEventListener('click', function() {
+        document.getElementById('nav-menu').checked = false;
+    });
+});
