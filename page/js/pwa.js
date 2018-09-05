@@ -12,7 +12,7 @@ let swRegistration = null;
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
+        .replace(/-/g, '+')
         .replace(/_/g, '/');
 
     const rawData = window.atob(base64);
@@ -28,7 +28,7 @@ function updateBtn() {
     if (Notification.permission === 'denied') {
         pushButton.textContent = 'Push Messaging Blocked.';
         pushButton.disabled = true;
-        updateSubscriptionOnServer(null);
+        unsubscribeUser();
         return;
     }
 
@@ -42,49 +42,42 @@ function updateBtn() {
 }
 
 function updateSubscriptionOnServer(subscription) {
-    if (subscription) {
-        fetch('/pwa', {
-            method: 'post',
-            body: JSON.stringify(subscription),
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            }
-        });
+    let url = '/subscription';
+    if (isSubscribed) {
+        url = 'delete/subscription';
     }
+
+    fetch(url, {
+        method: 'post',
+        body: JSON.stringify(subscription),
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        }
+    });
 }
 
+
 function subscribeUser() {
-    const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+    const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey); //eslint-disable-line no-undef
     swRegistration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: applicationServerKey
-    })
-        .then(function (subscription) {
-            updateSubscriptionOnServer(subscription);
-
-            isSubscribed = true;
-
-            updateBtn();
-        })
-        .catch(function (err) {
-            updateBtn();
-        });
+    }).then(function (subscription) {
+        updateSubscriptionOnServer(subscription);
+        isSubscribed = true;
+        updateBtn();
+    });
 }
 
 function unsubscribeUser() {
     swRegistration.pushManager.getSubscription()
         .then(function (subscription) {
             if (subscription) {
-                return subscription.unsubscribe();
+                subscription.unsubscribe();
+                updateSubscriptionOnServer(subscription);
+                isSubscribed = false;
+                updateBtn();
             }
-        })
-        .catch(function () {
-        })
-        .then(function () {
-            updateSubscriptionOnServer(null);
-            isSubscribed = false;
-
-            updateBtn();
         });
 }
 
@@ -102,8 +95,6 @@ function initializeUI() {
     swRegistration.pushManager.getSubscription()
         .then(function (subscription) {
             isSubscribed = !(subscription === null);
-
-            updateSubscriptionOnServer(subscription);
             updateBtn();
         });
 }

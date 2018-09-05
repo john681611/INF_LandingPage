@@ -10,7 +10,7 @@ function updateOffsets() {
 }
 
 function lazy() {
-    wscroll = document.documentElement.scrollTop;
+    let wscroll = document.documentElement.scrollTop;
     lh.forEach(function(elOffset, i) {
         if(elOffset <= wscroll + (wh + 1000)){
             ll[i].classList.add('loaded');
@@ -30,7 +30,7 @@ window.addEventListener('scroll', function() {
     lazy();
 });
 
-function UpdateUserImage(value, id){
+function UpdateUserImage(value, id){ //eslint-disable-line no-unused-vars
     document.getElementById('img'+id).setAttribute('src', value);
 }
 

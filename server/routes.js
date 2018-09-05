@@ -71,17 +71,29 @@ router.post('/delete/donator', function (req, res) {
 });
 
 
-router.post('/pwa', function(req,res){
-    if(req.body !== {}) {
+router.post('/subscription', function(req,res){
+    if(req.body.endpoint) {
         let subs = data.getPushSubscriptions();
-        subs.push(req.body);
-        data.addSub(req, res, subs);
+        if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
+            subs.push(req.body);
+            data.addSub(req, res, subs);
+        }
     }
 });
 
-router.get('/ping', function(req,res) {
+router.post('/delete/subscription', function(req,res){
+    if(req.body.endpoint) {
+        let subs = data.getPushSubscriptions();
+        const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
+        if (found !== -1){
+            subs.splice(found,1);
+            data.addSub(req, res, subs);
+        }
+    }
+});
+
+router.get('/ping', function() {
     notification.notify('pong');
-    res.redirect('/');
 });
 
 module.exports = {

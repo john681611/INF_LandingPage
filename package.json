@@ -11,20 +11,20 @@
     "last 4 versions"
   ],
   "dependencies": {
-    "autoprefixer": "^8.6.4",
+    "autoprefixer": "^8.6.5",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
-    "compression": "^1.7.1",
+    "compression": "^1.7.3",
     "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-minify-html": "^0.12.0",
-    "glob": "^7.1.2",
-    "node-sass": "^4.7.2",
-    "parcel-bundler": "^1.9.3",
+    "glob": "^7.1.3",
+    "node-sass": "^4.9.3",
+    "parcel-bundler": "^1.9.7",
     "reload": "^2.2.2",
     "uninstall": "0.0.0",
-    "web-push": "^3.2.5"
+    "web-push": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^4.1.1",
@@ -34,17 +34,17 @@
     "eslint-watch": "^3.1.2",
     "mocha": "^5.2.0",
     "node-mocks-http": "^1.6.6",
-    "nodemon": "^1.14.11",
+    "nodemon": "^1.18.4",
     "sinon": "5.0.10",
     "sinon-chai": "^3.2.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.2.0"
   },
   "scripts": {
     "start": "node server",
     "dev": "npm run lint:js && npm run test && npm run bundle && npm run start",
     "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
-    "lint:js": "esw -c .eslintrc --color .",
+    "lint:js": "esw -c  .eslintrc --color --fix .",
     "bundle": "parcel build ./page/css/grayscale.scss --out-dir ./assets"
   }
 }
