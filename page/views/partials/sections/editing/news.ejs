@@ -6,7 +6,7 @@
           <input name="title" class="form-control" required placeholder="Title"/><br>
           <input type="date" class="form-control"required name="date" ><br>
           <img class="newsimg" id="img-1" src=""/><br>
-          <input type="text" class="form-control" required name="imagelink"  placeholder="Image Link"  oninput="UpdateUserImage(this.value,-1)"><br>
+          <input type="url" class="form-control" required name="imagelink"  pattern="https://.*" title="image link must be https://"  placeholder="Image Link"  oninput="UpdateUserImage(this.value,-1)"><br>
           <textarea name="text" class="form-control" required rows="8" cols="80" placeholder="Description:" ></textarea><br>
           <input type="text" class="form-control" required name="link"  placeholder="Site Link" ><br>
           <label for="default" class="btn btn-default">
@@ -31,7 +31,7 @@
           <input name="title" class="form-control"required value="<%= item.title %>" placeholder="Title"/><br>
           <input type="date" class="form-control"required name="date"  value="<%= item.date %>"><br>
           <img class="newsimg" id="img<%= item.id %>" src="<%= item.imagelink %>"/><br>
-          <input type="text" class="form-control"required name="imagelink" value="<%= item.imagelink %>" placeholder="Image Link" oninput="UpdateUserImage(this.value,<%= item.id %>)"><br>
+          <input class="form-control" required name="imagelink" pattern="https://.*" title=" image link must be https://" value="<%= item.imagelink %>" placeholder="Image Link" oninput="UpdateUserImage(this.value,<%= item.id %>)"><br>
           <textarea name="text" class="form-control"required rows="8" cols="80" placeholder="Description:" ><%= item.text %></textarea><br>
           <input type="text" class="form-control"required name="link" value="<%= item.link%>" placeholder="Site Link" ><br>
           <label for="id-<%= item.id %>" class="btn btn-default">
