@@ -11,7 +11,7 @@ if(process.env.vapidPu &&  process.env.vapidPr){
 
 function notify(message) {
     data.getPushSubscriptions().forEach(sub =>{
-        webpush.sendNotification(sub, message);
+        webpush.sendNotification(sub, message).catch(e => console.log(e)); //eslint-disable-line no-console
     });
 }
 

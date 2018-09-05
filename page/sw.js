@@ -43,7 +43,7 @@ const cacheName = 'INF_v1';
 const urlB64ToUint8Array = base64String => {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
+        .replace(/-/g, '+')
         .replace(/_/g, '/');
 
     const rawData = window.atob(base64);
@@ -59,7 +59,7 @@ self.addEventListener('install',event => {
     event.waitUntil(
         caches.open(cacheName).then(cache =>{
             return cache.addAll(cacheList);
-        }).catch(error => console.error(error))
+        }).catch(error => console.error(error)) //eslint-disable-line no-console
     );
 });
 
@@ -84,12 +84,11 @@ self.addEventListener('fetch', event => {
                 const path = new URL(event.request.url).pathname;
                 return !updateList.includes(path) && response? response : fetch(event.request).then(response => {
                     if(updateList.includes(path)) {
-                        console.log('updated: ',event.request.url);
                         cache.put(event.request, response.clone());
                     }
                     return response;
                 }).catch((e) => {
-                    console.log(e);
+                    console.log(e); //eslint-disable-line no-console
                     return response;
                 });
             });
@@ -115,7 +114,7 @@ self.addEventListener('notificationclick', event => {
 });
 
 self.addEventListener('pushsubscriptionchange', event => {
-    const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+    const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey); //eslint-disable-line no-undef
     event.waitUntil(
         self.registration.pushManager.subscribe({
             userVisibleOnly: true,

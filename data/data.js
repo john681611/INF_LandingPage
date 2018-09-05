@@ -75,8 +75,7 @@ const getData = () => {
 };
 
 const getPushSubscriptions = () => {
-    delete require.cache['./pushSubscriptions.json'];
-    return require('./pushSubscriptions.json');
+    return getFile('./data/pushSubscriptions.json');
 };
 
 module.exports = {
