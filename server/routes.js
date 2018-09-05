@@ -47,8 +47,9 @@ router.post('/serverFile', function (req, res) {
 });
 
 router.post('/news', function (req, res) {
-    const type =  req.body.id === '-1'? 'New' : 'Updated';
-    notification.notify(`${type} news item: ${req.body.title}.`);
+    const updateType =  req.body.id === '-1'? 'New' : 'Updated';
+    const newsType = req.body.event === 'on'? 'event': 'news';
+    notification.notify(`${updateType} ${newsType}: ${req.body.title}.`);
     data.addItem(req, res, data.getData().news, './data/newsItems.json', true);
 });
 
