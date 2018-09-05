@@ -99,7 +99,7 @@ self.addEventListener('fetch', event => {
 self.addEventListener('push', event => {
     const title = 'Iron-Fists';
     const options = {
-        body: `Alert: ${event.data.text()}`,
+        body: `${event.data.text()}`,
         icon: '/img/logo-desktop.png',
         badge: '/img/logo-desktop.png'
     };
