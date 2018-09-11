@@ -1,9 +1,5 @@
 
 /* eslint-env browser, es6 */
-
-
-
-
 const pushButton = document.querySelector('.notification');
 
 let isSubscribed = false;
