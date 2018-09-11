@@ -45,6 +45,6 @@
     "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
     "lint:js": "esw -c  .eslintrc --color --fix .",
-    "bundle": "parcel build ./page/css/grayscale.scss --out-dir ./assets"
+    "bundle": "./node_modules/parcel-bundler/bin/cli.js  build ./page/css/grayscale.scss ./page/js/main.js ./page/js/lazysizes.min.js  --out-dir ./assets"
   }
 }
