@@ -4,7 +4,7 @@ const res = require('../test/res.mock');
 
 describe('Authorization', function () {
     process.env.USR = 'usr';
-    process.env.pass = 'pwd';
+    process.env.PASS = 'pwd';
     let endSpy;
 
     beforeEach(()=>{
