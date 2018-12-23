@@ -20,9 +20,9 @@
     "express": "^4.16.2",
     "express-minify-html": "^0.12.0",
     "glob": "^7.1.3",
-    "node-sass": "^4.9.3",
     "parcel-bundler": "^1.10.3",
     "reload": "^2.2.2",
+    "sass": "^1.15.2",
     "uninstall": "0.0.0",
     "web-push": "^3.3.2"
   },
@@ -45,6 +45,6 @@
     "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
     "lint:js": "esw -c  .eslintrc --color --fix .",
-    "bundle": "./node_modules/parcel-bundler/bin/cli.js  build ./page/css/grayscale.scss ./page/js/main.js ./page/js/lazysizes.min.js  --out-dir ./assets"
+    "bundle": "./node_modules/parcel-bundler/bin/cli.js  build ./page/js/main.js ./page/js/lazysizes.min.js  --out-dir ./assets"
   }
 }
