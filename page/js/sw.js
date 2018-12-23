@@ -3,6 +3,12 @@
 /* global workbox */
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js');
 const week = 7 * 24 * 60 * 60;
+
+workbox.routing.registerRoute(
+    /\//,
+    workbox.strategies.networkFirst()
+);
+
 workbox.routing.registerRoute(
     /\*.js/,
     workbox.strategies.networkFirst()
@@ -28,35 +34,12 @@ workbox.routing.registerRoute(
     })
 );
 
-workbox.precaching.precacheAndRoute([
+workbox.precaching.precacheAndRoute(self.__precacheManifest.concat([
     '/',
     '/forum',
-    '/js/main.js',
-    '/js/pwa.js',
-    '/js/lazysizes.min.js',
-    '/assets/grayscale.css',
-    '/img/Arma-3-Apex-desktop.jpg',
-    '/img/Arma-3-Apex-mobile.jpg',
-    '/img/Arma-3-Apex-tablet.jpg',
-    '/img/Arma-3-desktop.jpg',
-    '/img/Arma-3-Laws-desktop.jpg',
-    '/img/Arma-3-Laws-mobile.jpg',
-    '/img/Arma-3-Laws-tablet.jpg',
-    '/img/Arma-3-Marksmen-desktop.jpg',
-    '/img/Arma-3-Marksmen-mobile.jpg',
-    '/img/Arma-3-Marksmen-tablet.jpg',
-    '/img/Arma-3-mobile.jpg',
-    '/img/Arma-3-tablet.jpg',
-    '/img/Arma-3-Zeus-desktop.jpg',
-    '/img/Arma-3-Zeus-mobile.jpg',
-    '/img/Arma-3-Zeus-tablet.jpg',
-    '/img/arma3logo.png',
-    '/img/favicon.ico',
-    '/img/forum-desktop-tablet.jpg',
-    '/img/forum-mobile.jpg',
-    '/img/logo-desktop.png',
-    '/manifest.json'
-]);
+    'img/logo-desktop.png',
+    'img/arma3logo.png'
+]));
 
 self.addEventListener('push', event => {
     const title = 'Iron-Fists';
