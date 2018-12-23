@@ -5,8 +5,6 @@ const bodyParser = require('body-parser');
 const minifyHTML = require('express-minify-html');
 const compression = require('compression');
 require('dotenv').config();
-
-app.use(express.static('page', { maxAge: 3.154e+10 })); // 1year
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));

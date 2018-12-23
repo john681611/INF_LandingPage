@@ -1,9 +1,34 @@
 
 /* eslint-env browser, serviceworker, es6 */
+/* global workbox */
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox-sw.js');
+const week = 7 * 24 * 60 * 60;
+workbox.routing.registerRoute(
+    /\*.js/,
+    workbox.strategies.networkFirst()
+);
 
+workbox.routing.registerRoute(
+    /.*\.css/,
+    workbox.strategies.staleWhileRevalidate({
+        cacheName: 'css-cache'
+    })
+);
 
-const cacheName = 'INF_v1';
-const cacheList = [
+workbox.routing.registerRoute(
+    /.*\.(?:png|jpg|jpeg|svg|gif)/,
+    workbox.strategies.cacheFirst({
+        cacheName: 'image-cache',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 20,
+                maxAgeSeconds: week
+            })
+        ]
+    })
+);
+
+workbox.precaching.precacheAndRoute([
     '/',
     '/forum',
     '/js/main.js',
@@ -31,78 +56,7 @@ const cacheList = [
     '/img/forum-mobile.jpg',
     '/img/logo-desktop.png',
     '/manifest.json'
-].map(url => new Request(url, { credentials: 'same-origin' }));
-
-const updateList = [
-    '/',
-    '/forum',
-    '/js/main.js',
-    '/js/pwa.js',
-    '/assets/grayscale.css'
-];
-
-const authList = ['/edit'];
-
-//utils
-const fetchUpdate = (event, cache, cacheRes, notInUpdateList) => {
-    return fetch(event.request).then(netRes => {
-        if (!notInUpdateList) {
-            console.log(`${event.request.url} updated`); //eslint-disable-line no-console
-            netRes.credentials = 'same-origin';
-            cache.put(event.request, netRes.clone());
-        }
-        return netRes;
-    }).catch((e) => {
-        console.log(e); //eslint-disable-line no-console
-        return cacheRes;
-    });
-};
-
-const fetchCacheCheck = (event, path) => {
-    event.respondWith(
-        caches.open(cacheName).then(cache => {
-            return cache.match(event.request).then(cacheRes => {
-                const notInUpdateList = !updateList.includes(path);
-                if (notInUpdateList && cacheRes) {
-                    return cacheRes;
-                }
-                return fetchUpdate(event, cache, cacheRes, notInUpdateList);
-            });
-        })
-    );
-
-};
-
-//events
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(cacheName).then(cache => {
-            return cache.addAll(cacheList);
-        }).catch(error => console.error(error)) //eslint-disable-line no-console
-    );
-});
-
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(keyList => {
-            return Promise.all(keyList.map((key) => {
-                if (key !== cacheName) {
-                    return caches.delete(key);
-                }
-                return null;
-            }));
-        })
-    );
-    return self.clients.claim();
-});
-
-
-self.addEventListener('fetch', event => {
-    const path = new URL(event.request.url).pathname;
-    if (!authList.includes(path)) {
-        fetchCacheCheck(event, path);
-    }
-});
+]);
 
 self.addEventListener('push', event => {
     const title = 'Iron-Fists';
