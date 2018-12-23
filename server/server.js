@@ -8,6 +8,7 @@ require('dotenv').config();
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
+app.use('/', express.static('page'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,4 +1,5 @@
 // Lazy loading for background images
+import '../css/index.scss';
 var ll = [].slice.call(document.querySelectorAll('.section'));
 var lh = [];
 var wh = window.innerHeight;
