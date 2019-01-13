@@ -63,3 +63,68 @@ describe('Authorization', function () {
         expect(endSpy).to.have.been.calledOnce;
     });
 });
+
+describe('Member Auth', function () {
+    process.env.MEMUSR = 'usr';
+    process.env.MEMPASS = 'pwd';
+    let endSpy;
+
+    beforeEach(()=>{
+        endSpy = sinon.spy(res,'end');
+    });
+
+    afterEach(() => {
+        endSpy.restore();
+    });
+    it('should log in with correct Auth', function () {
+        const spy =  sinon.spy();
+        const req  = httpMocks.createRequest({
+            body : {
+                name: 'usr',
+                pass: 'pwd'
+            }
+        });
+
+        auth.authenticateMember(req,res,spy);
+
+        expect(spy).to.have.been.calledWith(true);
+    });
+
+    it('should reject with bad usr', function () {
+        const spy =  sinon.spy();
+        const req  = httpMocks.createRequest({
+            body : {
+                name: 'bla',
+                pass: 'pwd'
+            }
+        });
+
+        auth.authenticateMember(req,res,spy);
+
+        expect(spy).to.have.been.calledWith(false);
+    });
+
+    it('should reject with bad pass', function () {
+        const spy =  sinon.spy();
+        const req  = httpMocks.createRequest({
+            body : {
+                name: 'usr',
+                pass: 'wrong'
+            }
+        });
+
+        auth.authenticateMember(req,res,spy);
+
+        expect(spy).to.have.been.calledWith(false);
+    });
+
+    it('should reject with no body', function () {
+        const spy =  sinon.spy();
+        const req  = httpMocks.createRequest({
+        });
+
+        auth.authenticateMember(req,res,spy);
+
+        expect(spy).to.have.been.calledWith(false);
+    });
+});

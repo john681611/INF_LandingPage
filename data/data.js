@@ -61,7 +61,21 @@ const addSub = (req, res, obj) => {
 };
 
 
+const addMemberSub = (req, res, obj) => {
+    fs.writeFile('./data/member/pushSubscriptions.json', JSON.stringify(obj, null, 4), function (error) {
+        if (error) {
+            res.status(500);
+            return res.json({ error: 'Something went wrong!' });
+        }
+    });
+};
 
+const getPushSubscriptions = () => {
+    return getFile('./data/pushSubscriptions.json');
+};
+const getMemberSubscriptions = () => {
+    return getFile('./data/member/pushSubscriptions.json');
+};
 
 const getData = () => {
     return {
@@ -70,19 +84,18 @@ const getData = () => {
         members: getFile('./data/members.json'),
         donators: getFile('./data/donators.json'),
         squads: getFile('./data/squads.json'),
+        memberNotifications: getFile('./data/member/notifications.json'),
         key: process.env.vapidPu
     };
-};
-
-const getPushSubscriptions = () => {
-    return getFile('./data/pushSubscriptions.json');
 };
 
 module.exports = {
     addItem,
     addSub,
+    addMemberSub,
     deleteItem,
     findIndex,
     getData,
-    getPushSubscriptions
+    getPushSubscriptions,
+    getMemberSubscriptions
 };

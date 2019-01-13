@@ -9,12 +9,19 @@ if(process.env.vapidPu &&  process.env.vapidPr){
 }
 
 
-function notify(message) {
+function notify(message, url) {
     data.getPushSubscriptions().forEach(sub =>{
-        webpush.sendNotification(sub, message).catch(e => console.log(e)); //eslint-disable-line no-console
+        webpush.sendNotification(sub, JSON.stringify({message, url})).catch(e => console.log(e)); //eslint-disable-line no-console
+    });
+}
+
+function notifyMembers(message, url) {
+    data.getMemberSubscriptions().forEach(sub =>{
+        webpush.sendNotification(sub, JSON.stringify({message, url})).catch(e => console.log(e)); //eslint-disable-line no-console
     });
 }
 
 module.exports = {
-    notify
+    notify,
+    notifyMembers
 };

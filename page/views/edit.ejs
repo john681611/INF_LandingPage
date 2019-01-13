@@ -9,6 +9,12 @@
 
     <%- include('partials/editNav'); %>
 
+    <section id="notify" class="section">
+            <div class="section__inner">
+                <%- include('partials/sections/editing/memberNotify', memberNotifications); %> 
+            </div>  
+        </section>
+
     <section id="news" class="section">
         <div class="section__inner">
             <%- include('partials/sections/editing/news', news); %> 

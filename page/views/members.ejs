@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head', {name: 'Member Login'}); %>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <%- include('partials/nav', {nothome:true}); %>
+    <section class="section">
+        <div class="section__inner">
+             <% if(!logged){ %>
+                <form method="post" action="members">
+                    <input type="text" name="name" />
+                    <input type="password" name="pass" />
+                    <input type="submit" value="Login"/>
+                </form>
+            <% } else { %>
+                <button class="btn notification member">Enable Member Push Notifications</button>
+                <hr>
+                <%- include('partials/sections/notifications', memberNotifications); %> 
+            <% } %>
+        </div>
+    </section>
+    <%- include('partials/footer'); %>
+
+</body>
+
+</html>

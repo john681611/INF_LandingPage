@@ -1,0 +1,8 @@
+<h3>Previous notifications</h3>
+<% memberNotifications.forEach((item) => { %>
+    <p>
+      <%= item.message %>
+      <% if(item.url){ %><a href="<%= item.url %>"  class="btn" target="_blank"><%= item.url %></a><% } %>
+    </p>
+<hr>
+<% }) %>

@@ -1,6 +1,7 @@
 
 /* eslint-env browser, es6 */
-const pushButton = document.querySelector('.notification');
+let pushButton = document.querySelector('.notification.news');
+let pushMemberButton = document.querySelector('.notification.member');
 
 let isSubscribed = false;
 let swRegistration = null;
@@ -24,25 +25,27 @@ function updateBtn() {
     if (Notification.permission === 'denied') {
         pushButton.textContent = 'Push Messaging Blocked.';
         pushButton.disabled = true;
+        pushMemberButton.textContent = 'Push Messaging Blocked.';
+        pushMemberButton.disabled = true;
         unsubscribeUser();
         return;
     }
 
     if (isSubscribed) {
-        pushButton.textContent = 'Disable Push Notifications';
+        pushButton.textContent = 'Disable News Push Notifications';
+        if(localStorage.member) {
+            pushMemberButton.textContent = 'Disable Member Push Notifications';
+        }
     } else {
-        pushButton.textContent = 'Enable Push Notifications';
+        pushButton.textContent = 'Enable News Push Notifications';
+        pushMemberButton.textContent = 'Enable Member Push Notifications';
     }
 
     pushButton.disabled = false;
+    pushMemberButton.disabled = false;
 }
 
-function updateSubscriptionOnServer(subscription) {
-    let url = '/subscription';
-    if (isSubscribed) {
-        url = 'delete/subscription';
-    }
-
+function sendSubToServer (url, subscription) {
     fetch(url, {
         method: 'post',
         body: JSON.stringify(subscription),
@@ -50,6 +53,22 @@ function updateSubscriptionOnServer(subscription) {
             'Content-Type': 'application/json; charset=utf-8'
         }
     });
+}
+
+function updateSubscriptionOnServer(subscription) {
+    let url = '/subscription';
+    if (isSubscribed) {
+        url = 'delete/subscription';
+    }
+    sendSubToServer(url, subscription);
+
+    if(localStorage.member) {
+        url = 'member/subscription';
+        if (isSubscribed) {
+            url = 'delete/member/subscription';
+        }
+        sendSubToServer(url, subscription);
+    }
 }
 
 
@@ -78,14 +97,32 @@ function unsubscribeUser() {
 }
 
 function initializeUI() {
-    pushButton.addEventListener('click', function () {
-        pushButton.disabled = true;
-        if (isSubscribed) {
-            unsubscribeUser();
-        } else {
-            subscribeUser();
-        }
-    });
+    if(pushButton) {
+        pushButton.addEventListener('click', function () {
+            pushButton.disabled = true;
+            if (isSubscribed) {
+                unsubscribeUser(false);
+            } else {
+                subscribeUser(false);
+            }
+        });
+    } else {
+        pushButton = {};
+    }
+    if(pushMemberButton) {
+        pushMemberButton.addEventListener('click', function () {
+            pushMemberButton.disabled = true;
+            if (isSubscribed) {
+                unsubscribeUser(true);
+                localStorage.member = false;
+            } else {
+                localStorage.member = true;
+                subscribeUser(true);
+            }
+        });
+    } else {
+        pushMemberButton = {};
+    }
 
     // Set the initial subscription value
     swRegistration.pushManager.getSubscription()
@@ -104,4 +141,5 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
         });
 } else {
     pushButton.textContent = 'Push Not Supported';
+    pushMemberButton.textContent = 'Push Not Supported';
 }

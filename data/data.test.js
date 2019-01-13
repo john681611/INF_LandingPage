@@ -211,6 +211,36 @@ describe('File Mod Funcs', function () {
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
+
+    describe('addSub', function  () {
+        it('should add subscriptions to file', function () {
+            const obj = {bob:'bob'};
+            data.addSub(null, null, obj);
+            expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/pushSubscriptions.json');
+            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(JSON.stringify(obj, null, 4));
+        });
+
+        it('should respond with error message', function () {
+            fsWriteStub.yields('fuck');
+            data.addSub(null, res, {});
+            expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
+        });
+    });
+
+    describe('addMemberSub', function  () {
+        it('should add subscriptions to file', function () {
+            const obj = {bob:'bob'};
+            data.addMemberSub(null, null, obj);
+            expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/member/pushSubscriptions.json');
+            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(JSON.stringify(obj, null, 4));
+        });
+
+        it('should respond with error message', function () {
+            fsWriteStub.yields('fuck');
+            data.addMemberSub(null, res, {});
+            expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
+        });
+    });
 });
 
 describe('findIndex', function () {
@@ -245,7 +275,7 @@ describe('getData', function () {
     it('should get data files via FS', function () {
         //when
         data.getData();
-        expect(fsStub).to.have.been.callCount(5);
+        expect(fsStub).to.have.been.callCount(6);
     });
 
     it('should return a set of objects', function () {
