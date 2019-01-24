@@ -31,7 +31,9 @@
     "babel-loader": "^8.0.4",
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
+    "cookie-parser": "^1.4.3",
     "css-loader": "^2.0.2",
+    "csurf": "^1.9.0",
     "eslint": "^4.5.0",
     "eslint-config-mns-core": "^1.0.0",
     "eslint-watch": "^3.1.2",
@@ -58,6 +60,6 @@
     "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
     "lint:js": "esw -c  .eslintrc --color --fix .",
-    "bundle": "rm -rf ./assets && webpack --config ./webpack.config.js --progress --mode production --bail"
+    "bundle": " webpack --config ./webpack.config.js --progress --mode production --bail"
   }
 }

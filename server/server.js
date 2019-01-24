@@ -4,6 +4,8 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const minifyHTML = require('express-minify-html');
 const compression = require('compression');
+var cookieParser = require('cookie-parser');
+
 require('dotenv').config();
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
@@ -12,6 +14,7 @@ app.use('/', express.static('page'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(minifyHTML({
     override: false,
@@ -33,7 +36,13 @@ app.use(function (req, res) {
     res.status(404).send('This isnt the page your looking for!');
 });
 
-app.use(function (err, req, res) {
+app.use(function (err, req, res, next) {
+    if (err.code !== 'EBADCSRFTOKEN') {return next(err);}
+    res.status(403);
+    res.send('form tampered with');
+});
+
+app.use(function (err, req, res) {  
     res.status(500).send('Something broke!');
 });
 

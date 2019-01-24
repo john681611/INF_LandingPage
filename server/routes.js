@@ -3,6 +3,8 @@ const router = new express.Router();
 const data = require('../data/data');
 const auth = require('../utils/auth');
 const path = require('path');
+const csrf = require('csurf');
+var csrfProtection = csrf({ cookie: true });
 const notification = require('../utils/notification');
 const fs = require('fs');
 
@@ -14,13 +16,13 @@ router.get('/forum', function (req, res) {
     res.renderMin('forum.ejs',{key: process.env.vapidPu});
 });
 
-router.get('/members', function (req, res) {
-    res.renderMin('members.ejs',{logged:false,  key: process.env.vapidPu});
+router.get('/members', csrfProtection, function (req, res) {
+    res.renderMin('members.ejs',{logged:false,  key: process.env.vapidPu,csrfToken: req.csrfToken()});
 });
 
-router.post('/members', function (req, res) {
+router.post('/members', csrfProtection, function (req, res) {
     auth.authenticateMember(req, res, function (logged) {
-        res.renderMin('members.ejs', {logged,  key: process.env.vapidPu, memberNotifications: data.getData().memberNotifications});
+        res.renderMin('members.ejs', {logged,  key: process.env.vapidPu, memberNotifications: data.getData().memberNotifications, csrfToken: req.csrfToken()});
     });
 });
 
@@ -114,7 +116,7 @@ router.post('/delete/subscription', function(req,res){
     }
 });
 
-router.post('/member/subscription', function(req,res){
+router.post('/member/subscription', csrfProtection, function(req,res){
     if(req.body.endpoint) {
         let subs = data.getMemberSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
@@ -124,7 +126,7 @@ router.post('/member/subscription', function(req,res){
     }
 });
 
-router.post('/delete/member/subscription', function(req,res){
+router.post('/delete/member/subscription', csrfProtection, function(req,res){
     if(req.body.endpoint) {
         let subs = data.getMemberSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
