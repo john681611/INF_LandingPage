@@ -42,7 +42,7 @@ app.use(function (err, req, res, next) {
     res.send('form tampered with');
 });
 
-app.use(function (err, req, res) {  
+app.use(function (err, req, res) {
     res.status(500).send('Something broke!');
 });
 
