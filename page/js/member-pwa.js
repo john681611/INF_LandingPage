@@ -1,6 +1,6 @@
 
 /* eslint-env browser, es6 */
-let pushButton = document.querySelector('.notification.news');
+let pushMemberButton = document.querySelector('.notification.member');
 
 let isSubscribed = false;
 let swRegistration = null;
@@ -22,38 +22,43 @@ function urlB64ToUint8Array(base64String) {
 
 function updateBtn() {
     if (Notification.permission === 'denied') {
-        pushButton.textContent = 'Push Messaging Blocked.';
-        pushButton.disabled = true;
+        pushMemberButton.textContent = 'Push Messaging Blocked.';
+        pushMemberButton.disabled = true;
         unsubscribeUser();
         return;
     }
 
     if (isSubscribed) {
-        pushButton.textContent = 'Disable News Push Notifications';
+        if(localStorage.member) {
+            pushMemberButton.textContent = 'Disable Member Push Notifications';
+        }
     } else {
-        pushButton.textContent = 'Enable News Push Notifications';
+        pushMemberButton.textContent = 'Enable Member Push Notifications';
     }
 
-    pushButton.disabled = false;
-
+    pushMemberButton.disabled = false;
 }
 
 function sendSubToServer (url, subscription) {
     fetch(url, {
         method: 'post',
+        credentials: 'same-origin',
         body: JSON.stringify(subscription),
         headers: {
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json; charset=utf-8',
+            'CSRF-Token': csrf //eslint-disable-line no-undef
         }
     });
 }
 
 function updateSubscriptionOnServer(subscription) {
-    let url = '/subscription';
-    if (isSubscribed) {
-        url = 'delete/subscription';
+    if(localStorage.member) {
+        let url = 'member/subscription';
+        if (isSubscribed) {
+            url = 'delete/member/subscription';
+        }
+        sendSubToServer(url, subscription);
     }
-    sendSubToServer(url, subscription);
 }
 
 
@@ -82,17 +87,19 @@ function unsubscribeUser() {
 }
 
 function initializeUI() {
-    if(pushButton) {
-        pushButton.addEventListener('click', function () {
-            pushButton.disabled = true;
+    if(pushMemberButton) {
+        pushMemberButton.addEventListener('click', function () {
+            pushMemberButton.disabled = true;
             if (isSubscribed) {
-                unsubscribeUser(false);
+                unsubscribeUser(true);
+                localStorage.member = false;
             } else {
-                subscribeUser(false);
+                localStorage.member = true;
+                subscribeUser(true);
             }
         });
     } else {
-        pushButton = {};
+        pushMemberButton = {};
     }
 
     // Set the initial subscription value
@@ -111,5 +118,5 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
             initializeUI();
         });
 } else {
-    pushButton.textContent = 'Push Not Supported';
+    pushMemberButton.textContent = 'Push Not Supported';
 }

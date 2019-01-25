@@ -42,6 +42,7 @@ newsItems.json
 donators.json
 servers.json
 pushSubscriptions.json
+notifications.json
 .idea
 .cache/
 assets

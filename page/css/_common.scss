@@ -120,7 +120,12 @@ button,
         background-color: $button-color;
         color: $accent-font-color;
         transition: all 0.2s ease-in-out;
-    }     
+    }
+    &:disabled,
+    &:disabled:hover {
+        color: $date-color;
+        border-color: $date-color;
+    }   
 }
 
 // Tables

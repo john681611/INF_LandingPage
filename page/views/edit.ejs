@@ -9,6 +9,12 @@
 
     <%- include('partials/editNav'); %>
 
+    <section id="notify" class="section">
+            <div class="section__inner">
+                <%- include('partials/sections/editing/memberNotify', memberNotifications); %> 
+            </div>  
+        </section>
+
     <section id="news" class="section">
         <div class="section__inner">
             <%- include('partials/sections/editing/news', news); %> 
@@ -32,7 +38,10 @@
         <%- include('partials/sections/editing/donators', donators); %>
         </div>
     </section>
-
+    <script>
+        const ignoreCollapse = true;
+        document.querySelector('.nav').classList.add('collapse');
+    </script>
 
     <%- include('partials/footer'); %>
 </body>
