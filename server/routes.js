@@ -13,11 +13,11 @@ router.get('/', function (req, res) {
 });
 
 router.get('/forum', function (req, res) {
-    res.renderMin('forum.ejs',{key: process.env.vapidPu});
+    res.renderMin('forum.ejs', {key: process.env.vapidPu});
 });
 
 router.get('/members', csrfProtection, function (req, res) {
-    res.renderMin('members.ejs',{logged:false,  key: process.env.vapidPu,csrfToken: req.csrfToken()});
+    res.renderMin('members.ejs', {logged:false,  key: process.env.vapidPu, csrfToken: req.csrfToken()});
 });
 
 router.post('/members', csrfProtection, function (req, res) {
@@ -95,43 +95,45 @@ router.post('/sendMessage', function (req, res) {
 });
 
 
-router.post('/subscription', function(req,res){
+router.post('/subscription', function(req, res){
     if(req.body.endpoint) {
-        let subs = data.getPushSubscriptions();
+        const subs = data.getPushSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
             subs.push(req.body);
             data.addSub(req, res, subs);
+            notification.singleNotify('News Notifications Active', req.body);
         }
     }
 });
 
-router.post('/delete/subscription', function(req,res){
+router.post('/delete/subscription', function(req, res){
     if(req.body.endpoint) {
-        let subs = data.getPushSubscriptions();
+        const subs = data.getPushSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
         if (found !== -1){
-            subs.splice(found,1);
+            subs.splice(found, 1);
             data.addSub(req, res, subs);
         }
     }
 });
 
-router.post('/member/subscription', csrfProtection, function(req,res){
+router.post('/member/subscription', csrfProtection, function(req, res){
     if(req.body.endpoint) {
-        let subs = data.getMemberSubscriptions();
+        const subs = data.getMemberSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
             subs.push(req.body);
             data.addMemberSub(req, res, subs);
+            notification.singleNotify('Members Notifications Active', req.body);
         }
     }
 });
 
-router.post('/delete/member/subscription', csrfProtection, function(req,res){
+router.post('/delete/member/subscription', csrfProtection, function(req, res){
     if(req.body.endpoint) {
-        let subs = data.getMemberSubscriptions();
+        const subs = data.getMemberSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
         if (found !== -1){
-            subs.splice(found,1);
+            subs.splice(found, 1);
             data.addMemberSub(req, res, subs);
         }
     }

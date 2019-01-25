@@ -21,7 +21,12 @@ function notifyMembers(message, url) {
     });
 }
 
+function singleNotify(message, sub) {
+    webpush.sendNotification(sub, JSON.stringify({message, url:''})).catch(e => console.log(e)); //eslint-disable-line no-console
+}
+
 module.exports = {
     notify,
-    notifyMembers
+    notifyMembers,
+    singleNotify
 };
