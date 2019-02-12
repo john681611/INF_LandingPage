@@ -33,7 +33,7 @@ app.use(compression({ level: 9 }));
 app.use('/', require('./routes').router);
 
 app.use(function (req, res) {
-    res.status(404).send('This isnt the page your looking for!');
+    res.status(404).send('This isn\'t the page your looking for!');
 });
 
 app.use(function (err, req, res, next) {

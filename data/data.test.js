@@ -275,7 +275,7 @@ describe('getData', function () {
     it('should get data files via FS', function () {
         //when
         data.getData();
-        expect(fsStub).to.have.been.callCount(6);
+        expect(fsStub).to.have.been.callCount(7);
     });
 
     it('should return a set of objects', function () {
