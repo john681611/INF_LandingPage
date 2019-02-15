@@ -27,8 +27,9 @@ router.post('/members', csrfProtection, function (req, res) {
 });
 
 router.get('/modlist/:id', function (req, res) {
-    if (req.params.id >= 0  && req.params.id <= data.servers.length) {
-        res.render('importModList.ejs', data.servers[req.params.id]);
+    const servers =  data.getData().servers;
+    if (req.params.id >= 0  && req.params.id <= servers.length) {
+        res.render('importModList.ejs', servers[req.params.id]);
     } else {
         res.status(404).send('No mod List found');
     }
