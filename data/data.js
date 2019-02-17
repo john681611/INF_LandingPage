@@ -84,7 +84,7 @@ const getData = () => {
         members: getFile('./data/members.json'),
         donators: getFile('./data/donators.json'),
         squads: getFile('./data/squads.json'),
-        memberNotifications: getFile('./data/member/notifications.json'),
+        memberNotifications: getFile('./data/member/notifications.json').reverse(),
         key: process.env.vapidPu,
         moment: require('moment')
     };
