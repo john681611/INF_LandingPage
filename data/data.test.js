@@ -2,31 +2,34 @@ const data = require('./data');
 const httpMocks = require('node-mocks-http');
 const fs = require('fs');
 const res = require('../test/res.mock');
+const json  = require('../utils/json');
 
 describe('File Mod Funcs', function () {
-    const authHeader = 'Basic ' + new Buffer('usr' + ':' + 'pwd').toString('base64');
+    const authHeader = 'Basic ' + new Buffer('usr:pwd').toString('base64');
     const file = './data/testOBJ.json';
-    let fsWriteStub, redirectStub, jsonStub;
+    let fsWriteStub, redirectStub, jsonStub, statusStub;
     beforeEach(() => {
         fsWriteStub = sinon.stub(fs, 'writeFile').yields(null);
         redirectStub = sinon.stub(res, 'redirect');
         jsonStub = sinon.stub(res, 'json');
+        statusStub = sinon.stub(res, 'status').returns({json: jsonStub});
     });
 
     afterEach(() => {
         fsWriteStub.restore();
         redirectStub.restore();
         jsonStub.restore();
+        statusStub.restore();
     });
 
     describe('AddItem', function () {
 
-        it('should save bob to empty file', function () {
+        it('should add new item to empty file', function () {
             //given
-            const expected = JSON.stringify([{
+            const expected = json.stringify([{
                 id: '0',
                 name: 'bob'
-            }], null, 4);
+            }]);
             const req = httpMocks.createRequest({
                 body: {
                     id: '-1',
@@ -44,15 +47,15 @@ describe('File Mod Funcs', function () {
             expect(redirectStub).to.have.been.calledOnce;
         });
 
-        it('should save bob3 to file', function () {
-            const expected = JSON.stringify([{
+        it('should add new item to a non empty file', function () {
+            const expected = json.stringify([{
                 id: '0',
                 name: 'bob'
             },
             {
                 id: '1',
                 name: 'bob3'
-            }], null, 4);
+            }]);
 
             const testOBJ = [{
                 id: '0',
@@ -75,10 +78,10 @@ describe('File Mod Funcs', function () {
         });
 
         it('should change bob to bob2', function () {
-            const expected = JSON.stringify([{
+            const expected = json.stringify([{
                 id: '0',
                 name: 'bob2'
-            }], null, 4);
+            }]);
 
             const testOBJ = [{
                 id: '0',
@@ -118,6 +121,7 @@ describe('File Mod Funcs', function () {
             //when
             data.deleteItem(req, res, testOBJ, file);
             //then
+            expect(statusStub).to.have.been.calledWith(404);
             expect(jsonStub).to.have.been.calledWith({error:'ID not found'});
         });
 
@@ -139,6 +143,7 @@ describe('File Mod Funcs', function () {
             //when
             data.deleteItem(req, res, testOBJ, file);
             //then
+            expect(statusStub).to.have.been.calledWith(500);
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
@@ -146,7 +151,7 @@ describe('File Mod Funcs', function () {
     describe('deleteItem', function () {
 
         it('should delete something from file', function () {
-            const expected = JSON.stringify([], null, 4);
+            const expected = json.stringify([]);
 
             const testOBJ = [{
                 id: 0,
@@ -217,7 +222,7 @@ describe('File Mod Funcs', function () {
             const obj = {bob:'bob'};
             data.addSub(null, null, obj);
             expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/pushSubscriptions.json');
-            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(JSON.stringify(obj, null, 4));
+            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(json.stringify(obj));
         });
 
         it('should respond with error message', function () {
@@ -232,7 +237,7 @@ describe('File Mod Funcs', function () {
             const obj = {bob:'bob'};
             data.addMemberSub(null, null, obj);
             expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/member/pushSubscriptions.json');
-            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(JSON.stringify(obj, null, 4));
+            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(json.stringify(obj));
         });
 
         it('should respond with error message', function () {
