@@ -1,17 +1,21 @@
 const fs = require('fs');
 const auth = require('../utils/auth');
 const path = require('path');
+const json  = require('../utils/json');
 
 const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
 };
 
+const reportError = (error, res) => {
+    if (error) {
+        res.status(500).json({ error: 'Something went wrong!' });
+    }
+};
+
 const writeToFileAndRedirect = (file, obj, res) => {
-    fs.writeFile(file, JSON.stringify(obj, null, 4), function (error) {
-        if (error) {
-            res.status(500);
-            res.json({ error: 'Something went wrong!' });
-        }
+    fs.writeFile(file, json.stringify(obj), (error) => {
+        reportError(error, res);
         res.redirect('/edit');
     });
 };
@@ -22,26 +26,26 @@ const addItem = (req, res, obj, file) => {
         if (item.id === '-1') {
             item.id = obj.length.toString();
             obj.push(item);
+            writeToFileAndRedirect(file, obj, res);
         } else {
-            let index = findIndex(obj, item.id);
+            const index = findIndex(obj, item.id);
             if (index > -1) {
                 obj[index] = item;
+                writeToFileAndRedirect(file, obj, res);
             } else {
-                return res.status(404).json({ error: 'ID not found' });
+                res.status(404).json({ error: 'ID not found' });
             }
         }
-        return writeToFileAndRedirect(file, obj, res);
     });
 };
 
 const deleteItem = (req, res, obj, file) => {
     auth.authenticate(req, res, function () {
-        let index = findIndex(obj, req.body.id);
+        const index = findIndex(obj, req.body.id);
         if (index > -1) {
             obj.splice(index, 1);
         } else {
-            res.status(404);
-            return res.json({ error: 'ID not found' });
+            return res.status(404).json({ error: 'ID not found' });
         }
         return writeToFileAndRedirect(file, obj, res);
     });
@@ -52,21 +56,15 @@ const getFile = (file) => {
 };
 
 const addSub = (req, res, obj) => {
-    fs.writeFile('./data/pushSubscriptions.json', JSON.stringify(obj, null, 4), function (error) {
-        if (error) {
-            res.status(500);
-            return res.json({ error: 'Something went wrong!' });
-        }
+    fs.writeFile('./data/pushSubscriptions.json', json.stringify(obj), (error) => {
+        reportError(error, res);
     });
 };
 
 
 const addMemberSub = (req, res, obj) => {
-    fs.writeFile('./data/member/pushSubscriptions.json', JSON.stringify(obj, null, 4), function (error) {
-        if (error) {
-            res.status(500);
-            return res.json({ error: 'Something went wrong!' });
-        }
+    fs.writeFile('./data/member/pushSubscriptions.json', json.stringify(obj), (error) => {
+        reportError(error, res);
     });
 };
 
