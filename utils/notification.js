@@ -20,7 +20,7 @@ const sendNotification = async (messageObj, sub, isMember = false) => {
             const existingSubIndex = subs.findIndex(subscriber => sub.endpoint === subscriber.endpoint);
             if(existingSubIndex != -1) {
                 subs.splice(existingSubIndex, 1);
-                fs.writeFileSync(file, JSON.stringify(subs, null, 4));
+                fs.writeFileSync(file, json.stringify(subs));
                 console.log('removed user');
             }
         } else {
