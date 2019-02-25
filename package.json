@@ -10,6 +10,23 @@
     "> 2%",
     "last 4 versions"
   ],
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "exclude": [],
+    "reporter": [
+      "json-summary",
+      "text",
+      "html"
+    ],
+    "cache": true,
+    "all": true,
+    "report-dir": "./.nyc_output"
+  },
   "dependencies": {
     "autoprefixer": "^8.6.5",
     "basic-auth": "^2.0.0",
@@ -43,6 +60,7 @@
     "mocha": "^5.2.0",
     "node-mocks-http": "^1.6.6",
     "nodemon": "^1.18.9",
+    "nyc": "^13.3.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
@@ -58,7 +76,7 @@
   "scripts": {
     "start": "node server",
     "dev": "npm run lint:js && npm run test && npm run bundle && npm run start",
-    "test": "mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
+    "test": "nyc mocha ./test/test.config.js data/data.test.js utils/auth.test.js",
     "test:server": "mocha ./test/test.config.js test/test.js",
     "lint:js": "esw -c  .eslintrc --color --fix .",
     "bundle": "webpack --config ./webpack.config.js --progress --mode production --bail"
