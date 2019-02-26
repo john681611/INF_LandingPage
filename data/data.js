@@ -29,7 +29,7 @@ const addItem = (req, res, obj, file) => {
             writeToFileAndRedirect(file, obj, res);
         } else {
             const index = findIndex(obj, item.id);
-            if (index > -1) {
+            if (index !== -1) {
                 obj[index] = item;
                 writeToFileAndRedirect(file, obj, res);
             } else {
@@ -42,7 +42,7 @@ const addItem = (req, res, obj, file) => {
 const deleteItem = (req, res, obj, file) => {
     auth.authenticate(req, res, function () {
         const index = findIndex(obj, req.body.id);
-        if (index > -1) {
+        if (index !== -1) {
             obj.splice(index, 1);
         } else {
             return res.status(404).json({ error: 'ID not found' });
