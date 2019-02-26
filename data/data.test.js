@@ -320,3 +320,37 @@ describe('getData', function () {
         expect(result.memberNotifications).to.deep.equal([1, 0]);
     });
 });
+
+describe('getPushSubscriptions', () => {
+    let fsStub;
+    beforeEach(() => {
+        fsStub = sinon.stub(fs, 'readFileSync').returns('[{"date":"2018-01-28"}]');
+    });
+
+    afterEach(() => {
+        fsStub.restore();
+    });
+
+    it('should get the subscription file', () => {
+        const result = data.getPushSubscriptions();
+        expect(fsStub).to.have.been.calledWith(path.resolve('./data/pushSubscriptions.json'));
+        expect(result).to.equal(JSON.parse('[{"date":"2018-01-28"}]'));
+    });
+});
+
+describe('getMemberSubscriptions', () => {
+    let fsStub;
+    beforeEach(() => {
+        fsStub = sinon.stub(fs, 'readFileSync').returns('[{"date":"2018-01-28"}]');
+    });
+
+    afterEach(() => {
+        fsStub.restore();
+    });
+
+    it('should get the subscription file', () => {
+        const result = data.getMemberSubscriptions();
+        expect(fsStub).to.have.been.calledWith(path.resolve('./data/member/pushSubscriptions.json'));
+        expect(result).to.equal(JSON.parse('[{"date":"2018-01-28"}]'));
+    });
+});
