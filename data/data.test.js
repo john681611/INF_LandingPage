@@ -120,7 +120,7 @@ describe('File Mod Funcs', function () {
                 }
             });
             //when
-            data.deleteItem(req, res, testOBJ, file);
+            data.addItem(req, res, testOBJ, file);
             //then
             expect(statusStub).to.have.been.calledWith(404);
             expect(jsonStub).to.have.been.calledWith({error:'ID not found'});
@@ -334,7 +334,7 @@ describe('getPushSubscriptions', () => {
     it('should get the subscription file', () => {
         const result = data.getPushSubscriptions();
         expect(fsStub).to.have.been.calledWith(path.resolve('./data/pushSubscriptions.json'));
-        expect(result).to.equal(JSON.parse('[{"date":"2018-01-28"}]'));
+        expect(result).to.deep.equal(JSON.parse('[{"date":"2018-01-28"}]'));
     });
 });
 
@@ -351,6 +351,6 @@ describe('getMemberSubscriptions', () => {
     it('should get the subscription file', () => {
         const result = data.getMemberSubscriptions();
         expect(fsStub).to.have.been.calledWith(path.resolve('./data/member/pushSubscriptions.json'));
-        expect(result).to.equal(JSON.parse('[{"date":"2018-01-28"}]'));
+        expect(result).to.deep.equal(JSON.parse('[{"date":"2018-01-28"}]'));
     });
 });
