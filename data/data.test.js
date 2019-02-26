@@ -3,6 +3,7 @@ const httpMocks = require('node-mocks-http');
 const fs = require('fs');
 const res = require('../test/res.mock');
 const json  = require('../utils/json');
+const path = require('path');
 
 describe('File Mod Funcs', function () {
     const authHeader = 'Basic ' + new Buffer('usr:pwd').toString('base64');
@@ -192,6 +193,7 @@ describe('File Mod Funcs', function () {
             //when
             data.deleteItem(req, res, testOBJ, file);
             //then
+            expect(statusStub).to.have.been.calledWith(404);
             expect(jsonStub).to.have.been.calledWith({error:'ID not found'});
         });
 
@@ -213,6 +215,7 @@ describe('File Mod Funcs', function () {
             //when
             data.deleteItem(req, res, testOBJ, file);
             //then
+            expect(statusStub).to.have.been.calledWith(500);
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
@@ -228,6 +231,7 @@ describe('File Mod Funcs', function () {
         it('should respond with error message', function () {
             fsWriteStub.yields('fuck');
             data.addSub(null, res, {});
+            expect(statusStub).to.have.been.calledWith(500);
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
@@ -243,13 +247,14 @@ describe('File Mod Funcs', function () {
         it('should respond with error message', function () {
             fsWriteStub.yields('fuck');
             data.addMemberSub(null, res, {});
+            expect(statusStub).to.have.been.calledWith(500);
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
 });
 
 describe('findIndex', function () {
-    var req = [{ id: 2 },{ id: '1' }, { id: '0' }];
+    var req = [{ id: 2 }, { id: '1' }, { id: '0' }];
     it('should find by ID not index', function () {
         //when
         expect(data.findIndex(req, '1') === 1);
@@ -270,22 +275,29 @@ describe('findIndex', function () {
 describe('getData', function () {
     let fsStub;
     beforeEach(() => {
-        fsStub = sinon.stub(fs,'readFileSync').returns('[{"date":"2018-01-28"}]');
+        fsStub = sinon.stub(fs, 'readFileSync').returns('[{"date":"2018-01-28"}]');
     });
 
     afterEach(() => {
         fsStub.restore();
     });
 
-    it('should get data files via FS', function () {
-        //when
-        data.getData();
-        expect(fsStub).to.have.been.callCount(7);
-    });
-
     it('should return a set of objects', function () {
+        const expectedCalls = [
+            './data/newsItems.json',
+            './data/servers.json',
+            './data/members.json',
+            './data/donators.json',
+            './data/squads.json',
+            './data/member/notifications.json'
+        ];
         //when
-        expect(data.getData()).to.be.a('object');
+        const result = data.getData();
+        expect(fsStub).to.have.been.callCount(7);
+        expect(result).to.be.a('object');
+        expectedCalls.forEach((call, index) => {
+            expect(fsStub.getCall(index).args[0]).to.equal(path.resolve(call));
+        });
     });
 
     it('should update when files change', function () {
@@ -294,5 +306,17 @@ describe('getData', function () {
         const after = data.getData();
         expect(after).not.to.deep.equal(inital);
         expect(after.servers).not.to.deep.equal(inital.servers);
+    });
+
+    it('should sort news items by latest date', () => {
+        fsStub.returns('[{"date":"2019-01-28"},{"date":"2020-01-28"}]');
+        const result = data.getData();
+        expect(result.news).to.deep.equal(JSON.parse('[{"date":"2020-01-28"},{"date":"2019-01-28"}]'));
+    });
+
+    it('should reverse the order of notifications', () => {
+        fsStub.returns('[0,1]');
+        const result = data.getData();
+        expect(result.memberNotifications).to.deep.equal([1, 0]);
     });
 });
