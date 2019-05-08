@@ -1,6 +1,7 @@
 const webpush = require('web-push');
 const data = require('../data/data');
 const fs = require('fs');
+const json = require('./json');
 
 if(process.env.vapidPu &&  process.env.vapidPr){
     webpush.setVapidDetails(
@@ -49,5 +50,6 @@ function singleNotify(message, sub) {
 module.exports = {
     notify,
     notifyMembers,
-    singleNotify
+    singleNotify,
+    sendNotification
 };
