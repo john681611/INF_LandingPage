@@ -4,7 +4,7 @@ const data = require('../data/data');
 const auth = require('../utils/auth');
 const path = require('path');
 const csrf = require('csurf');
-var csrfProtection = csrf({ cookie: true });
+const csrfProtection = csrf({ cookie: true });
 const notification = require('../utils/notification');
 const fs = require('fs');
 
