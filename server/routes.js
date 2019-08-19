@@ -12,6 +12,10 @@ router.get('/', function (req, res) {
     res.renderMin('index.ejs', data.getData());
 });
 
+router.get('/api', function (req, res) {
+    res.send(data.getData());
+});
+
 router.get('/forum', function (req, res) {
     res.renderMin('forum.ejs', {key: process.env.vapidPu});
 });
