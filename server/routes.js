@@ -13,9 +13,10 @@ router.get('/', function (req, res) {
 });
 
 router.get('/api', function (req, res) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.send(data.getData());
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(data.getData()));
 });
 
 router.get('/forum', function (req, res) {
