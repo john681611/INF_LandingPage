@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
-const minifyHTML = require('express-minify-html');
 const compression = require('compression');
 var cookieParser = require('cookie-parser');
 
@@ -15,18 +14,6 @@ app.use('/', express.static('page'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-app.use(minifyHTML({
-    override: false,
-    htmlMinifier: {
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeAttributeQuotes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true
-    }
-}));
 
 app.use(compression({ level: 9 }));
 
