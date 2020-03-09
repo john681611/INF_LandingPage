@@ -4,15 +4,17 @@ const fs = require('fs');
 const webpush = require('web-push');;
 
 describe('Notification', function () {
+    const bob = {name:'bob'}
+    const mike = {name:'mike', member:true}
     beforeEach(()=>{
         sinon.stub(webpush, 'sendNotification');
-        sinon.stub(data, 'getPushSubscriptions').returns(['bob', 'garry']);
-        sinon.stub(data, 'getMemberSubscriptions').returns(['bangie', 'rhys']);
+        sinon.stub(data, 'getPushSubscriptions').returns([bob, mike]);
+        sinon.stub(data, 'getMemberSubscriptions').returns([mike]);
     });
 
     afterEach(() => {
-        data.getPushSubscriptions.restore();
         data.getMemberSubscriptions.restore();
+        data.getPushSubscriptions.restore();
         webpush.sendNotification.restore();
     });
 
@@ -32,8 +34,8 @@ describe('Notification', function () {
     
 
         it('should send notification',  async function () {
-            await notify.sendNotification({message:'lol'},'garry');
-            expect(webpush.sendNotification).to.have.been.calledWith('garry','{"message":"lol"}');
+            await notify.sendNotification({message:'lol'},bob);
+            expect(webpush.sendNotification).to.have.been.calledWith(bob,'{"message":"lol"}');
         })
 
         it('should log odd error',  async function () {
@@ -50,14 +52,6 @@ describe('Notification', function () {
             expect(console.log).to.have.been.calledWith('removed user');
         })
 
-        it('should remove rejected subscription if a member',  async function () {
-            data.getMemberSubscriptions.returns([{endpoint: 101}])
-            webpush.sendNotification.rejects({statusCode: 410})
-            await notify.sendNotification({message:'lol'},{endpoint: 101}, true);
-            expect(fs.writeFileSync).to.have.been.calledWith('./data/member/pushSubscriptions.json','[]');
-            expect(console.log).to.have.been.calledWith('removed user');
-        })
-
         it('should not remove rejected subscription if not found',  async function () {
             data.getPushSubscriptions.returns([{endpoint: 102}])
             webpush.sendNotification.rejects({statusCode: 410})
@@ -69,24 +63,23 @@ describe('Notification', function () {
 
     describe('singleNotify', function () {
         it('should singleNotify',  async function () {
-            await notify.singleNotify('lol','garry');
-            expect(webpush.sendNotification).to.have.been.calledWith('garry','{"message":"lol","url":""}');
+            await notify.singleNotify('lol',bob);
+            expect(webpush.sendNotification).to.have.been.calledWith(bob,'{"message":"lol","url":""}');
         })
     });
 
     describe('notify', function () {
         it('should singleNotify',  async function () {
             await notify.notify('lol','garry');
-            expect(webpush.sendNotification).to.have.been.calledWith('garry','{"message":"lol","url":"garry"}');
-            expect(webpush.sendNotification).to.have.been.calledWith('bob','{"message":"lol","url":"garry"}');
+            expect(webpush.sendNotification).to.have.been.calledWith(bob,'{"message":"lol","url":"garry"}');
+            expect(webpush.sendNotification).to.have.been.calledWith(mike,'{"message":"lol","url":"garry"}');
         })
     });
 
     describe('notifyMembers', function () {
         it('should singleNotify',  async function () {
             await notify.notifyMembers('lol','garry');
-            expect(webpush.sendNotification).to.have.been.calledWith('bangie','{"message":"lol","url":"garry"}');
-            expect(webpush.sendNotification).to.have.been.calledWith('rhys','{"message":"lol","url":"garry"}');
+            expect(webpush.sendNotification).to.have.been.calledWith(mike,'{"message":"lol","url":"garry"}');
         })
     });
 
