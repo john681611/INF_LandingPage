@@ -9,7 +9,13 @@ const notification = require('../utils/notification');
 const fs = require('fs');
 
 router.get('/', function (req, res) {
-    res.render('index.ejs', data.getData());
+    res.render('index.ejs');
+});
+
+router.get('/edit', function (req, res) {
+    res.render('edit.ejs', data.getData());
+    // auth.authenticate(req, res, function () {
+    // });
 });
 
 router.get('/api', function (req, res) {
@@ -23,29 +29,13 @@ router.get('/forum', function (req, res) {
     res.render('forum.ejs', {key: process.env.vapidPu});
 });
 
-router.get('/members', csrfProtection, function (req, res) {
-    res.render('members.ejs', {logged:false,  key: process.env.vapidPu, csrfToken: req.csrfToken()});
-});
-
-router.post('/members', csrfProtection, function (req, res) {
-    auth.authenticateMember(req, res, function (logged) {
-        res.render('members.ejs', {logged,  key: process.env.vapidPu, memberNotifications: data.getData().memberNotifications, csrfToken: req.csrfToken()});
-    });
-});
-
-router.get('/modlist/:id', function (req, res) {
+router.get('/modlistz/:id', function (req, res) {
     const servers =  data.getData().servers;
     if (req.params.id >= 0  && req.params.id <= servers.length) {
         res.render('importModList.ejs', servers[req.params.id]);
     } else {
         res.status(404).send('No mod List found');
     }
-});
-
-router.get('/edit', function (req, res) {
-    auth.authenticate(req, res, function () {
-        res.render('edit.ejs', data.getData());
-    });
 });
 
 router.get('/serverFile', function (req, res) {
