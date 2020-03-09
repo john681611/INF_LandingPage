@@ -62,17 +62,11 @@ const addSub = (req, res, obj) => {
 };
 
 
-const addMemberSub = (req, res, obj) => {
-    fs.writeFile('./data/member/pushSubscriptions.json', json.stringify(obj), (error) => {
-        reportError(error, res);
-    });
-};
-
 const getPushSubscriptions = () => {
     return getFile('./data/pushSubscriptions.json');
 };
 const getMemberSubscriptions = () => {
-    return getFile('./data/member/pushSubscriptions.json');
+    return getFile('./data/pushSubscriptions.json').filter(sub => sub.member);
 };
 
 const getData = () => {
@@ -91,7 +85,6 @@ const getData = () => {
 module.exports = {
     addItem,
     addSub,
-    addMemberSub,
     deleteItem,
     findIndex,
     getData,

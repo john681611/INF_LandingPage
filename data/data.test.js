@@ -235,22 +235,6 @@ describe('File Mod Funcs', function () {
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
         });
     });
-
-    describe('addMemberSub', function  () {
-        it('should add subscriptions to file', function () {
-            const obj = {bob:'bob'};
-            data.addMemberSub(null, null, obj);
-            expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/member/pushSubscriptions.json');
-            expect(fsWriteStub.getCall(0).args[1]).to.be.equal(json.stringify(obj));
-        });
-
-        it('should respond with error message', function () {
-            fsWriteStub.yields('fuck');
-            data.addMemberSub(null, res, {});
-            expect(statusStub).to.have.been.calledWith(500);
-            expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});
-        });
-    });
 });
 
 describe('findIndex', function () {
@@ -341,7 +325,7 @@ describe('getPushSubscriptions', () => {
 describe('getMemberSubscriptions', () => {
     let fsStub;
     beforeEach(() => {
-        fsStub = sinon.stub(fs, 'readFileSync').returns('[{"date":"2018-01-28"}]');
+        fsStub = sinon.stub(fs, 'readFileSync').returns('[{"date":"2018-01-28", "member": true}, {"date":"2020-01-28"}]');
     });
 
     afterEach(() => {
@@ -350,7 +334,7 @@ describe('getMemberSubscriptions', () => {
 
     it('should get the subscription file', () => {
         const result = data.getMemberSubscriptions();
-        expect(fsStub).to.have.been.calledWith(path.resolve('./data/member/pushSubscriptions.json'));
-        expect(result).to.deep.equal(JSON.parse('[{"date":"2018-01-28"}]'));
+        expect(fsStub).to.have.been.calledWith(path.resolve('./data/pushSubscriptions.json'));
+        expect(result).to.deep.equal(JSON.parse('[{"date":"2018-01-28", "member": true}]'));
     });
 });
