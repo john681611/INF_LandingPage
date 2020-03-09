@@ -11,12 +11,8 @@ const authenticate = (req, res, callback) => {
     }
 };
 
-const authenticateMember  = (req, res, callback) => {
-    if (! req.body ||  req.body.name !== process.env.MEMUSR ||  req.body.pass !== process.env.MEMPASS) {
-        callback(false);
-    } else {
-        callback(true);
-    }
+const authenticateMember  = (pass) => {
+    return pass === process.env.MEMPASS
 };
 
 module.exports = {
