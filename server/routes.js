@@ -94,6 +94,13 @@ router.post('/sendMessage', function (req, res) {
 
 
 router.post('/subscription', function(req, res){
+    if(req.body.member) {
+        if(auth.authenticateMember(req.body.member)){
+            req.body.member = true 
+        } else {
+            return res.status(401).send('failed Auth');
+        }
+    }
     if(req.body.endpoint) {
         const subs = data.getPushSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
@@ -111,28 +118,6 @@ router.post('/delete/subscription', function(req, res){
         if (found !== -1){
             subs.splice(found, 1);
             data.addSub(req, res, subs);
-        }
-    }
-});
-
-router.post('/member/subscription', csrfProtection, function(req, res){
-    if(req.body.endpoint) {
-        const subs = data.getMemberSubscriptions();
-        if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
-            subs.push(req.body);
-            data.addMemberSub(req, res, subs);
-            notification.singleNotify('Members Notifications Active', req.body);
-        }
-    }
-});
-
-router.post('/delete/member/subscription', csrfProtection, function(req, res){
-    if(req.body.endpoint) {
-        const subs = data.getMemberSubscriptions();
-        const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
-        if (found !== -1){
-            subs.splice(found, 1);
-            data.addMemberSub(req, res, subs);
         }
     }
 });
