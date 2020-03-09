@@ -9,7 +9,7 @@ const notification = require('../utils/notification');
 const fs = require('fs');
 
 router.get('/', function (req, res) {
-    res.renderMin('index.ejs', data.getData());
+    res.render('index.ejs', data.getData());
 });
 
 router.get('/api', function (req, res) {
@@ -20,16 +20,16 @@ router.get('/api', function (req, res) {
 });
 
 router.get('/forum', function (req, res) {
-    res.renderMin('forum.ejs', {key: process.env.vapidPu});
+    res.render('forum.ejs', {key: process.env.vapidPu});
 });
 
 router.get('/members', csrfProtection, function (req, res) {
-    res.renderMin('members.ejs', {logged:false,  key: process.env.vapidPu, csrfToken: req.csrfToken()});
+    res.render('members.ejs', {logged:false,  key: process.env.vapidPu, csrfToken: req.csrfToken()});
 });
 
 router.post('/members', csrfProtection, function (req, res) {
     auth.authenticateMember(req, res, function (logged) {
-        res.renderMin('members.ejs', {logged,  key: process.env.vapidPu, memberNotifications: data.getData().memberNotifications, csrfToken: req.csrfToken()});
+        res.render('members.ejs', {logged,  key: process.env.vapidPu, memberNotifications: data.getData().memberNotifications, csrfToken: req.csrfToken()});
     });
 });
 
@@ -44,7 +44,7 @@ router.get('/modlist/:id', function (req, res) {
 
 router.get('/edit', function (req, res) {
     auth.authenticate(req, res, function () {
-        res.renderMin('edit.ejs', data.getData());
+        res.render('edit.ejs', data.getData());
     });
 });
 
