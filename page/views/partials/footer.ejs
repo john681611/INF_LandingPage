@@ -7,9 +7,3 @@
         <p>See www.bistudio.com for more information.</p>
     </div>
 </footer>
-<% if(!locals.csrfToken){ %>
-    <script async src="/js/main.js"></script>
-<% } else { %>
-    <script async src="/js/member-pwa.js"></script>
-<% } %>
-<script>const applicationServerPublicKey = "<%= key %>";</script>
