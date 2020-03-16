@@ -85,7 +85,6 @@ module.exports = {
         new ManifestPlugin({
             fileName: 'build-manifest.json',
             publicPath: '/'
-        }),
-        new InjectManifest({swSrc: './page/js/sw.js'})
+        })
     ]
 };
