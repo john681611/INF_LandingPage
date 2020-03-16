@@ -13,9 +13,9 @@ router.get('/', function (req, res) {
 });
 
 router.get('/edit', function (req, res) {
-    res.render('edit.ejs', data.getData());
-    // auth.authenticate(req, res, function () {
-    // });
+    auth.authenticate(req, res, function () {
+        res.render('edit.ejs', data.getData());
+    });
 });
 
 router.get('/api', function (req, res) {
@@ -23,10 +23,6 @@ router.get('/api', function (req, res) {
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(data.getData()));
-});
-
-router.get('/forum', function (req, res) {
-    res.render('forum.ejs', {key: process.env.vapidPu});
 });
 
 router.get('/modlistz/:id', function (req, res) {
@@ -51,7 +47,7 @@ router.post('/serverFile', function (req, res) {
             if (error) {
                 return res.status(500).json({ error: 'Something went wrong!' });
             }
-            res.redirect('/edit');
+            res.redirect('/edit#servers');
         });
     });
 });
