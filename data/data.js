@@ -3,6 +3,14 @@ const auth = require('../utils/auth');
 const path = require('path');
 const json  = require('../utils/json');
 
+const redirectMap = {
+    './data/newsItems.json': 'news',
+    './data/servers.json': 'servers',
+    './data/members.json': 'roster',
+    './data/donators.json': 'donate',
+    './data/notifications.json': 'notify'
+}
+
 const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
 };
@@ -16,7 +24,7 @@ const reportError = (error, res) => {
 const writeToFileAndRedirect = (file, obj, res) => {
     fs.writeFile(file, json.stringify(obj), (error) => {
         reportError(error, res);
-        res.redirect('/edit');
+        res.redirect(`/edit#${redirectMap[file]}`);
     });
 };
 
@@ -76,7 +84,7 @@ const getData = () => {
         members: getFile('./data/members.json'),
         donators: getFile('./data/donators.json'),
         squads: getFile('./data/squads.json'),
-        memberNotifications: getFile('./data/member/notifications.json').reverse(),
+        memberNotifications: getFile('./data/notifications.json').reverse(),
         key: process.env.vapidPu,
         moment: require('moment')
     };

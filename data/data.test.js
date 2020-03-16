@@ -273,7 +273,7 @@ describe('getData', function () {
             './data/members.json',
             './data/donators.json',
             './data/squads.json',
-            './data/member/notifications.json'
+            './data/notifications.json'
         ];
         //when
         const result = data.getData();
