@@ -1,5 +1,4 @@
 // Lazy loading for background images
-import './pwa';
 import './lazysizes.min.js';
 var ll = [].slice.call(document.querySelectorAll('.section'));
 var lh = [];
@@ -71,4 +70,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             inline: 'nearest'
         });
     });
+});
+
+[].forEach.call(document.getElementsByClassName("accordion"), button => {
+    button.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
 });
