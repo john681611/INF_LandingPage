@@ -3,8 +3,6 @@ const router = new express.Router();
 const data = require('../data/data');
 const auth = require('../utils/auth');
 const path = require('path');
-const csrf = require('csurf');
-const csrfProtection = csrf({ cookie: true });
 const notification = require('../utils/notification');
 const fs = require('fs');
 
@@ -19,9 +17,7 @@ router.get('/edit', function (req, res) {
 });
 
 router.get('/api', function (req, res) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    res.setHeader('Content-Type', 'application/json');
+    auth.allowMultiOrigin(res);
     res.end(JSON.stringify(data.getData()));
 });
 
@@ -90,6 +86,7 @@ router.post('/sendMessage', function (req, res) {
 
 
 router.post('/subscription', function(req, res){
+    auth.allowMultiOrigin(res);
     if(req.body.member) {
         if(auth.authenticateMember(req.body.member)){
             req.body.member = true 
@@ -108,6 +105,7 @@ router.post('/subscription', function(req, res){
 });
 
 router.post('/delete/subscription', function(req, res){
+    auth.allowMultiOrigin(res);
     if(req.body.endpoint) {
         const subs = data.getPushSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
