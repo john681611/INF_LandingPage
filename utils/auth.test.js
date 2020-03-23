@@ -69,7 +69,6 @@ describe('Member Auth', function () {
 
 
     it('should log in with correct Auth', function () {
-        ;
         expect(auth.authenticateMember('pwd')).to.be.true;
     });
 
@@ -79,14 +78,23 @@ describe('Member Auth', function () {
 });
 
 describe('allowMultiOrigin', () => {
+    const res = {
+        header: sinon.stub()
+    };
     it('should add headers and content type', () => {
-        const res = {
-            header: sinon.stub()
-        };
+       
 
         auth.allowMultiOrigin(res);
         expect(res.header).to.have.been.calledWith('Access-Control-Allow-Origin', '*');
         expect(res.header).to.have.been.calledWith('Access-Control-Allow-Headers', 'X-Requested-With');
+        expect(res.header).to.have.been.calledWith('Content-Type', 'application/json');
+    });
+
+    it('should add headers and content type with post true', () => {
+
+        auth.allowMultiOrigin(res, true);
+        expect(res.header).to.have.been.calledWith('Access-Control-Allow-Origin', '*');
+        expect(res.header).to.have.been.calledWith('Access-Control-Allow-Headers', 'Content-Type');
         expect(res.header).to.have.been.calledWith('Content-Type', 'application/json');
     });
 });
