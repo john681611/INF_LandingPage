@@ -86,7 +86,7 @@ router.post('/sendMessage', function (req, res) {
 
 
 router.post('/subscription', function(req, res){
-    auth.allowMultiOrigin(res);
+    auth.allowMultiOrigin(res, true);
     if(req.body.member) {
         if(auth.authenticateMember(req.body.member)){
             req.body.member = true 
@@ -105,7 +105,7 @@ router.post('/subscription', function(req, res){
 });
 
 router.post('/delete/subscription', function(req, res){
-    auth.allowMultiOrigin(res);
+    auth.allowMultiOrigin(res, true);
     if(req.body.endpoint) {
         const subs = data.getPushSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));

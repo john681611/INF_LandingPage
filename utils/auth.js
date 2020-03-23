@@ -15,9 +15,13 @@ const authenticateMember  = (pass) => {
     return pass === process.env.MEMPASS
 };
 
-const allowMultiOrigin = res => {
+const allowMultiOrigin = (res, post = false) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    if(post) {
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+    } else {
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    }
     res.header('Content-Type', 'application/json');
 };
 
