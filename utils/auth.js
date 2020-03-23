@@ -15,7 +15,14 @@ const authenticateMember  = (pass) => {
     return pass === process.env.MEMPASS
 };
 
+const allowMultiOrigin = res => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.header('Content-Type', 'application/json');
+};
+
 module.exports = {
     authenticate,
-    authenticateMember
+    authenticateMember,
+    allowMultiOrigin
 };
