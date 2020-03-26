@@ -89,7 +89,7 @@ router.post('/subscription', function(req, res){
     auth.allowMultiOrigin(res, true);
     if(req.body.member) {
         if(auth.authenticateMember(req.body.member)){
-            req.body.member = true 
+            req.body.member = true;
         } else {
             return res.status(401).send('failed Auth');
         }

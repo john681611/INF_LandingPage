@@ -72,14 +72,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-[].forEach.call(document.getElementsByClassName("accordion"), button => {
-    button.addEventListener("click", function() {
-        this.classList.toggle("active");
+[].forEach.call(document.getElementsByClassName('accordion'), button => {
+    button.addEventListener('click', function() {
+        this.classList.toggle('active');
         const panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
+        if (panel.style.display === 'block') {
+            panel.style.display = 'none';
         } else {
-          panel.style.display = "block";
+            panel.style.display = 'block';
         }
-      });
+    });
 });

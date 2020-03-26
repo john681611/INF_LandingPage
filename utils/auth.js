@@ -12,7 +12,7 @@ const authenticate = (req, res, callback) => {
 };
 
 const authenticateMember  = (pass) => {
-    return pass === process.env.MEMPASS
+    return pass === process.env.MEMPASS;
 };
 
 const allowMultiOrigin = (res, post = false) => {

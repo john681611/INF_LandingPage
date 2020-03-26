@@ -3,7 +3,7 @@ const data = require('../data/data');
 const fs = require('fs');
 const json = require('./json');
 
-if(process.env.vapidPu &&  process.env.vapidPr){
+if(process.env.vapidPu &&  process.env.vapidPr) {
     webpush.setVapidDetails(
         'mailto:example@yourdomain.org',
         process.env.vapidPu,

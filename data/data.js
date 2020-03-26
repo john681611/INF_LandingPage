@@ -9,7 +9,7 @@ const redirectMap = {
     './data/members.json': 'roster',
     './data/donators.json': 'donate',
     './data/notifications.json': 'notify'
-}
+};
 
 const findIndex = (obj, id) => {
     return obj.findIndex(el => el.id.toString() === id.toString());
