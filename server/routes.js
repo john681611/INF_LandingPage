@@ -21,7 +21,7 @@ router.get('/api', function (req, res) {
     res.end(JSON.stringify(data.getData()));
 });
 
-router.get('/modlistz/:id', function (req, res) {
+router.get('/modlist/:id', function (req, res) {
     const servers =  data.getData().servers;
     if (req.params.id >= 0  && req.params.id <= servers.length) {
         res.render('importModList.ejs', servers[req.params.id]);
@@ -98,10 +98,11 @@ router.post('/subscription', function(req, res){
         const subs = data.getPushSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
             subs.push(req.body);
-            data.addSub(req, res, subs);
             notification.singleNotify('News Notifications Active', req.body);
+            return data.addSub(req, res, subs);
         }
     }
+    return res.status(400).send('bad request');
 });
 
 router.post('/delete/subscription', function(req, res){
@@ -111,9 +112,10 @@ router.post('/delete/subscription', function(req, res){
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));
         if (found !== -1){
             subs.splice(found, 1);
-            data.addSub(req, res, subs);
+            return data.addSub(req, res, subs);
         }
     }
+    return res.status(400).send('bad request');
 });
 
 module.exports = {
