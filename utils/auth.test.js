@@ -82,8 +82,6 @@ describe('allowMultiOrigin', () => {
         header: sinon.stub()
     };
     it('should add headers and content type', () => {
-       
-
         auth.allowMultiOrigin(res);
         expect(res.header).to.have.been.calledWith('Access-Control-Allow-Origin', '*');
         expect(res.header).to.have.been.calledWith('Access-Control-Allow-Headers', 'X-Requested-With');
