@@ -15,18 +15,8 @@ const authenticateMember  = (pass) => {
     return pass === process.env.MEMPASS;
 };
 
-const allowMultiOrigin = (res, post = false) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    if(post) {
-        res.header('Access-Control-Allow-Headers', 'Content-Type');
-    } else {
-        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    }
-    res.header('Content-Type', 'application/json');
-};
 
 module.exports = {
     authenticate,
-    authenticateMember,
-    allowMultiOrigin
+    authenticateMember
 };

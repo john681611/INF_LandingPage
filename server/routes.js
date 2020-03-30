@@ -17,7 +17,6 @@ router.get('/edit', function (req, res) {
 });
 
 router.get('/api', function (req, res) {
-    auth.allowMultiOrigin(res);
     res.end(JSON.stringify(data.getData()));
 });
 
@@ -37,7 +36,7 @@ router.get('/serverFile', function (req, res) {
 });
 
 router.post('/serverFile', function (req, res) {
-    auth. authenticate(req, res, function () {
+    auth.authenticate(req, res, function () {
         data.servers = JSON.parse(req.body.json);
         fs.writeFile('./data/servers.json', req.body.json, function (error) {
             if (error) {
@@ -86,7 +85,6 @@ router.post('/sendMessage', function (req, res) {
 
 
 router.post('/subscription', function(req, res){
-    auth.allowMultiOrigin(res, true);
     if(req.body.member) {
         if(auth.authenticateMember(req.body.member)){
             req.body.member = true;
@@ -106,7 +104,6 @@ router.post('/subscription', function(req, res){
 });
 
 router.post('/delete/subscription', function(req, res){
-    auth.allowMultiOrigin(res, true);
     if(req.body.endpoint) {
         const subs = data.getPushSubscriptions();
         const found = subs.indexOf(subs.find(sub => sub.endpoint = req.body.endpoint));

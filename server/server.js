@@ -3,11 +3,13 @@ const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const cors = require('cors');
 var cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 app.set('views', 'page/views');
 app.set('view engine', 'ejs');
+app.use(cors());
 app.use('/', express.static('assets'));
 app.use('/', express.static('page'));
 
