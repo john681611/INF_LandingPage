@@ -96,7 +96,7 @@ router.post('/subscription', function(req, res){
         const subs = data.getPushSubscriptions();
         if (!subs.find(sub => req.body.endpoint === sub.endpoint)){
             subs.push(req.body);
-            notification.singleNotify('News Notifications Active', req.body);
+            notification.singleNotify(`News ${req.body.member? 'and Member' : ''} Notifications Active`, req.body);
             return data.addSub(req, res, subs);
         }
     }
