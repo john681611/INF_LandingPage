@@ -63,10 +63,13 @@ const getFile = (file) => {
     return JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
 };
 
-const addSub = (req, res, obj) => {
-    fs.writeFile('./data/pushSubscriptions.json', json.stringify(obj), (error) => {
-        reportError(error, res);
-    });
+const addSub = async (req, res, obj) => {
+    try {
+        await fs.promises.writeFile('./data/pushSubscriptions.json', json.stringify(obj));
+        res.send(201);
+    } catch (error) {
+        reportError(error, res);    
+    }
 };
 
 
