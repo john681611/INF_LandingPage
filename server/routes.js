@@ -79,7 +79,7 @@ router.post('/delete/donator', function (req, res) {
 router.post('/sendMessage', function (req, res) {
     auth.authenticate(req, res, function () {
         notification.notifyMembers(`Member Message: ${req.body.message}.`, req.body.url);
-        data.addItem(req, res, data.getData().memberNotifications, './data/member/notifications.json');
+        data.addItem(req, res, data.getData().memberNotifications, './data/notifications.json');
     });
 });
 

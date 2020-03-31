@@ -37,7 +37,7 @@ function notify(message, url) {
 
 function notifyMembers(message, url) {
     data.getMemberSubscriptions().forEach(sub =>{
-        sendNotification({message, url}, sub, true);
+        sendNotification({message, url}, sub);
     });
 }
 

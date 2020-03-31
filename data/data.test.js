@@ -10,7 +10,7 @@ describe('File Mod Funcs', function () {
     const file = './data/testOBJ.json';
     let fsWriteStub, redirectStub, jsonStub, statusStub;
     beforeEach(() => {
-        fsWriteStub = sinon.stub(fs, 'writeFile').yields(null);
+        fsWriteStub = sinon.stub(fs, 'writeFileSync').returns(null);
         redirectStub = sinon.stub(res, 'redirect');
         jsonStub = sinon.stub(res, 'json');
         statusStub = sinon.stub(res, 'status').returns({json: jsonStub});
@@ -127,7 +127,7 @@ describe('File Mod Funcs', function () {
         });
 
         it('should handle fileWrite error', function () {
-            fsWriteStub.yields('fuck');
+            fsWriteStub.throws('fuck');
             const testOBJ = [{
                 id: 1,
                 name: 'bob'
@@ -198,7 +198,7 @@ describe('File Mod Funcs', function () {
         });
 
         it('should handle fileWrite error', function () {
-            fsWriteStub.yields('fuck');
+            fsWriteStub.throws('fuck');
             const testOBJ = [{
                 id: 1,
                 name: 'bob'
@@ -223,13 +223,13 @@ describe('File Mod Funcs', function () {
     describe('addSub', function  () {
         it('should add subscriptions to file', function () {
             const obj = {bob:'bob'};
-            data.addSub(null, null, obj);
+            data.addSub(null, res, obj);
             expect(fsWriteStub.getCall(0).args[0]).to.be.equal('./data/pushSubscriptions.json');
             expect(fsWriteStub.getCall(0).args[1]).to.be.equal(json.stringify(obj));
         });
 
         it('should respond with error message', function () {
-            fsWriteStub.yields('fuck');
+            fsWriteStub.throws('fuck');
             data.addSub(null, res, {});
             expect(statusStub).to.have.been.calledWith(500);
             expect(jsonStub).to.have.been.calledWith({error:'Something went wrong!'});

@@ -16,16 +16,18 @@ const findIndex = (obj, id) => {
 };
 
 const reportError = (error, res) => {
-    if (error) {
-        res.status(500).json({ error: 'Something went wrong!' });
-    }
+    // eslint-disable-next-line no-console
+    console.error(error);
+    res.status(500).json({ error: 'Something went wrong!' });
 };
 
 const writeToFileAndRedirect = (file, obj, res) => {
-    fs.writeFile(file, json.stringify(obj), (error) => {
-        reportError(error, res);
+    try {
+        fs.writeFileSync(file, json.stringify(obj));
         res.redirect(`/edit#${redirectMap[file]}`);
-    });
+    } catch (error) {
+        reportError(error, res);
+    }
 };
 
 const addItem = (req, res, obj, file) => {
@@ -63,12 +65,12 @@ const getFile = (file) => {
     return JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
 };
 
-const addSub = async (req, res, obj) => {
+const addSub = (req, res, obj) => {
     try {
-        await fs.promises.writeFile('./data/pushSubscriptions.json', json.stringify(obj));
-        res.send(201);
+        fs.writeFileSync('./data/pushSubscriptions.json', json.stringify(obj));
+        res.status(201).json({message: 'Added Sub'});
     } catch (error) {
-        reportError(error, res);    
+        reportError(error, res);
     }
 };
 
