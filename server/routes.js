@@ -52,11 +52,14 @@ router.get('/trip', function (req, res) {
 });
 
 router.post('/trip', function (req, res) {
-    trip = JSON.parse(req.body.json);
-    fs.writeFile('./data/trips.json', data.getTripData().push(trip), function (error) {
+    trips = data.getTripData()
+    trip = req.body
+    trips.push(trip)
+    fs.writeFile('./data/trips.json', JSON.stringify(trips), function (error) {
         if (error) {
             return res.status(500).json({ error: 'Something went wrong!' });
         }
+        return res.send("done")
     });
 });
 
