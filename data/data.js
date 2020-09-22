@@ -95,12 +95,15 @@ const getData = () => {
     };
 };
 
+const getTripData = () => getFile('./data/trips.json');
+
 module.exports = {
     addItem,
     addSub,
     deleteItem,
     findIndex,
     getData,
+    getTripData,
     getPushSubscriptions,
     getMemberSubscriptions
 };

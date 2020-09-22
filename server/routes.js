@@ -47,6 +47,19 @@ router.post('/serverFile', function (req, res) {
     });
 });
 
+router.get('/trip', function (req, res) {
+    res.end(JSON.stringify(data.getTripData()));
+});
+
+router.post('/trip', function (req, res) {
+    trip = JSON.parse(req.body.json);
+    fs.writeFile('./data/trips.json', data.getTripData().push(trip), function (error) {
+        if (error) {
+            return res.status(500).json({ error: 'Something went wrong!' });
+        }
+    });
+});
+
 router.post('/news', function (req, res) {
     auth. authenticate(req, res, function () {
         const updateType =  req.body.id === '-1'? 'New' : 'Updated';
