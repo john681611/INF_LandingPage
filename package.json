@@ -60,7 +60,7 @@
     "chai-as-promised": "^7.1.1",
     "chai-http": "^4.3.0",
     "css-loader": "^5.2.4",
-    "eslint": "^7.21.0",
+    "eslint": "^7.25.0",
     "eslint-config-mns-core": "^1.0.0",
     "eslint-watch": "^7.0.0",
     "file-loader": "^6.2.0",
