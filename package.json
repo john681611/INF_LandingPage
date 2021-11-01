@@ -36,7 +36,7 @@
     "report-dir": "./.nyc_output"
   },
   "dependencies": {
-    "autoprefixer": "^10.3.6",
+    "autoprefixer": "^10.4.0",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
