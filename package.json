@@ -50,7 +50,7 @@
     "reload": "^3.2.0",
     "sass": "^1.51.0",
     "uninstall": "0.0.0",
-    "web-push": "^3.4.5"
+    "web-push": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
