@@ -4,7 +4,7 @@
   "author": "John681611",
   "license": "Apache",
   "engines": {
-    "node": "12.15.0"
+    "node": "22.14.0"
   },
   "browserslist": [
     "> 2%",
@@ -36,32 +36,32 @@
     "report-dir": "./.nyc_output"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.20",
-    "basic-auth": "^2.0.0",
-    "body-parser": "^1.20.3",
+    "autoprefixer": "^10.4.21",
+    "basic-auth": "^2.0.1",
+    "body-parser": "^2.2.0",
     "compression": "^1.8.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "glob": "^11.0.1",
     "moment": "^2.30.1",
-    "reload": "^3.3.0",
+    "reload": "^2.2.0",
     "sass": "^1.86.1",
     "uninstall": "0.0.0",
-    "web-push": "^3.6.1"
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.7",
     "babel-loader": "^10.0.0",
-    "chai": "^5.1.2",
+    "chai": "^5.2.0",
     "chai-as-promised": "^8.0.1",
     "chai-http": "^5.1.1",
     "css-loader": "^7.1.2",
-    "eslint": "^9.23.0",
-    "eslint-config-mns-core": "^1.0.0",
+    "eslint": "^9.24.0",
+    "eslint-config-mns-core": "^1.0.6",
     "eslint-watch": "^8.0.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.9.2",
@@ -72,11 +72,11 @@
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-loader": "^8.1.1",
     "sass-loader": "^16.0.5",
-    "sinon": "19.0.2",
+    "sinon": "20.0.0",
     "sinon-chai": "^4.0.0",
     "supertest": "^7.1.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^5.89.0",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1",
     "webpack-manifest-plugin": "^5.0.0"
   },
