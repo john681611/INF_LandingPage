@@ -72,7 +72,7 @@
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-loader": "^8.1.1",
     "sass-loader": "^16.0.5",
-    "sinon": "20.0.0",
+    "sinon": "21.0.0",
     "sinon-chai": "^4.0.0",
     "supertest": "^7.1.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
