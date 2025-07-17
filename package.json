@@ -39,7 +39,7 @@
     "autoprefixer": "^10.4.21",
     "basic-auth": "^2.0.1",
     "body-parser": "^2.2.0",
-    "compression": "^1.8.0",
+    "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.0.0",
