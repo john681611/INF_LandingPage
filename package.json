@@ -36,13 +36,13 @@
     "report-dir": "./.nyc_output"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "basic-auth": "^2.0.1",
     "body-parser": "^2.2.2",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "glob": "^13.0.6",
