@@ -36,9 +36,9 @@
     "report-dir": "./.nyc_output"
   },
   "dependencies": {
-    "autoprefixer": "^10.5.0",
+    "autoprefixer": "^10.5.2",
     "basic-auth": "^2.0.1",
-    "body-parser": "^2.2.2",
+    "body-parser": "^2.3.0",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -48,7 +48,7 @@
     "glob": "^13.0.6",
     "moment": "^2.30.1",
     "reload": "^3.4.3",
-    "sass": "^1.100.0",
+    "sass": "^1.101.0",
     "uninstall": "0.0.0",
     "web-push": "^3.6.7"
   },
